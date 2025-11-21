@@ -40,6 +40,24 @@
             ]
           }
         ]
+      },
+      {
+        "product": "Widgets",
+        "description": "Prebuilt widgets for GRID data",
+        "icon": "desktop",
+        "tabs": [
+          {
+            "tab": "Overview",
+            "groups": [
+              {
+                "group": "Overview",
+                "pages": [
+                  "/widgets/overview"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "global": {
@@ -48,6 +66,10 @@
           "anchor": "Blog",
           "href": "https://blog.grid.gg/",
           "icon": "newspaper"
+        },
+        {"anchor": "Knowledge Base",
+          "href": "https://grid.helpjuice.com/",
+          "icon": "book-open-cover"
         }
       ]
     }
@@ -60,13 +82,13 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@grid.gg"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "GRID Portal",
+      "href": "https://portal.grid.gg/"
     }
   },
   "contextual": {
