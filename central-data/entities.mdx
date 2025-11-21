@@ -1,0 +1,126 @@
+---
+title: "Entities"
+description: "Learn about entities in the Central Data API and how they relate to each other"
+---
+<Badge color="green">Commercial Access</Badge> <Badge color="blue">Competitor Access</Badge> <Badge color="gray">Open Access</Badge>
+
+Series, players, teams, titles and tournaments are the primary entities in the Central Data API.
+
+## Relationships
+Entities in the Central Data API are interconnected and can be represented as nodes in a graph. The relationship between entities is denoted by edges. Additional information about the relationship is included in the relationship fields (for example, `scoreAdvantage` for a team participant relationship on the series entity).
+
+For example, in a best-of-three series between C9 White and G2 Gozen for Valorant Game Changers, a Series entity can be linked to several other entities to obtain their respective data.
+
+```mermaid
+graph TD
+    %% Title entities
+    ValorantT1[Valorant<br/>Title]
+    ValorantT2[Valorant<br/>Title]
+    ValorantT3[Valorant<br/>Title]
+    ValorantT4[Valorant<br/>Title]
+    
+    %% Player entities
+    C9meL[C9 meL<br/>Player]
+    G2Mary[G2 Mary<br/>Player]
+    
+    %% Team entities
+    C9White[Cloud 9<br/>White<br/>Team]
+    G2Gozen[G2 Gozen<br/>Team]
+    
+    %% Team Participant entities
+    TeamPart1[Team<br/>Participant]
+    TeamPart2[Team<br/>Participant]
+    
+    %% Series entity
+    Series[ID: 14528<br/>Series]
+    
+    %% Tournament entity
+    Tournament[Game<br/>Changers<br/>Tournament]
+    
+    %% Format entity
+    Format[BO3<br/>Format]
+    
+    %% Video Stream entity
+    VideoStream[Video<br/>Stream]
+    
+    %% Product Service Level entity
+    ProductService[Product<br/>Service<br/>Level]
+    
+    %% Relationships - Players to Titles
+    C9meL -->|Plays title| ValorantT1
+    G2Mary -->|Plays title| ValorantT3
+    
+    %% Relationships - Players to Teams
+    C9meL -->|Plays at| C9White
+    G2Mary -->|Plays at| G2Gozen
+    
+    %% Relationships - Teams to Titles
+    C9White -->|Plays title| ValorantT1
+    G2Gozen -->|Plays title| ValorantT2
+    G2Gozen -->|Plays title| ValorantT4
+    
+    %% Relationships - Teams to Team Participants
+    C9White -->|Has team| TeamPart1
+    G2Gozen -->|Has team| TeamPart2
+    
+    %% Relationships - Team Participants to Series
+    TeamPart1 -->|Has participant| Series
+    TeamPart2 -->|Has participant| Series
+    
+    %% Relationships - Series to other entities
+    Series -->|Has format| Format
+    Series -->|Has stream| VideoStream
+    Series -->|Has product coverage| ProductService
+    Series -->|Played in| Tournament
+    Series -->|Plays title| ValorantT2
+    
+    %% Relationships - Tournament to Title
+    Tournament -->|Plays title| ValorantT4
+    
+    %% Styling
+    classDef titleStyle fill:#0a5f0a,stroke:#00ff00,stroke-width:3px,color:#fff
+    classDef playerStyle fill:#8b6914,stroke:#ffd700,stroke-width:3px,color:#fff
+    classDef teamStyle fill:#8b008b,stroke:#ff00ff,stroke-width:3px,color:#fff
+    classDef participantStyle fill:#4a0a4a,stroke:#ff00ff,stroke-width:3px,color:#fff
+    classDef seriesStyle fill:#0a4a5f,stroke:#00d4ff,stroke-width:3px,color:#fff
+    classDef tournamentStyle fill:#4a0a8b,stroke:#8000ff,stroke-width:3px,color:#fff
+    classDef formatStyle fill:#0a4a5f,stroke:#00d4ff,stroke-width:3px,color:#fff
+    classDef streamStyle fill:#0a4a5f,stroke:#00d4ff,stroke-width:3px,color:#fff
+    classDef serviceStyle fill:#0a4a5f,stroke:#00d4ff,stroke-width:3px,color:#fff
+    
+    class ValorantT1,ValorantT2,ValorantT3,ValorantT4 titleStyle
+    class C9meL,G2Mary playerStyle
+    class C9White,G2Gozen teamStyle
+    class TeamPart1,TeamPart2 participantStyle
+    class Series seriesStyle
+    class Tournament tournamentStyle
+    class Format formatStyle
+    class VideoStream streamStyle
+    class ProductService serviceStyle
+```
+
+
+
+## Series
+A Series represents a minimum of one game played by two teams in a tournament context. The Series entity in the Central Data API does not track in-game events. Instead, it records data points related to scheduling, context, and format.
+#### Related entity: Series Format
+The format of a series determines the number of games played and how the winner is determined. For example, BO1 and BO3 formats (respectively, "best-of-1" and "best-of-3") indicate that one or up to three games are played. The winner of a BO1 series wins with one game, and the winner of a BO3 series wins with two games.
+#### Related entity: Product Service Level
+The service level indicates the type of coverage GRID offers for a given series in each product. The value of this field can be `FULL`, `LIMITED`, or `NONE`.
+#### Related entity: Video Stream
+The video stream entity provides the URL for a series's live video stream.
+
+## Teams
+Teams identify groups of players participating in games.
+#### Related entity: Team Participant
+You can find this entity in Series. It contains the information of the team, alongside the score advantage for a given series.
+
+## Players
+Players represent the individuals participating in games. The Central Data API uses this entity to keep track of players between different matches consistently.
+
+## Titles
+Titles describe the games supported by GRID. For example, Valorant, CS:GO, and DotA are supported titles. Titles play an important role in defining the Central Data API. While all GRID APIs are title-agnostic, events and states may have small differences between titles to express the game state fully.
+
+## Tournaments
+Tournaments are competitions in which teams participate.
+

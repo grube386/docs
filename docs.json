@@ -33,7 +33,8 @@
               {
                 "group": "Central Data API",
                 "pages": [
-                  "/central-data/overview"
+                  "/central-data/overview",
+                  "/central-data/entities"
                 ]
               }
             ]
