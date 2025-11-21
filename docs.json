@@ -29,6 +29,12 @@
                   "/data-apis/getting-started",
                   "/data-apis/development-tools"
                 ]
+              },
+              {
+                "group": "Central Data API",
+                "pages": [
+                  "/central-data/overview"
+                ]
               }
             ]
           }
@@ -38,13 +44,8 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "href": "https://blog.grid.gg/",
           "icon": "newspaper"
         }
       ]
