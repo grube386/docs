@@ -33,8 +33,19 @@
               {
                 "group": "Central Data API",
                 "pages": [
-                  "/central-data/overview",
-                  "/central-data/entities"
+                  "/data-apis/central-data/overview",
+                  "/data-apis/central-data/entities"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Guides",
+            "groups": [
+              {
+                "group": "Central Data API",
+                "pages": [
+                  "/data-apis/central-data/quick-start"
                 ]
               }
             ]
