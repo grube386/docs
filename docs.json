@@ -39,7 +39,8 @@
                     "group": "Tutorials",
                     "pages": [
                       "/data-apis/central-data/tutorials/all-series-for-tournament",
-                      "/data-apis/central-data/tutorials/first-10-series-day"
+                      "/data-apis/central-data/tutorials/first-10-series-day",
+                      "/data-apis/central-data/tutorials/get-team-player-photos"
                     ]
                   },
                   {

@@ -1,0 +1,450 @@
+---
+title: "Get Team Player Photos"
+description: "A step-by-step guide on how to retrieve player photos for a specific team using the Central Data Feed Query API in Node.js, Python, or Kotlin."
+---
+
+## Overview
+
+This tutorial demonstrates how to fetch player IDs and photo URLs for all players of a specific team using the Central Data Feed Query API. You'll learn how to query team data and retrieve associated player information including their profile images.
+
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
+- A valid API key for the Central Data Feed API
+- Your preferred development environment set up
+
+<Tabs>
+<Tab title="Node.js" icon="node-js">
+  - [Node.js](https://nodejs.org/en/) v14 or higher
+  - [npm](https://www.npmjs.com/) or yarn package manager
+  
+  <Note>
+  We recommend following [these instructions](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install Node.js and npm using a Node version manager.
+  </Note>
+</Tab>
+
+<Tab title="Python" icon="python">
+  - Python 3.7 or higher
+  - pip package manager
+</Tab>
+
+<Tab title="Kotlin" icon="java">
+  - JDK 11 or higher
+  - Gradle or Maven build tool
+  - Kotlin 1.5 or higher
+</Tab>
+</Tabs>
+
+## Implementation
+
+<Steps>
+<Step title="Install dependencies">
+  First, install the required GraphQL client libraries for your chosen language.
+
+<CodeGroup>
+```bash Node.js
+npm install graphql graphql-request
+```
+
+```bash Python
+pip install requests
+```
+
+```kotlin Kotlin
+dependencies {
+    implementation("com.apollographql.apollo3:apollo-runtime:3.8.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+}
+```
+</CodeGroup>
+
+<Check>
+Verify the installation by checking the package version in your project dependencies.
+</Check>
+</Step>
+
+<Step title="Set up your API key and endpoint">
+  Create your main file and configure your API credentials and the GraphQL endpoint.
+
+<CodeGroup>
+```javascript Node.js
+// Configure API credentials and endpoint
+const API_KEY = "YOUR_API_KEY";
+const ENDPOINT = "https://api.grid.gg/central-data/graphql";
+```
+
+```python Python
+# Configure API credentials and endpoint
+API_KEY = "YOUR_API_KEY"
+ENDPOINT = "https://api.grid.gg/central-data/graphql"
+```
+
+```kotlin Kotlin
+// Configure API credentials and endpoint
+const val API_KEY = "YOUR_API_KEY"
+const val ENDPOINT = "https://api.grid.gg/central-data/graphql"
+```
+</CodeGroup>
+
+<Warning>
+Never commit your API key to version control. Use environment variables or a secure configuration file instead.
+</Warning>
+</Step>
+
+<Step title="Define the GraphQL query">
+  Create the GraphQL query to fetch player information for a specific team. The query will return player IDs and their profile photo URLs.
+
+<CodeGroup>
+```javascript Node.js
+// Define the GraphQL query to fetch team players and their photos
+const query = `
+  query GetTeamPlayerPhotos($teamId: ID!) {
+    team(id: $teamId) {
+      id
+      name
+      players {
+        id
+        nickName
+        imageUrl
+      }
+    }
+  }
+`;
+```
+
+```python Python
+# Define the GraphQL query to fetch team players and their photos
+query = """
+  query GetTeamPlayerPhotos($teamId: ID!) {
+    team(id: $teamId) {
+      id
+      name
+      players {
+        id
+        nickName
+        imageUrl
+      }
+    }
+  }
+"""
+```
+
+```kotlin Kotlin
+// Define the GraphQL query to fetch team players and their photos
+const val QUERY = """
+  query GetTeamPlayerPhotos(${'$'}teamId: ID!) {
+    team(id: ${'$'}teamId) {
+      id
+      name
+      players {
+        id
+        nickName
+        imageUrl
+      }
+    }
+  }
+"""
+```
+</CodeGroup>
+
+<Info>
+The query takes a `teamId` parameter to specify which team's players you want to retrieve. The `imageUrl` field contains the URL to each player's profile photo.
+</Info>
+</Step>
+
+<Step title="Create the query execution function">
+  Implement a function to execute the GraphQL query with proper error handling.
+
+<CodeGroup>
+```javascript Node.js
+// Function to execute GraphQL queries with error handling
+async function callGraphQLQuery(graphQLClient, query, variables) {
+  try {
+    // Send the request to the GraphQL endpoint
+    const data = await graphQLClient.request(query, variables);
+    return data;
+  } catch (error) {
+    // Handle any errors that occur during the request
+    console.error("Error executing GraphQL query:", error);
+    throw error;
+  }
+}
+```
+
+```python Python
+import requests
+
+# Function to execute GraphQL queries with error handling
+def call_graphql_query(endpoint, query, variables, api_key):
+    try:
+        # Prepare the request headers with API key authentication
+        headers = {
+            "x-api-key": api_key,
+            "Content-Type": "application/json"
+        }
+        
+        # Prepare the GraphQL request payload
+        payload = {
+            "query": query,
+            "variables": variables
+        }
+        
+        # Send the POST request to the GraphQL endpoint
+        response = requests.post(endpoint, json=payload, headers=headers)
+        
+        # Raise an exception for HTTP error responses
+        response.raise_for_status()
+        
+        # Return the JSON response data
+        return response.json()
+    except requests.exceptions.RequestException as error:
+        # Handle any errors that occur during the request
+        print(f"Error executing GraphQL query: {error}")
+        raise error
+```
+
+```kotlin Kotlin
+import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.api.ApolloResponse
+import com.apollographql.apollo3.api.Operation
+
+// Function to execute GraphQL queries with error handling
+suspend fun <D : Operation.Data> callGraphQLQuery(
+    apolloClient: ApolloClient,
+    query: String,
+    variables: Map<String, Any>
+): ApolloResponse<D>? {
+    return try {
+        // Send the request to the GraphQL endpoint
+        val response = apolloClient.query(query).execute()
+        response
+    } catch (error: Exception) {
+        // Handle any errors that occur during the request
+        println("Error executing GraphQL query: ${error.message}")
+        throw error
+    }
+}
+```
+</CodeGroup>
+
+<Tip>
+Always implement proper error handling to gracefully manage network issues, authentication failures, or invalid queries.
+</Tip>
+</Step>
+
+<Step title="Execute the query and display results">
+  Create the main function to initialize the GraphQL client, set up the team ID variable, execute the query, and display the player photo URLs.
+
+<CodeGroup>
+```javascript Node.js
+const { GraphQLClient } = require("graphql-request");
+
+async function main() {
+  // Create a new GraphQL client with API key authentication
+  const graphQLClient = new GraphQLClient(ENDPOINT, {
+    headers: {
+      "x-api-key": API_KEY,
+    },
+  });
+
+  // Set the team ID for which to fetch player photos
+  const variables = {
+    teamId: "YOUR_TEAM_ID", // Replace with actual team ID
+  };
+
+  // Execute the query and retrieve results
+  const result = await callGraphQLQuery(graphQLClient, query, variables);
+
+  // Display the team information
+  console.log(`Team: ${result.team.name} (ID: ${result.team.id})`);
+  console.log(`\nPlayers (${result.team.players.length}):`);
+  
+  // Display each player's information and photo URL
+  result.team.players.forEach((player, index) => {
+    console.log(`\n${index + 1}. ${player.nickName}`);
+    console.log(`   Player ID: ${player.id}`);
+    console.log(`   Photo URL: ${player.imageUrl || 'No photo available'}`);
+  });
+}
+
+// Run the main function
+main().catch((error) => {
+  console.error("Application error:", error);
+  process.exit(1);
+});
+```
+
+```python Python
+import json
+
+def main():
+    # Set the team ID for which to fetch player photos
+    variables = {
+        "teamId": "YOUR_TEAM_ID"  # Replace with actual team ID
+    }
+
+    # Execute the query and retrieve results
+    result = call_graphql_query(ENDPOINT, query, variables, API_KEY)
+
+    # Check if the response contains data
+    if "data" in result:
+        data = result["data"]
+        team = data["team"]
+        
+        # Display the team information
+        print(f"Team: {team['name']} (ID: {team['id']})")
+        print(f"\nPlayers ({len(team['players'])}):")
+        
+        # Display each player's information and photo URL
+        for index, player in enumerate(team['players'], 1):
+            print(f"\n{index}. {player['nickName']}")
+            print(f"   Player ID: {player['id']}")
+            print(f"   Photo URL: {player.get('imageUrl', 'No photo available')}")
+            
+    elif "errors" in result:
+        # Display any GraphQL errors
+        print("GraphQL Errors:")
+        print(json.dumps(result["errors"], indent=2))
+
+# Run the main function
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as error:
+        print(f"Application error: {error}")
+```
+
+```kotlin Kotlin
+import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.network.http.DefaultHttpEngine
+import kotlinx.coroutines.runBlocking
+
+fun main() = runBlocking {
+    // Create a new Apollo client with API key authentication
+    val apolloClient = ApolloClient.Builder()
+        .serverUrl(ENDPOINT)
+        .httpEngine(
+            DefaultHttpEngine().apply {
+                addInterceptor { request, chain ->
+                    chain.proceed(
+                        request.newBuilder()
+                            .addHeader("x-api-key", API_KEY)
+                            .build()
+                    )
+                }
+            }
+        )
+        .build()
+
+    // Set the team ID for which to fetch player photos
+    val variables = mapOf(
+        "teamId" to "YOUR_TEAM_ID"  // Replace with actual team ID
+    )
+
+    try {
+        // Execute the query and retrieve results
+        val response = apolloClient.query(QUERY).execute()
+
+        // Display the team information
+        response.data?.team?.let { team ->
+            println("Team: ${team.name} (ID: ${team.id})")
+            println("\nPlayers (${team.players.size}):")
+            
+            // Display each player's information and photo URL
+            team.players.forEachIndexed { index, player ->
+                println("\n${index + 1}. ${player.nickName}")
+                println("   Player ID: ${player.id}")
+                println("   Photo URL: ${player.imageUrl ?: "No photo available"}")
+            }
+        }
+    } catch (error: Exception) {
+        println("Application error: ${error.message}")
+    } finally {
+        // Clean up resources
+        apolloClient.close()
+    }
+}
+```
+</CodeGroup>
+
+<Check>
+Run your application and verify that you receive a list of players with their photo URLs for the specified team.
+</Check>
+</Step>
+
+<Step title="Run the application">
+  Execute your application using the appropriate command for your language.
+
+<CodeGroup>
+```bash Node.js
+node index.js
+```
+
+```bash Python
+python main.py
+```
+
+```bash Kotlin
+./gradlew run
+# or with Maven
+mvn exec:java
+```
+</CodeGroup>
+
+<Info>
+The application will output the team name and a list of all players with their IDs and photo URLs. You can use these URLs to display player photos in your application.
+</Info>
+</Step>
+</Steps>
+
+## Expected Output
+
+When you run the application successfully, you should see output similar to this:
+
+```
+Team: FaZe Clan (ID: team_12345)
+
+Players (5):
+
+1. rain
+   Player ID: 1
+   Photo URL: https://cdn.grid.gg/players/image-1
+
+2. Twistzz
+   Player ID: 2
+   Photo URL: https://cdn.grid.gg/players/image-2
+
+3. ropz
+   Player ID: 3
+   Photo URL: https://cdn.grid.gg/players/image-3
+
+4. broky
+   Player ID: 4
+   Photo URL: https://cdn.grid.gg/players/image-4
+
+5. karrigan
+   Player ID: 5
+   Photo URL: https://cdn.grid.gg/players/image-5
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+<Card title="Get the First 10 Games for the Day" icon="calendar" href="/data-apis/central-data/tutorials/first-10-series-day">
+  Learn how to retrieve scheduled games for the current day.
+</Card>
+
+<Card title="Query All Series for a Tournament" icon="trophy" href="/data-apis/central-data/tutorials/all-series-for-tournament">
+  Learn how to retrieve all series for a specific tournament.
+</Card>
+
+<Card title="Central Data Entities" icon="database" href="/data-apis/central-data/entities">
+  Explore all available entities and fields in the Central Data API.
+</Card>
+
+<Card title="API Reference" icon="code" href="/api-reference/introduction">
+  View complete API documentation and available endpoints.
+</Card>
+</CardGroup>
+
