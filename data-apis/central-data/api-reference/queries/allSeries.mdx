@@ -1,0 +1,218 @@
+---
+title: "allSeries"
+description: "Query multiple series with filtering, ordering, and pagination support"
+---
+
+## Overview
+
+Use the `allSeries` query to retrieve multiple series based on specific criteria. This query supports filtering by tournament, team, title, time range, and more, with built-in pagination for handling large result sets.
+
+## Response Type
+
+Returns a [`SeriesConnection!`](/data-apis/central-data/api-reference/connections/SeriesConnection)
+
+The connection includes paginated series data with cursor-based navigation.
+
+## Arguments
+
+<ParamField query="after" type="Cursor">
+Cursor after which to return results. Use this for pagination to retrieve subsequent pages of data.
+</ParamField>
+
+<ParamField query="before" type="Cursor">
+Cursor before which to return results. Use this for backward pagination.
+</ParamField>
+
+<ParamField query="filter" type="SeriesFilter">
+Filter specifications to narrow down series results. See [SeriesFilter](/data-apis/central-data/api-reference/filters/SeriesFilter) for available filtering options including tournament, team, title, and time-based filters.
+</ParamField>
+
+<ParamField query="first" type="Int" default="10">
+Number of results to return starting from the beginning. 
+</ParamField>
+
+<ParamField query="last" type="Int">
+Number of results to return starting from the end. Use this for reverse pagination.
+</ParamField>
+
+<ParamField query="orderBy" type="SeriesOrderBy!" default="ID">
+Field to use for ordering the results. Available options:
+- `ID` - Order by series ID
+- `StartTimeScheduled` - Order by scheduled start time
+- `UpdatedAt` - Order by last update time
+
+</ParamField>
+
+<ParamField query="orderDirection" type="OrderDirection!" default="ASC">
+Direction for ordering results:
+- `ASC` - Ascending order
+- `DESC` - Descending order
+
+</ParamField>
+
+<RequestExample>
+```graphql Basic Query
+query AllSeries {
+  allSeries {
+    edges {
+      cursor
+      node {
+        id
+        startTimeScheduled
+        title {
+          id
+          name
+        }
+        teams {
+          baseInfo {
+            id
+            name
+          }
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+    totalCount
+  }
+}
+```
+</RequestExample>
+
+<ResponseExample>
+```json Response
+{
+  "data": {
+    "allSeries": {
+      "edges": [
+        {
+          "cursor": "YXJyYXljb25uZWN0aW9uOjA=",
+          "node": {
+            "id": "123456",
+            "startTimeScheduled": "2024-03-15T18:00:00Z",
+            "title": {
+              "id": "1",
+              "name": "Valorant"
+            },
+            "teams": [
+              {
+                "baseInfo": {
+                  "id": "789",
+                  "name": "Team Liquid"
+                }
+              },
+              {
+                "baseInfo": {
+                  "id": "790",
+                  "name": "Fnatic"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "pageInfo": {
+        "endCursor": "YXJyYXljb25uZWN0aW9uOjk=",
+        "hasNextPage": true,
+        "hasPreviousPage": false,
+        "startCursor": "YXJyYXljb25uZWN0aW9uOjA="
+      },
+      "totalCount": 150
+    }
+  }
+}
+```
+</ResponseExample>
+
+<RequestExample>
+```graphql Filter by Tournament
+query SeriesByTournament($tournamentId: ID!) {
+  allSeries(
+    filter: {
+      tournament: {
+        id: {
+          in: [$tournamentId]
+        }
+      }
+    }
+    first: 20
+    orderBy: StartTimeScheduled
+    orderDirection: ASC
+  ) {
+    edges {
+      node {
+        id
+        startTimeScheduled
+        tournament {
+          id
+          name
+        }
+        teams {
+          baseInfo {
+            id
+            name
+          }
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    totalCount
+  }
+}
+```
+</RequestExample>
+
+<ResponseExample>
+```json Variables
+{
+  "tournamentId": "45678"
+}
+```
+
+```json Response
+{
+  "data": {
+    "allSeries": {
+      "edges": [
+        {
+          "node": {
+            "id": "123456",
+            "startTimeScheduled": "2024-03-15T18:00:00Z",
+            "tournament": {
+              "id": "45678",
+              "name": "VCT Champions"
+            },
+            "teams": [
+              {
+                "baseInfo": {
+                  "id": "789",
+                  "name": "Team Liquid"
+                }
+              },
+              {
+                "baseInfo": {
+                  "id": "790",
+                  "name": "Fnatic"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "YXJyYXljb25uZWN0aW9uOjE5"
+      },
+      "totalCount": 18
+    }
+  }
+}
+```
+</ResponseExample>
