@@ -58,7 +58,7 @@
             "groups": [
               {
                 "group": "Central Data API",
-                "pages": ["development",
+                "pages": ["/data-apis/central-data/api-reference/introduction",
                   {
                     "group": "Operations",
                     "expanded": false,

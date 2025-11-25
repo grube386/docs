@@ -1,0 +1,118 @@
+---
+title: "Central Data API Reference"
+description: "Complete GraphQL API reference for querying and managing GRID's static esports data"
+---
+
+<Badge color="green">Commercial Access</Badge> <Badge color="blue">Competitor Access</Badge> <Badge color="gray">Open Access</Badge>
+
+Welcome to the Central Data API reference documentation. This GraphQL API provides comprehensive access to GRID's static esports data, including teams, players, tournaments, series, and content catalogs.
+
+## Quick Start
+
+The Central Data API is a GraphQL endpoint that allows you to query and mutate static esports data.
+
+### Endpoint URLs
+
+Choose the endpoint based on your access level:
+
+**Open Access:**
+```
+https://api-op.grid.gg/central-data/graphql
+```
+
+**Commercial & Competitor Access:**
+```
+https://api.grid.gg/central-data/graphql
+```
+
+### Authentication
+
+Include your API key in the request header:
+
+```bash
+x-api-key: YOUR_API_KEY
+```
+
+### Example Query
+
+```graphql
+query GetTournament {
+  tournament(id: "tournament-id") {
+    id
+    title {
+      name
+      abbreviation
+    }
+    startDate
+    endDate
+  }
+}
+```
+
+## API Structure
+
+The Central Data API is organized into several categories:
+
+### Operations
+
+<CardGroup cols={2}>
+  <Card title="Queries" icon="magnifying-glass" href="/data-apis/central-data/api-reference/queries/allSeries">
+    Retrieve data about teams, players, tournaments, series, and content catalogs
+  </Card>
+  <Card title="Mutations" icon="pen-to-square" href="/data-apis/central-data/api-reference/mutations/createPlayer">
+    Create, update, and delete entities in the Central Data system
+  </Card>
+</CardGroup>
+
+### Type System
+
+<CardGroup cols={2}>
+  <Card title="Filter Types" icon="filter" href="/data-apis/central-data/api-reference/filters/BooleanFilter">
+    Filter types for narrowing down query results
+  </Card>
+  <Card title="Connection Types" icon="link" icon href="/data-apis/central-data/api-reference/connections/PageInfo">
+    Pagination and connection types for relay-style queries
+  </Card>
+  <Card title="Input Types" icon="keyboard" href="/data-apis/central-data/api-reference/inputs/BoundsInput">
+    Input types for mutations and complex query parameters
+  </Card>
+  <Card title="Common Types" icon="shapes" href="/data-apis/central-data/api-reference/types/Player">
+    Core data types returned by the API
+  </Card>
+</CardGroup>
+
+## Key Concepts
+
+### GraphQL Schema
+
+The Central Data API follows GraphQL best practices and conventions:
+
+- **Cursor-based pagination** for list queries using the Relay connection pattern
+- **Strongly typed schema** ensuring data consistency and validation
+- **Flexible filtering** allowing complex queries with multiple filter conditions
+- **Nested queries** enabling efficient data retrieval in a single request
+
+### Entity Relationships
+
+The API models relationships between esports entities:
+
+- **Tournaments** contain multiple **Series**
+- **Series** involve **Teams** and **Players**
+- **Teams** have multiple **Players** across different **Titles**
+- **Content Catalogs** define game-specific entities like characters, maps, and items
+
+## Getting Help
+
+<CardGroup cols={2}>
+  <Card title="Tutorials" icon="book-open" href="/data-apis/central-data/tutorials/all-series-for-tournament">
+    Step-by-step guides for common use cases
+  </Card>
+  <Card title="Support" icon="life-ring" href="mailto:support@grid.gg">
+    Contact our support team for assistance
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+Explore the API reference sections to learn about specific queries, mutations, and types available in the Central Data API.
+
