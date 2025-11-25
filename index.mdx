@@ -1,97 +1,141 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "GRID Documentation"
+description: "Access competitive gaming data through GRID's comprehensive APIs and widgets"
 ---
 
-## Setting up
+## Welcome to GRID
 
-Get your documentation site up and running in minutes.
+GRID provides competitive gaming data through APIs and widgets. Access static data like teams, tournaments, and players, plus live in-game data updated as matches play out.
 
 <Card
-  title="Start here"
+  title="Get Started"
   icon="rocket"
-  href="/quickstart"
+  href="/data-apis/getting-started"
   horizontal
 >
-  Follow our three step quickstart guide.
+  Learn how to access GRID's APIs and start building with competitive gaming data.
 </Card>
 
-## Make it yours
+## Products
 
-Design a docs site that looks great and empowers your users.
+Choose the right product for your use case.
 
 <Columns cols={2}>
   <Card
-    title="Edit locally"
-    icon="pen-to-square"
+    title="Data APIs"
+    icon="database"
+    href="/data-apis/getting-started"
+  >
+    Access static and live competitive gaming data through GraphQL APIs.
+  </Card>
+  <Card
+    title="Widgets"
+    icon="desktop"
+    href="/widgets/overview"
+  >
+    Prebuilt widgets to easily display GRID data on your platform.
+  </Card>
+</Columns>
+
+## Central Data API
+
+Access static data including teams, players, tournaments, and game content.
+
+<Columns cols={2}>
+  <Card
+    title="Overview"
+    icon="book-open"
+    href="/data-apis/central-data/overview"
+  >
+    Learn about static data and how to access the Central Data API.
+  </Card>
+  <Card
+    title="Entities"
+    icon="diagram-project"
+    href="/data-apis/central-data/entities"
+  >
+    Explore the data model and relationships between entities.
+  </Card>
+  <Card
+    title="Tutorials"
+    icon="graduation-cap"
+    href="/data-apis/central-data/tutorials/all-series-for-tournament"
+  >
+    Follow step-by-step guides for common use cases.
+  </Card>
+  <Card
+    title="API Reference"
+    icon="code"
     href="/development"
   >
-    Edit your docs locally and preview them in real time.
-  </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
-  </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
+    Complete reference for all queries, mutations, and types.
   </Card>
 </Columns>
 
-## Create beautiful pages
+## Popular Tutorials
 
-Everything you need to create world-class documentation.
+Get started quickly with these common use cases.
 
 <Columns cols={2}>
   <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
+    title="Get All Series for a Tournament"
+    icon="trophy"
+    href="/data-apis/central-data/tutorials/all-series-for-tournament"
   >
-    Use MDX to style your docs pages.
+    Query all series within a tournament including teams and scores.
   </Card>
   <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
+    title="Get First 10 Series of the Day"
+    icon="calendar-days"
+    href="/data-apis/central-data/tutorials/first-10-series-day"
   >
-    Add sample code to demonstrate how to use your product.
+    Retrieve upcoming series for a specific day.
   </Card>
   <Card
-    title="Images"
+    title="Get Team and Player Photos"
     icon="image"
-    href="/essentials/images"
+    href="/data-apis/central-data/tutorials/get-team-player-photos"
   >
-    Display images and other media.
+    Access logos, photos, and branding assets.
   </Card>
   <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
+    title="Development Tools"
+    icon="wrench"
+    href="/data-apis/development-tools"
   >
-    Write once and reuse across your docs.
+    Tools and tips for working with GRID APIs.
   </Card>
 </Columns>
 
-## Need inspiration?
+## Resources
 
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+<Columns cols={2}>
+  <Card
+    title="Blog"
+    icon="newspaper"
+    href="https://blog.grid.gg/"
+  >
+    Latest updates and insights from the GRID team.
+  </Card>
+  <Card
+    title="Knowledge Base"
+    icon="book-open-cover"
+    href="https://grid.helpjuice.com/"
+  >
+    Additional resources and FAQs.
+  </Card>
+  <Card
+    title="GRID Portal"
+    icon="globe"
+    href="https://portal.grid.gg/"
+  >
+    Manage your API keys and access.
+  </Card>
+  <Card
+    title="Support"
+    icon="envelope"
+    href="mailto:support@grid.gg"
+  >
+    Contact our support team for help.
+  </Card>
+</Columns>
