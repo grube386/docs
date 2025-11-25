@@ -34,18 +34,45 @@
                 "group": "Central Data API",
                 "pages": [
                   "/data-apis/central-data/overview",
-                  "/data-apis/central-data/entities"
+                  "/data-apis/central-data/entities",
+                  {
+                    "group": "Tutorials",
+                    "pages": [
+                      "/data-apis/central-data/tutorials/all-series-for-tournament",
+                      "/data-apis/central-data/tutorials/first-10-series-day"
+                    ]
+                  },
+                  {
+                    "group": "How-to Guides",
+                    "pages": [
+                      "/data-apis/central-data/api-reference"
+                    ]
+                  }
                 ]
               }
             ]
           },
           {
-            "tab": "Guides",
+            "tab": "API Reference",
             "groups": [
               {
                 "group": "Central Data API",
                 "pages": [
-                  "/data-apis/central-data/quick-start"
+                  "development",
+                  {
+                    "group": "Queries",
+                    "expanded": false,
+                    "pages": [
+                      "/data-apis/central-data/quick-start"
+                    ]
+                  },
+                  {
+                    "group": "Mutations",
+                    "expanded": false,
+                    "pages": [
+                      "/data-apis/central-data/api-reference"
+                    ]
+                  }
                 ]
               }
             ]
