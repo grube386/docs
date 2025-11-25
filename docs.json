@@ -1,68 +1,377 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Docs",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#1FDAFF",
+    "light": "#1FDAFF",
+    "dark": "#1FDAFF"},
+  "background": {
+    "color": {
+      "light": "#FFFFFF",
+      "dark": "#131415"
+    }
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "tabs": [
+    "products": [
       {
-        "tab": "Guides",
-        "groups": [
+        "product": "Data APIs",
+        "description": "Live and static data APIs",
+        "icon": "database",
+        "tabs": [
           {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Overview",
+                "pages": [
+                  "/data-apis/getting-started",
+                  "/data-apis/development-tools"
+                ]
+              },
+              {
+                "group": "Central Data API",
+                "pages": [
+                  "/data-apis/central-data/overview",
+                  "/data-apis/central-data/entities",
+                  {
+                    "group": "Tutorials",
+                    "pages": [
+                      "/data-apis/central-data/tutorials/all-series-for-tournament",
+                      "/data-apis/central-data/tutorials/first-10-series-day",
+                      "/data-apis/central-data/tutorials/get-team-player-photos"
+                    ]
+                  },
+                  {
+                    "group": "How-to Guides",
+                    "pages": [
+                      "/data-apis/central-data/api-reference"
+                    ]
+                  }
+                ]
+              }
             ]
           },
           {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+            "tab": "API Reference",
+            "groups": [
+              {
+                "group": "Central Data API",
+                "pages": ["development",
+                  {
+                    "group": "Operations",
+                    "expanded": false,
+                    "pages": [
+                      {
+                        "group": "Queries",
+                        "expanded": false,
+                        "pages": [
+                          "/data-apis/central-data/api-reference/queries/allSeries",
+                          "/data-apis/central-data/api-reference/queries/contentCatalogEntities",
+                          "/data-apis/central-data/api-reference/queries/contentCatalogEntity",
+                          "/data-apis/central-data/api-reference/queries/contentCatalogEntityIdByExternalId",
+                          "/data-apis/central-data/api-reference/queries/contentCatalogVersion",
+                          "/data-apis/central-data/api-reference/queries/contentCatalogVersionIdByExternalId",
+                          "/data-apis/central-data/api-reference/queries/contentCatalogVersions",
+                          "/data-apis/central-data/api-reference/queries/dataProviders",
+                          "/data-apis/central-data/api-reference/queries/gameIdByExternalId",
+                          "/data-apis/central-data/api-reference/queries/ingestionRequest",
+                          "/data-apis/central-data/api-reference/queries/ingestionRequests",
+                          "/data-apis/central-data/api-reference/queries/organization",
+                          "/data-apis/central-data/api-reference/queries/organizations",
+                          "/data-apis/central-data/api-reference/queries/player",
+                          "/data-apis/central-data/api-reference/queries/playerIdByExternalId",
+                          "/data-apis/central-data/api-reference/queries/playerRole",
+                          "/data-apis/central-data/api-reference/queries/playerRoles",
+                          "/data-apis/central-data/api-reference/queries/players",
+                          "/data-apis/central-data/api-reference/queries/series",
+                          "/data-apis/central-data/api-reference/queries/seriesByExternalSeries",
+                          "/data-apis/central-data/api-reference/queries/seriesFormats",
+                          "/data-apis/central-data/api-reference/queries/seriesIdByExternalId",
+                          "/data-apis/central-data/api-reference/queries/team",
+                          "/data-apis/central-data/api-reference/queries/teamIdByExternalId",
+                          "/data-apis/central-data/api-reference/queries/teams",
+                          "/data-apis/central-data/api-reference/queries/title",
+                          "/data-apis/central-data/api-reference/queries/titles",
+                          "/data-apis/central-data/api-reference/queries/tournament",
+                          "/data-apis/central-data/api-reference/queries/tournamentIdByExternalId",
+                          "/data-apis/central-data/api-reference/queries/tournaments"
+                        ]
+                      },
+                      {
+                        "group": "Mutations",
+                        "expanded": false,
+                        "pages": [
+                          "/data-apis/central-data/api-reference/mutations/createContentCatalogCharacter",
+                          "/data-apis/central-data/api-reference/mutations/createContentCatalogItem",
+                          "/data-apis/central-data/api-reference/mutations/createContentCatalogMap",
+                          "/data-apis/central-data/api-reference/mutations/createContentCatalogVersion",
+                          "/data-apis/central-data/api-reference/mutations/createIngestionRequest",
+                          "/data-apis/central-data/api-reference/mutations/createPlayer",
+                          "/data-apis/central-data/api-reference/mutations/createPlayerRole",
+                          "/data-apis/central-data/api-reference/mutations/createSeries",
+                          "/data-apis/central-data/api-reference/mutations/createTeam",
+                          "/data-apis/central-data/api-reference/mutations/createTournament",
+                          "/data-apis/central-data/api-reference/mutations/deleteContentCatalogEntity",
+                          "/data-apis/central-data/api-reference/mutations/deleteContentCatalogVersion",
+                          "/data-apis/central-data/api-reference/mutations/deletePlayer",
+                          "/data-apis/central-data/api-reference/mutations/deletePlayerRole",
+                          "/data-apis/central-data/api-reference/mutations/deleteSeries",
+                          "/data-apis/central-data/api-reference/mutations/deleteTeam",
+                          "/data-apis/central-data/api-reference/mutations/deleteTournament",
+                          "/data-apis/central-data/api-reference/mutations/updateContentCatalogCharacter",
+                          "/data-apis/central-data/api-reference/mutations/updateContentCatalogItem",
+                          "/data-apis/central-data/api-reference/mutations/updateContentCatalogMap",
+                          "/data-apis/central-data/api-reference/mutations/updateContentCatalogVersion",
+                          "/data-apis/central-data/api-reference/mutations/updatePlayer",
+                          "/data-apis/central-data/api-reference/mutations/updatePlayerRole",
+                          "/data-apis/central-data/api-reference/mutations/updateSeries",
+                          "/data-apis/central-data/api-reference/mutations/updateTeam",
+                          "/data-apis/central-data/api-reference/mutations/updateTournament"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Filter Types",
+                    "expanded": false,
+                    "pages": [
+                      "/data-apis/central-data/api-reference/filters/BooleanFilter",
+                      "/data-apis/central-data/api-reference/filters/ContentCatalogEntityFilter",
+                      "/data-apis/central-data/api-reference/filters/ContentCatalogEntityTitleFilter",
+                      "/data-apis/central-data/api-reference/filters/ContentCatalogEntityTypeFilter",
+                      "/data-apis/central-data/api-reference/filters/ContentCatalogVersionFilter",
+                      "/data-apis/central-data/api-reference/filters/ContentCatalogVersionTitleFilter",
+                      "/data-apis/central-data/api-reference/filters/DateTimeFilter",
+                      "/data-apis/central-data/api-reference/filters/GameFilter",
+                      "/data-apis/central-data/api-reference/filters/IdFilter",
+                      "/data-apis/central-data/api-reference/filters/IngestionRequestFilter",
+                      "/data-apis/central-data/api-reference/filters/IngestionRequestStatusFilter",
+                      "/data-apis/central-data/api-reference/filters/IntFilter",
+                      "/data-apis/central-data/api-reference/filters/MapFilter",
+                      "/data-apis/central-data/api-reference/filters/NationalityFilter",
+                      "/data-apis/central-data/api-reference/filters/NullableDateFilter",
+                      "/data-apis/central-data/api-reference/filters/NullableIdFilter",
+                      "/data-apis/central-data/api-reference/filters/OrganizationFilter",
+                      "/data-apis/central-data/api-reference/filters/PlayerFilter",
+                      "/data-apis/central-data/api-reference/filters/PlayerPlayerRoleFilter",
+                      "/data-apis/central-data/api-reference/filters/PlayerRoleFilter",
+                      "/data-apis/central-data/api-reference/filters/PlayerRoleTitleFilter",
+                      "/data-apis/central-data/api-reference/filters/ProductServiceLevelFilter",
+                      "/data-apis/central-data/api-reference/filters/SeriesFilter",
+                      "/data-apis/central-data/api-reference/filters/SeriesLiveFilter",
+                      "/data-apis/central-data/api-reference/filters/SeriesPlayerFilter",
+                      "/data-apis/central-data/api-reference/filters/SeriesTournamentFilter",
+                      "/data-apis/central-data/api-reference/filters/SeriesTournamentTitleFilter",
+                      "/data-apis/central-data/api-reference/filters/StringFilter",
+                      "/data-apis/central-data/api-reference/filters/TeamFilter",
+                      "/data-apis/central-data/api-reference/filters/TitleFilter",
+                      "/data-apis/central-data/api-reference/filters/TournamentFilter",
+                      "/data-apis/central-data/api-reference/filters/TournamentTitleFilter"
+                    ]
+                  },
+                  {
+                    "group": "Connection Types",
+                    "expanded": false,
+                    "pages": [
+                      "/data-apis/central-data/api-reference/connections/ContentCatalogEntityConnection",
+                      "/data-apis/central-data/api-reference/connections/ContentCatalogEntityEdge",
+                      "/data-apis/central-data/api-reference/connections/ContentCatalogVersionConnection",
+                      "/data-apis/central-data/api-reference/connections/ContentCatalogVersionEdge",
+                      "/data-apis/central-data/api-reference/connections/IngestionRequestConnection",
+                      "/data-apis/central-data/api-reference/connections/IngestionRequestEdge",
+                      "/data-apis/central-data/api-reference/connections/OrganizationConnection",
+                      "/data-apis/central-data/api-reference/connections/OrganizationEdge",
+                      "/data-apis/central-data/api-reference/connections/PageInfo",
+                      "/data-apis/central-data/api-reference/connections/PlayerConnection",
+                      "/data-apis/central-data/api-reference/connections/PlayerEdge",
+                      "/data-apis/central-data/api-reference/connections/SeriesConnection",
+                      "/data-apis/central-data/api-reference/connections/SeriesEdge",
+                      "/data-apis/central-data/api-reference/connections/TeamConnection",
+                      "/data-apis/central-data/api-reference/connections/TeamEdge",
+                      "/data-apis/central-data/api-reference/connections/TournamentConnection",
+                      "/data-apis/central-data/api-reference/connections/TournamentEdge"
+                    ]
+                  },
+                  {
+                    "group": "Input Types",
+                    "expanded": false,
+                    "pages": [
+                      "/data-apis/central-data/api-reference/inputs/BoundsInput",
+                      "/data-apis/central-data/api-reference/inputs/CoordinatesInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateContentCatalogCharacterInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateContentCatalogItemInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateContentCatalogMapInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateContentCatalogVersionInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateIngestionRequestInput",
+                      "/data-apis/central-data/api-reference/inputs/CreatePlayerInput",
+                      "/data-apis/central-data/api-reference/inputs/CreatePlayerPlayerRoleInput",
+                      "/data-apis/central-data/api-reference/inputs/CreatePlayerRoleInput",
+                      "/data-apis/central-data/api-reference/inputs/CreatePlayerRoleTitleInput",
+                      "/data-apis/central-data/api-reference/inputs/CreatePlayerTeamInput",
+                      "/data-apis/central-data/api-reference/inputs/CreatePlayerTitleInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateSeriesFormatInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateSeriesInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateSeriesParticipatingPlayersInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateSeriesTeamInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateSeriesTitleInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateSeriesTournamentInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateTeamInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateTeamTitleInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateTournamentInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateTournamentParentInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateTournamentTeamInput",
+                      "/data-apis/central-data/api-reference/inputs/CreateTournamentTitleInput",
+                      "/data-apis/central-data/api-reference/inputs/DateInput",
+                      "/data-apis/central-data/api-reference/inputs/DeletePlayerInput",
+                      "/data-apis/central-data/api-reference/inputs/DeletePlayerRoleInput",
+                      "/data-apis/central-data/api-reference/inputs/DeleteSeriesInput",
+                      "/data-apis/central-data/api-reference/inputs/DeleteTeamInput",
+                      "/data-apis/central-data/api-reference/inputs/DeleteTournamentInput",
+                      "/data-apis/central-data/api-reference/inputs/ExternalEntityInput",
+                      "/data-apis/central-data/api-reference/inputs/ExternalLinkInput",
+                      "/data-apis/central-data/api-reference/inputs/MoneyInput",
+                      "/data-apis/central-data/api-reference/inputs/NationalityDescriptorInput",
+                      "/data-apis/central-data/api-reference/inputs/NationalityInput",
+                      "/data-apis/central-data/api-reference/inputs/PlayerDescriptorInput",
+                      "/data-apis/central-data/api-reference/inputs/PlayerRoleDescriptorInput",
+                      "/data-apis/central-data/api-reference/inputs/SeriesDescriptorInput",
+                      "/data-apis/central-data/api-reference/inputs/SeriesFormatDescriptorInput",
+                      "/data-apis/central-data/api-reference/inputs/TeamDescriptorInput",
+                      "/data-apis/central-data/api-reference/inputs/TitleDescriptorInput",
+                      "/data-apis/central-data/api-reference/inputs/TournamentDescriptorInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateContentCatalogCharacterInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateContentCatalogItemInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateContentCatalogMapInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateContentCatalogVersionInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdatePlayerInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdatePlayerPlayerRoleInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdatePlayerRoleInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdatePlayerTeamInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdatePlayerTitleInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateSeriesFormatInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateSeriesInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateSeriesParticipatingPlayersInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateSeriesTeamInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateSeriesTitleInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateSeriesTournamentInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateTeamInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateTeamTitleInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateTournamentInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateTournamentParentInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateTournamentTeamInput",
+                      "/data-apis/central-data/api-reference/inputs/UpdateTournamentTitleInput"
+                    ]
+                  },
+                  {
+                    "group": "Common Types",
+                    "expanded": false,
+                    "pages": [
+                      "/data-apis/central-data/api-reference/types/Bounds",
+                      "/data-apis/central-data/api-reference/types/ContentCatalogCharacter",
+                      "/data-apis/central-data/api-reference/types/ContentCatalogEntity",
+                      "/data-apis/central-data/api-reference/types/ContentCatalogEntityType",
+                      "/data-apis/central-data/api-reference/types/ContentCatalogItem",
+                      "/data-apis/central-data/api-reference/types/ContentCatalogMap",
+                      "/data-apis/central-data/api-reference/types/ContentCatalogVersion",
+                      "/data-apis/central-data/api-reference/types/ContentCatalogVersionOrder",
+                      "/data-apis/central-data/api-reference/types/ContentCatalogVersionOrderField",
+                      "/data-apis/central-data/api-reference/types/Coordinates",
+                      "/data-apis/central-data/api-reference/types/CreateContentCatalogCharacterPayload",
+                      "/data-apis/central-data/api-reference/types/CreateContentCatalogItemPayload",
+                      "/data-apis/central-data/api-reference/types/CreateContentCatalogMapPayload",
+                      "/data-apis/central-data/api-reference/types/CreateContentCatalogVersionPayload",
+                      "/data-apis/central-data/api-reference/types/CreateIngestionRequestPayload",
+                      "/data-apis/central-data/api-reference/types/CreatePlayerPayload",
+                      "/data-apis/central-data/api-reference/types/CreatePlayerRolePayload",
+                      "/data-apis/central-data/api-reference/types/CreateSeriesPayload",
+                      "/data-apis/central-data/api-reference/types/CreateTeamPayload",
+                      "/data-apis/central-data/api-reference/types/CreateTournamentPayload",
+                      "/data-apis/central-data/api-reference/types/Cursor",
+                      "/data-apis/central-data/api-reference/types/DataProvider",
+                      "/data-apis/central-data/api-reference/types/Date",
+                      "/data-apis/central-data/api-reference/types/Decimal",
+                      "/data-apis/central-data/api-reference/types/DeleteContentCatalogEntityPayload",
+                      "/data-apis/central-data/api-reference/types/DeleteContentCatalogVersionPayload",
+                      "/data-apis/central-data/api-reference/types/DeletePlayerPayload",
+                      "/data-apis/central-data/api-reference/types/DeletePlayerRolePayload",
+                      "/data-apis/central-data/api-reference/types/DeleteSeriesPayload",
+                      "/data-apis/central-data/api-reference/types/DeleteTeamPayload",
+                      "/data-apis/central-data/api-reference/types/DeleteTournamentPayload",
+                      "/data-apis/central-data/api-reference/types/ExternalEntity",
+                      "/data-apis/central-data/api-reference/types/ExternalEntityDescriptor",
+                      "/data-apis/central-data/api-reference/types/ExternalLink",
+                      "/data-apis/central-data/api-reference/types/ExternalLinkDescriptor",
+                      "/data-apis/central-data/api-reference/types/HexColor",
+                      "/data-apis/central-data/api-reference/types/IngestionRequest",
+                      "/data-apis/central-data/api-reference/types/IngestionRequestOrderBy",
+                      "/data-apis/central-data/api-reference/types/IngestionRequestStatus",
+                      "/data-apis/central-data/api-reference/types/IngestionRequestStatusInformation",
+                      "/data-apis/central-data/api-reference/types/MachineDataSource",
+                      "/data-apis/central-data/api-reference/types/Money",
+                      "/data-apis/central-data/api-reference/types/Nationality",
+                      "/data-apis/central-data/api-reference/types/NationalityDescriptor",
+                      "/data-apis/central-data/api-reference/types/OrderDirection",
+                      "/data-apis/central-data/api-reference/types/Organization",
+                      "/data-apis/central-data/api-reference/types/OrganizationInterface",
+                      "/data-apis/central-data/api-reference/types/OrganizationRelation",
+                      "/data-apis/central-data/api-reference/types/Player",
+                      "/data-apis/central-data/api-reference/types/PlayerDescriptor",
+                      "/data-apis/central-data/api-reference/types/PlayerRole",
+                      "/data-apis/central-data/api-reference/types/PlayerRoleDescriptor",
+                      "/data-apis/central-data/api-reference/types/PlayerType",
+                      "/data-apis/central-data/api-reference/types/ProductServiceLevel",
+                      "/data-apis/central-data/api-reference/types/Reason",
+                      "/data-apis/central-data/api-reference/types/Series",
+                      "/data-apis/central-data/api-reference/types/SeriesDescriptor",
+                      "/data-apis/central-data/api-reference/types/SeriesFormat",
+                      "/data-apis/central-data/api-reference/types/SeriesFormatDescriptor",
+                      "/data-apis/central-data/api-reference/types/SeriesOrderBy",
+                      "/data-apis/central-data/api-reference/types/SeriesType",
+                      "/data-apis/central-data/api-reference/types/ServiceLevel",
+                      "/data-apis/central-data/api-reference/types/Team",
+                      "/data-apis/central-data/api-reference/types/TeamDescriptor",
+                      "/data-apis/central-data/api-reference/types/TeamInterface",
+                      "/data-apis/central-data/api-reference/types/TeamParticipant",
+                      "/data-apis/central-data/api-reference/types/TeamRelation",
+                      "/data-apis/central-data/api-reference/types/Title",
+                      "/data-apis/central-data/api-reference/types/Tournament",
+                      "/data-apis/central-data/api-reference/types/TournamentDescriptor",
+                      "/data-apis/central-data/api-reference/types/TournamentVenueType",
+                      "/data-apis/central-data/api-reference/types/UpdateContentCatalogCharacterPayload",
+                      "/data-apis/central-data/api-reference/types/UpdateContentCatalogItemPayload",
+                      "/data-apis/central-data/api-reference/types/UpdateContentCatalogMapPayload",
+                      "/data-apis/central-data/api-reference/types/UpdateContentCatalogVersionPayload",
+                      "/data-apis/central-data/api-reference/types/UpdatePlayerPayload",
+                      "/data-apis/central-data/api-reference/types/UpdatePlayerRolePayload",
+                      "/data-apis/central-data/api-reference/types/UpdateSeriesPayload",
+                      "/data-apis/central-data/api-reference/types/UpdateTeamPayload",
+                      "/data-apis/central-data/api-reference/types/UpdateTournamentPayload",
+                      "/data-apis/central-data/api-reference/types/Url",
+                      "/data-apis/central-data/api-reference/types/VideoStream"
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
-        "groups": [
+        "product": "Widgets",
+        "description": "Prebuilt widgets for GRID data",
+        "icon": "desktop",
+        "tabs": [
           {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+            "tab": "Overview",
+            "groups": [
+              {
+                "group": "Overview",
+                "pages": [
+                  "/widgets/overview"
+                ]
+              }
             ]
           }
         ]
@@ -71,14 +380,13 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "href": "https://blog.grid.gg/",
           "icon": "newspaper"
+        },
+        {"anchor": "Knowledge Base",
+          "href": "https://grid.helpjuice.com/",
+          "icon": "book-open-cover"
         }
       ]
     }
@@ -91,13 +399,13 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@grid.gg"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "GRID Portal",
+      "href": "https://portal.grid.gg/"
     }
   },
   "contextual": {

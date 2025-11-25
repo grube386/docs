@@ -1,0 +1,799 @@
+---
+title: "Get All Series for a Tournament"
+description: "Learn how to retrieve all series for a specific tournament using GraphQL with NodeJS, Python, and Kotlin"
+---
+
+## Overview
+
+This tutorial demonstrates how to query all series associated with a tournament using the GRID Central Data GraphQL API. You'll learn how to search for tournaments by name and retrieve their series data with pagination support.
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- A GRID API key (get one from the [GRID Portal](https://portal.grid.gg/))
+- Your preferred development environment set up
+
+<View title="NodeJS" icon="node-js">
+
+### NodeJS Requirements
+
+- [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) installed
+- We recommend using a Node version manager following [these instructions](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
+### Install Dependencies
+
+```bash
+npm install graphql graphql-request
+```
+
+## Tutorial Steps
+
+<Steps>
+  <Step title="Set up your API key and endpoint">
+    Create an `index.js` file and configure your API credentials and the GraphQL endpoint.
+
+```javascript index.js
+// API configuration for GRID Central Data
+const API_KEY = "YOUR_API_KEY";
+const ENDPOINT = "https://api.grid.gg/central-data/graphql";
+```
+
+<Warning>
+Never use the API key hardcoded in any code that will be committed anywhere or shared in any other way. This is purely for tutorial purposes.
+</Warning>
+  </Step>
+
+  <Step title="Define the query for tournaments">
+    Create a GraphQL query to search for tournaments by name. This query uses a `contains` filter to find all tournaments matching the search string.
+    
+    We'll retrieve the `name` and `id` of the tournament. The `id` is essential because we'll use it in the next step to find all series belonging to this tournament.
+
+```javascript index.js
+// GraphQL query to search for tournaments by name
+const tournamentsQuery = `
+  query GetTournaments($tournamentName: String!) {
+    tournaments(
+      filter: {
+        name: {
+          contains: $tournamentName
+        }
+      }
+    ) {
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
+      }
+      totalCount
+      edges {
+        cursor
+        node {
+          name
+          id
+        }
+      }
+    }
+  }
+`;
+```
+
+<Tip>
+You can also use `equals` instead of `contains` to get an exact match for the tournament name.
+</Tip>
+  </Step>
+
+  <Step title="Define the query for series">
+    Create a GraphQL query to retrieve all series for a specific tournament.
+    
+    After finding the tournament from the previous step, we use its ID to find all series that belong to that tournament. Since a tournament can have many series, we need to use pagination to retrieve them all.
+    
+    For each series, we'll retrieve:
+    - **id**: The unique identifier for the series
+    - **startTimeScheduled**: The scheduled start time for the series
+    - **teams**: The teams participating in the series, including their `id` and `name`
+    
+    By default, the API returns 10 results per query. This value can be increased up to 50 results per query by adding `first: NUMBER` to the `allSeries` query input, where NUMBER can be any value from 1 to 50.
+
+```javascript index.js
+// GraphQL query to retrieve all series for a tournament
+const seriesQuery = `
+  query GetAllSeries($tournamentIds: ID!, $after: String!) {
+    allSeries(
+      filter: {
+        tournamentIds: [$tournamentIds]
+      }
+      after: $after
+    ) {
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
+      }
+      totalCount
+      edges {
+        cursor
+        node {
+          id
+          startTimeScheduled
+          teams {
+            baseInfo {
+              id
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+```
+
+<Info>
+The `allSeries` query returns paginated results. The `pageInfo` object contains information about whether more pages exist, allowing us to fetch all series by following the pagination cursors.
+</Info>
+  </Step>
+
+  <Step title="Create helper functions for API calls">
+    Implement functions to execute GraphQL queries and handle pagination automatically.
+    
+    ### Understanding the After Cursor
+    
+    The `after` cursor is a pagination mechanism in GraphQL that works like a bookmark. Each query response includes an `endCursor` value in the `pageInfo` object, which points to the last item in the current page. When we pass this `endCursor` as the `after` parameter in the next query, the API knows where to continue from and returns the next page of results.
+    
+    **How it's implemented:**
+    1. Start with an empty `after` cursor (`""`) to get the first page
+    2. The API returns results plus an `endCursor` in `pageInfo`
+    3. If `hasNextPage` is true, we set `after = endCursor` and query again
+    4. Repeat until `hasNextPage` is false
+    5. The recursive function collects all pages into a single array
+
+```javascript index.js
+// Function to execute a single GraphQL query
+async function callGraphQLQuery(graphQLClient, query, variables) {
+  try {
+    // Send the GraphQL request with the provided query and variables
+    const data = await graphQLClient.request(query, variables);
+    return data;
+  } catch (error) {
+    // Return the error if the request fails
+    console.error("GraphQL query error:", error);
+    return error;
+  }
+}
+
+// Recursive function to fetch all pages of series data
+async function callGraphQLQueryRecursively(
+  graphQLClient,
+  query,
+  variables,
+  allNodes = []
+) {
+  // Call the callGraphQLQuery() function to make the initial request
+  const data = await callGraphQLQuery(graphQLClient, query, variables);
+
+  // Extract nodes from the current page
+  const currentNodes = data.allSeries.edges.map((edge) => edge.node);
+  
+  // Merge the nodes from the current page with previously collected nodes
+  allNodes = [...allNodes, ...currentNodes];
+
+  // Check if there are more pages of results
+  if (data.allSeries.pageInfo.hasNextPage) {
+    // Update the after variable with the endCursor from the current page
+    // This tells the API where to start the next page of results
+    variables.after = data.allSeries.pageInfo.endCursor;
+
+    // Call the function recursively with the updated cursor
+    // This fetches the next page and merges it with existing results
+    return callGraphQLQueryRecursively(
+      graphQLClient,
+      query,
+      variables,
+      allNodes
+    );
+  } else {
+    // Return the final array of nodes if there are no more pages of results
+    return allNodes;
+  }
+}
+```
+  </Step>
+
+  <Step title="Execute the queries and display results">
+    Bring everything together in a main function that searches for a tournament and retrieves all its series.
+
+```javascript index.js
+const { GraphQLClient } = require("graphql-request");
+
+async function main() {
+  // Create a new GraphQL client with API key authentication
+  const graphQLClient = new GraphQLClient(ENDPOINT, {
+    headers: {
+      "x-api-key": API_KEY,
+    },
+  });
+
+  // Define variables for the tournament search
+  const tournamentVariables = {
+    tournamentName: "Game Changers Championship"
+  };
+  
+  // Execute the tournament query to find the tournament
+  const tournamentData = (
+    await callGraphQLQuery(graphQLClient, tournamentsQuery, tournamentVariables)
+  ).tournaments.edges[0].node;
+
+  console.log(`Found tournament: ${tournamentData.name} (ID: ${tournamentData.id})`);
+
+  // Define variables for the series query
+  const variables = {
+    after: "", // Start from the beginning
+    tournamentIds: tournamentData.id,
+  };
+
+  // Call the recursive function to fetch all series
+  const result = await callGraphQLQueryRecursively(
+    graphQLClient,
+    seriesQuery,
+    variables
+  );
+
+  console.log(`Retrieved ${result.length} series:`);
+  console.log(JSON.stringify(result, null, 2));
+}
+
+// Execute the main function
+main();
+```
+
+<Check>
+Run your code with `node index.js` to see all series for the tournament!
+</Check>
+  </Step>
+</Steps>
+
+</View>
+
+<View title="Python" icon="python">
+
+### Python Requirements
+
+- Python 3.7 or higher installed
+- pip package manager
+
+### Install Dependencies
+
+```bash
+pip install requests
+```
+
+## Tutorial Steps
+
+<Steps>
+  <Step title="Set up your API key and endpoint">
+    Create a `main.py` file and configure your API credentials and the GraphQL endpoint.
+
+```python main.py
+# API configuration for GRID Central Data
+API_KEY = "YOUR_API_KEY"
+ENDPOINT = "https://api.grid.gg/central-data/graphql"
+```
+
+<Warning>
+Never use the API key hardcoded in any code that will be committed anywhere or shared in any other way. This is purely for tutorial purposes.
+</Warning>
+  </Step>
+
+  <Step title="Define the query for tournaments">
+    Create a GraphQL query to search for tournaments by name. This query uses a `contains` filter to find all tournaments matching the search string.
+    
+    We'll retrieve the `name` and `id` of the tournament. The `id` is essential because we'll use it in the next step to find all series belonging to this tournament.
+
+```python main.py
+# GraphQL query to search for tournaments by name
+tournaments_query = """
+  query GetTournaments($tournamentName: String!) {
+    tournaments(
+      filter: {
+        name: {
+          contains: $tournamentName
+        }
+      }
+    ) {
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
+      }
+      totalCount
+      edges {
+        cursor
+        node {
+          name
+          id
+        }
+      }
+    }
+  }
+"""
+```
+
+<Tip>
+You can also use `equals` instead of `contains` to get an exact match for the tournament name.
+</Tip>
+  </Step>
+
+  <Step title="Define the query for series">
+    Create a GraphQL query to retrieve all series for a specific tournament.
+    
+    After finding the tournament from the previous step, we use its ID to find all series that belong to that tournament. Since a tournament can have many series, we need to use pagination to retrieve them all.
+    
+    For each series, we'll retrieve:
+    - **id**: The unique identifier for the series
+    - **startTimeScheduled**: The scheduled start time for the series
+    - **teams**: The teams participating in the series, including their `id` and `name`
+    
+    By default, the API returns 10 results per query. This value can be increased up to 50 results per query by adding `first: NUMBER` to the `allSeries` query input, where NUMBER can be any value from 1 to 50.
+
+```python main.py
+# GraphQL query to retrieve all series for a tournament
+series_query = """
+  query GetAllSeries($tournamentIds: ID!, $after: String!) {
+    allSeries(
+      filter: {
+        tournamentIds: [$tournamentIds]
+      }
+      after: $after
+    ) {
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
+      }
+      totalCount
+      edges {
+        cursor
+        node {
+          id
+          startTimeScheduled
+          teams {
+            baseInfo {
+              id
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+"""
+```
+
+<Info>
+The `allSeries` query returns paginated results. The `pageInfo` object contains information about whether more pages exist, allowing us to fetch all series by following the pagination cursors.
+</Info>
+  </Step>
+
+  <Step title="Create helper functions for API calls">
+    Implement functions to execute GraphQL queries and handle pagination automatically.
+    
+    ### Understanding the After Cursor
+    
+    The `after` cursor is a pagination mechanism in GraphQL that works like a bookmark. Each query response includes an `endCursor` value in the `pageInfo` object, which points to the last item in the current page. When we pass this `endCursor` as the `after` parameter in the next query, the API knows where to continue from and returns the next page of results.
+    
+    **How it's implemented:**
+    1. Start with an empty `after` cursor (`""`) to get the first page
+    2. The API returns results plus an `endCursor` in `pageInfo`
+    3. If `hasNextPage` is true, we set `after = endCursor` and query again
+    4. Repeat until `hasNextPage` is false
+    5. The recursive function collects all pages into a single array
+
+```python main.py
+import requests
+import json
+
+# Function to execute a single GraphQL query
+def call_graphql_query(query, variables):
+    try:
+        # Prepare the GraphQL request payload
+        payload = {
+            "query": query,
+            "variables": variables
+        }
+        
+        # Set the headers with API key authentication
+        headers = {
+            "Content-Type": "application/json",
+            "x-api-key": API_KEY
+        }
+        
+        # Send the POST request to the GraphQL endpoint
+        response = requests.post(ENDPOINT, json=payload, headers=headers)
+        
+        # Raise an exception if the request was unsuccessful
+        response.raise_for_status()
+        
+        # Parse and return the JSON response data
+        return response.json()["data"]
+    except requests.exceptions.RequestException as error:
+        # Print and return None if the request fails
+        print(f"GraphQL query error: {error}")
+        return None
+
+# Recursive function to fetch all pages of series data
+def call_graphql_query_recursively(query, variables, all_nodes=None):
+    if all_nodes is None:
+        all_nodes = []
+    
+    # Call the call_graphql_query() function to make the initial request
+    data = call_graphql_query(query, variables)
+    
+    if data is None:
+        return all_nodes
+    
+    # Extract nodes from the current page
+    current_nodes = [edge["node"] for edge in data["allSeries"]["edges"]]
+    
+    # Merge the nodes from the current page with previously collected nodes
+    all_nodes.extend(current_nodes)
+    
+    # Check if there are more pages of results
+    if data["allSeries"]["pageInfo"]["hasNextPage"]:
+        # Update the after variable with the endCursor from the current page
+        # This tells the API where to start the next page of results
+        variables["after"] = data["allSeries"]["pageInfo"]["endCursor"]
+        
+        # Call the function recursively with the updated cursor
+        # This fetches the next page and merges it with existing results
+        return call_graphql_query_recursively(query, variables, all_nodes)
+    else:
+        # Return the final array of nodes if there are no more pages of results
+        return all_nodes
+```
+  </Step>
+
+  <Step title="Execute the queries and display results">
+    Bring everything together in a main function that searches for a tournament and retrieves all its series.
+
+```python main.py
+def main():
+    # Define variables for the tournament search
+    tournament_variables = {
+        "tournamentName": "Game Changers Championship"
+    }
+    
+    # Execute the tournament query to find the tournament
+    tournament_result = call_graphql_query(tournaments_query, tournament_variables)
+    
+    if tournament_result is None or not tournament_result["tournaments"]["edges"]:
+        print("Tournament not found")
+        return
+    
+    tournament_data = tournament_result["tournaments"]["edges"][0]["node"]
+    
+    print(f"Found tournament: {tournament_data['name']} (ID: {tournament_data['id']})")
+    
+    # Define variables for the series query
+    variables = {
+        "after": "",  # Start from the beginning
+        "tournamentIds": tournament_data["id"]
+    }
+    
+    # Call the recursive function to fetch all series
+    result = call_graphql_query_recursively(series_query, variables)
+    
+    print(f"Retrieved {len(result)} series:")
+    print(json.dumps(result, indent=2))
+
+# Execute the main function
+if __name__ == "__main__":
+    main()
+```
+
+<Check>
+Run your code with `python main.py` to see all series for the tournament!
+</Check>
+  </Step>
+</Steps>
+
+</View>
+
+<View title="Kotlin" icon="code">
+
+### Kotlin Requirements
+
+- Kotlin 1.5 or higher
+- Gradle or Maven for dependency management
+
+### Add Dependencies
+
+Add to your `build.gradle.kts`:
+
+```kotlin
+dependencies {
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("org.json:json:20231013")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+}
+```
+
+## Tutorial Steps
+
+<Steps>
+  <Step title="Set up your API key and endpoint">
+    Create a `Main.kt` file and configure your API credentials and the GraphQL endpoint.
+
+```kotlin Main.kt
+// API configuration for GRID Central Data
+const val API_KEY = "YOUR_API_KEY"
+const val ENDPOINT = "https://api.grid.gg/central-data/graphql"
+```
+
+<Warning>
+Never use the API key hardcoded in any code that will be committed anywhere or shared in any other way. This is purely for tutorial purposes.
+</Warning>
+  </Step>
+
+  <Step title="Define the query for tournaments">
+    Create a GraphQL query to search for tournaments by name. This query uses a `contains` filter to find all tournaments matching the search string.
+    
+    We'll retrieve the `name` and `id` of the tournament. The `id` is essential because we'll use it in the next step to find all series belonging to this tournament.
+
+```kotlin Main.kt
+// GraphQL query to search for tournaments by name
+val tournamentsQuery = """
+  query GetTournaments(${'$'}tournamentName: String!) {
+    tournaments(
+      filter: {
+        name: {
+          contains: ${'$'}tournamentName
+        }
+      }
+    ) {
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
+      }
+      totalCount
+      edges {
+        cursor
+        node {
+          name
+          id
+        }
+      }
+    }
+  }
+""".trimIndent()
+```
+
+<Tip>
+You can also use `equals` instead of `contains` to get an exact match for the tournament name.
+</Tip>
+  </Step>
+
+  <Step title="Define the query for series">
+    Create a GraphQL query to retrieve all series for a specific tournament.
+    
+    After finding the tournament from the previous step, we use its ID to find all series that belong to that tournament. Since a tournament can have many series, we need to use pagination to retrieve them all.
+    
+    For each series, we'll retrieve:
+    - **id**: The unique identifier for the series
+    - **startTimeScheduled**: The scheduled start time for the series
+    - **teams**: The teams participating in the series, including their `id` and `name`
+    
+    By default, the API returns 10 results per query. This value can be increased up to 50 results per query by adding `first: NUMBER` to the `allSeries` query input, where NUMBER can be any value from 1 to 50.
+
+```kotlin Main.kt
+// GraphQL query to retrieve all series for a tournament
+val seriesQuery = """
+  query GetAllSeries(${'$'}tournamentIds: ID!, ${'$'}after: String!) {
+    allSeries(
+      filter: {
+        tournamentIds: [${'$'}tournamentIds]
+      }
+      after: ${'$'}after
+    ) {
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
+      }
+      totalCount
+      edges {
+        cursor
+        node {
+          id
+          startTimeScheduled
+          teams {
+            baseInfo {
+              id
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+""".trimIndent()
+```
+
+<Info>
+The `allSeries` query returns paginated results. The `pageInfo` object contains information about whether more pages exist, allowing us to fetch all series by following the pagination cursors.
+</Info>
+  </Step>
+
+  <Step title="Create helper functions for API calls">
+    Implement functions to execute GraphQL queries and handle pagination automatically.
+    
+    ### Understanding the After Cursor
+    
+    The `after` cursor is a pagination mechanism in GraphQL that works like a bookmark. Each query response includes an `endCursor` value in the `pageInfo` object, which points to the last item in the current page. When we pass this `endCursor` as the `after` parameter in the next query, the API knows where to continue from and returns the next page of results.
+    
+    **How it's implemented:**
+    1. Start with an empty `after` cursor (`""`) to get the first page
+    2. The API returns results plus an `endCursor` in `pageInfo`
+    3. If `hasNextPage` is true, we set `after = endCursor` and query again
+    4. Repeat until `hasNextPage` is false
+    5. The recursive function collects all pages into a single array
+
+```kotlin Main.kt
+import kotlinx.coroutines.*
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
+import java.io.IOException
+
+// Function to execute a single GraphQL query
+suspend fun callGraphQLQuery(
+    query: String,
+    variables: Map<String, Any>
+): JSONObject? = withContext(Dispatchers.IO) {
+    try {
+        // Create the GraphQL request payload
+        val requestBody = JSONObject().apply {
+            put("query", query)
+            put("variables", JSONObject(variables))
+        }
+        
+        // Create HTTP client and request
+        val client = OkHttpClient()
+        val mediaType = "application/json".toMediaType()
+        val body = requestBody.toString().toRequestBody(mediaType)
+        
+        val request = Request.Builder()
+            .url(ENDPOINT)
+            .post(body)
+            .addHeader("Content-Type", "application/json")
+            .addHeader("x-api-key", API_KEY)
+            .build()
+        
+        // Execute the request and parse response
+        client.newCall(request).execute().use { response ->
+            if (!response.isSuccessful) throw IOException("Unexpected code $response")
+            val responseBody = response.body?.string() ?: return@withContext null
+            JSONObject(responseBody).getJSONObject("data")
+        }
+    } catch (error: Exception) {
+        // Print and return null if the request fails
+        println("GraphQL query error: ${error.message}")
+        null
+    }
+}
+
+// Recursive function to fetch all pages of series data
+suspend fun callGraphQLQueryRecursively(
+    query: String,
+    variables: MutableMap<String, Any>,
+    allNodes: MutableList<JSONObject> = mutableListOf()
+): List<JSONObject> {
+    // Call the callGraphQLQuery() function to make the initial request
+    val data = callGraphQLQuery(query, variables) ?: return allNodes
+    
+    // Extract nodes from the current page
+    val allSeriesData = data.getJSONObject("allSeries")
+    val edges = allSeriesData.getJSONArray("edges")
+    
+    // Merge the nodes from the current page with previously collected nodes
+    for (i in 0 until edges.length()) {
+        val node = edges.getJSONObject(i).getJSONObject("node")
+        allNodes.add(node)
+    }
+    
+    // Check if there are more pages of results
+    val pageInfo = allSeriesData.getJSONObject("pageInfo")
+    if (pageInfo.getBoolean("hasNextPage")) {
+        // Update the after variable with the endCursor from the current page
+        // This tells the API where to start the next page of results
+        variables["after"] = pageInfo.getString("endCursor")
+        
+        // Call the function recursively with the updated cursor
+        // This fetches the next page and merges it with existing results
+        return callGraphQLQueryRecursively(query, variables, allNodes)
+    } else {
+        // Return the final array of nodes if there are no more pages of results
+        return allNodes
+    }
+}
+```
+  </Step>
+
+  <Step title="Execute the queries and display results">
+    Bring everything together in a main function that searches for a tournament and retrieves all its series.
+
+```kotlin Main.kt
+fun main() = runBlocking {
+    // Define variables for the tournament search
+    val tournamentVariables = mapOf(
+        "tournamentName" to "Game Changers Championship"
+    )
+    
+    // Execute the tournament query to find the tournament
+    val tournamentResult = callGraphQLQuery(tournamentsQuery, tournamentVariables)
+    val tournamentData = tournamentResult
+        ?.getJSONObject("tournaments")
+        ?.getJSONArray("edges")
+        ?.getJSONObject(0)
+        ?.getJSONObject("node")
+    
+    if (tournamentData == null) {
+        println("Tournament not found")
+        return@runBlocking
+    }
+    
+    val tournamentName = tournamentData.getString("name")
+    val tournamentId = tournamentData.getString("id")
+    println("Found tournament: $tournamentName (ID: $tournamentId)")
+    
+    // Define variables for the series query
+    val variables = mutableMapOf<String, Any>(
+        "after" to "",  // Start from the beginning
+        "tournamentIds" to tournamentId
+    )
+    
+    // Call the recursive function to fetch all series
+    val result = callGraphQLQueryRecursively(seriesQuery, variables)
+    
+    println("Retrieved ${result.size} series:")
+    result.forEach { series ->
+        println(series.toString(2))
+    }
+}
+```
+
+<Check>
+Compile and run your code to see all series for the tournament!
+</Check>
+  </Step>
+</Steps>
+
+</View>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Explore Entities" icon="database" href="/data-apis/central-data/entities">
+    Learn about all available entities in the Central Data API
+  </Card>
+  
+  <Card title="API Reference" icon="book" href="/api-reference/introduction">
+    Explore the complete API reference documentation
+  </Card>
+</CardGroup>
+
+## Need Help?
+
+If you encounter any issues or have questions:
+
+- Check out the [GraphQL Playground](https://portal.grid.gg/documentation/graphql-playground) to test queries interactively
+- Visit our [Development Tools](/data-apis/development-tools) for additional resources
+- Contact [GRID Support](mailto:support@grid.gg) for assistance

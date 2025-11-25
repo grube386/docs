@@ -1,0 +1,562 @@
+---
+title: "Get the First 10 Games for the Day"
+description: "A step-by-step guide on how to query the first 10 games of the day using the Central Data Feed Query API in Node.js, Python, or Kotlin."
+---
+
+## Overview
+
+This tutorial demonstrates how to retrieve the first 10 scheduled games for the current day using the Central Data Feed Query API. You'll learn how to filter series by scheduled start time and order them chronologically.
+
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
+- A valid API key for the Central Data Feed API
+- Your preferred development environment set up
+
+<Tabs>
+<Tab title="Node.js" icon="node-js">
+  - [Node.js](https://nodejs.org/en/) v14 or higher
+  - [npm](https://www.npmjs.com/) or yarn package manager
+  
+  <Note>
+  We recommend following [these instructions](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install Node.js and npm using a Node version manager.
+  </Note>
+</Tab>
+
+<Tab title="Python" icon="python">
+  - Python 3.7 or higher
+  - pip package manager
+</Tab>
+
+<Tab title="Kotlin" icon="java">
+  - JDK 11 or higher
+  - Gradle or Maven build tool
+  - Kotlin 1.5 or higher
+</Tab>
+</Tabs>
+
+## Implementation
+
+<Steps>
+<Step title="Install dependencies">
+  First, install the required GraphQL client libraries for your chosen language.
+
+<CodeGroup dropdown>
+```node-js Node.js
+npm install graphql graphql-request
+```
+
+```bash Python
+pip install requests
+```
+
+```kotlin Kotlin
+dependencies {
+    implementation("com.apollographql.apollo3:apollo-runtime:3.8.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+}
+```
+</CodeGroup>
+
+<Check>
+Verify the installation by checking the package version in your project dependencies.
+</Check>
+</Step>
+
+<Step title="Set up your API key and endpoint">
+  Create your main file and configure your API credentials and the GraphQL endpoint.
+
+<CodeGroup>
+```javascript Node.js
+// Configure API credentials and endpoint
+const API_KEY = "YOUR_API_KEY";
+const ENDPOINT = "https://api.grid.gg/central-data/graphql";
+```
+
+```python Python
+# Configure API credentials and endpoint
+API_KEY = "YOUR_API_KEY"
+ENDPOINT = "https://api.grid.gg/central-data/graphql"
+```
+
+```kotlin Kotlin
+// Configure API credentials and endpoint
+const val API_KEY = "YOUR_API_KEY"
+const val ENDPOINT = "https://api.grid.gg/central-data/graphql"
+```
+</CodeGroup>
+
+<Warning>
+Never commit your API key to version control. Use environment variables or a secure configuration file instead.
+</Warning>
+</Step>
+
+<Step title="Define the GraphQL query">
+  Create the GraphQL query to fetch series filtered by scheduled start time. The query will return series ordered by their scheduled start time in ascending order.
+
+<CodeGroup>
+```javascript Node.js icon="node-js">
+// Define the GraphQL query to fetch series in the next 24 hours
+const query = `
+  query GetAllSeriesInNext24Hours($gte: String!, $lte: String!) {
+    allSeries(
+      filter: {
+        startTimeScheduled: {
+          gte: $gte
+          lte: $lte
+        }
+      }
+      orderBy: StartTimeScheduled
+    ) {
+      totalCount
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
+      }
+      edges {
+        cursor
+        node {
+          id
+          title {
+            nameShortened
+          }
+          tournament {
+            nameShortened
+          }
+          startTimeScheduled
+          format {
+            name
+            nameShortened
+          }
+          teams {
+            baseInfo {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+```
+
+```python Python
+# Define the GraphQL query to fetch series in the next 24 hours
+query = """
+  query GetAllSeriesInNext24Hours($gte: String!, $lte: String!) {
+    allSeries(
+      filter: {
+        startTimeScheduled: {
+          gte: $gte
+          lte: $lte
+        }
+      }
+      orderBy: StartTimeScheduled
+    ) {
+      totalCount
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
+      }
+      edges {
+        cursor
+        node {
+          id
+          title {
+            nameShortened
+          }
+          tournament {
+            nameShortened
+          }
+          startTimeScheduled
+          format {
+            name
+            nameShortened
+          }
+          teams {
+            baseInfo {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+"""
+```
+
+```kotlin Kotlin
+// Define the GraphQL query to fetch series in the next 24 hours
+const val QUERY = """
+  query GetAllSeriesInNext24Hours(${'$'}gte: String!, ${'$'}lte: String!) {
+    allSeries(
+      filter: {
+        startTimeScheduled: {
+          gte: ${'$'}gte
+          lte: ${'$'}lte
+        }
+      }
+      orderBy: StartTimeScheduled
+    ) {
+      totalCount
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
+      }
+      edges {
+        cursor
+        node {
+          id
+          title {
+            nameShortened
+          }
+          tournament {
+            nameShortened
+          }
+          startTimeScheduled
+          format {
+            name
+            nameShortened
+          }
+          teams {
+            baseInfo {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+"""
+```
+</CodeGroup>
+
+<Info>
+The query filters series by `startTimeScheduled` using `gte` (greater than or equal) and `lte` (less than or equal) operators. The `orderBy` parameter ensures results are returned in chronological order.
+</Info>
+</Step>
+
+<Step title="Create the query execution function">
+  Implement a function to execute the GraphQL query with proper error handling.
+
+<CodeGroup>
+```javascript Node.js
+// Function to execute GraphQL queries with error handling
+async function callGraphQLQuery(graphQLClient, query, variables) {
+  try {
+    // Send the request to the GraphQL endpoint
+    const data = await graphQLClient.request(query, variables);
+    return data;
+  } catch (error) {
+    // Handle any errors that occur during the request
+    console.error("Error executing GraphQL query:", error);
+    throw error;
+  }
+}
+```
+
+```python Python
+import requests
+
+# Function to execute GraphQL queries with error handling
+def call_graphql_query(endpoint, query, variables, api_key):
+    try:
+        # Prepare the request headers with API key authentication
+        headers = {
+            "x-api-key": api_key,
+            "Content-Type": "application/json"
+        }
+        
+        # Prepare the GraphQL request payload
+        payload = {
+            "query": query,
+            "variables": variables
+        }
+        
+        # Send the POST request to the GraphQL endpoint
+        response = requests.post(endpoint, json=payload, headers=headers)
+        
+        # Raise an exception for HTTP error responses
+        response.raise_for_status()
+        
+        # Return the JSON response data
+        return response.json()
+    except requests.exceptions.RequestException as error:
+        # Handle any errors that occur during the request
+        print(f"Error executing GraphQL query: {error}")
+        raise error
+```
+
+```kotlin Kotlin
+import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.api.ApolloResponse
+import com.apollographql.apollo3.api.Operation
+
+// Function to execute GraphQL queries with error handling
+suspend fun <D : Operation.Data> callGraphQLQuery(
+    apolloClient: ApolloClient,
+    query: String,
+    variables: Map<String, Any>
+): ApolloResponse<D>? {
+    return try {
+        // Send the request to the GraphQL endpoint
+        val response = apolloClient.query(query).execute()
+        response
+    } catch (error: Exception) {
+        // Handle any errors that occur during the request
+        println("Error executing GraphQL query: ${error.message}")
+        throw error
+    }
+}
+```
+</CodeGroup>
+
+<Tip>
+Always implement proper error handling to gracefully manage network issues, authentication failures, or invalid queries.
+</Tip>
+</Step>
+
+<Step title="Execute the query and display results">
+  Create the main function to initialize the GraphQL client, set up time variables, execute the query, and display the results.
+
+<CodeGroup>
+```javascript Node.js
+const { GraphQLClient } = require("graphql-request");
+
+async function main() {
+  // Create a new GraphQL client with API key authentication
+  const graphQLClient = new GraphQLClient(ENDPOINT, {
+    headers: {
+      "x-api-key": API_KEY,
+    },
+  });
+
+  // Calculate time range for the next 24 hours
+  const now = new Date();
+  const future = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+
+  // Prepare query variables with ISO 8601 formatted timestamps
+  const variables = {
+    gte: now.toISOString(),
+    lte: future.toISOString(),
+  };
+
+  // Execute the query and retrieve results
+  const result = await callGraphQLQuery(graphQLClient, query, variables);
+
+  // Display the results in the console
+  console.log(JSON.stringify(result, null, 2));
+  
+  // Display summary information
+  console.log(`\nTotal series found: ${result.allSeries.totalCount}`);
+  console.log(`Series retrieved: ${result.allSeries.edges.length}`);
+}
+
+// Run the main function
+main().catch((error) => {
+  console.error("Application error:", error);
+  process.exit(1);
+});
+```
+
+```python Python
+from datetime import datetime, timedelta
+import json
+
+def main():
+    # Calculate time range for the next 24 hours
+    now = datetime.utcnow()
+    future = now + timedelta(hours=24)
+
+    # Prepare query variables with ISO 8601 formatted timestamps
+    variables = {
+        "gte": now.isoformat() + "Z",
+        "lte": future.isoformat() + "Z",
+    }
+
+    # Execute the query and retrieve results
+    result = call_graphql_query(ENDPOINT, query, variables, API_KEY)
+
+    # Check if the response contains data
+    if "data" in result:
+        data = result["data"]
+        
+        # Display the results in the console
+        print(json.dumps(data, indent=2))
+        
+        # Display summary information
+        print(f"\nTotal series found: {data['allSeries']['totalCount']}")
+        print(f"Series retrieved: {len(data['allSeries']['edges'])}")
+    elif "errors" in result:
+        # Display any GraphQL errors
+        print("GraphQL Errors:")
+        print(json.dumps(result["errors"], indent=2))
+
+# Run the main function
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as error:
+        print(f"Application error: {error}")
+```
+
+```kotlin Kotlin
+import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.network.http.DefaultHttpEngine
+import kotlinx.coroutines.runBlocking
+import java.time.Instant
+import java.time.temporal.ChronoUnit
+
+fun main() = runBlocking {
+    // Create a new Apollo client with API key authentication
+    val apolloClient = ApolloClient.Builder()
+        .serverUrl(ENDPOINT)
+        .httpEngine(
+            DefaultHttpEngine().apply {
+                addInterceptor { request, chain ->
+                    chain.proceed(
+                        request.newBuilder()
+                            .addHeader("x-api-key", API_KEY)
+                            .build()
+                    )
+                }
+            }
+        )
+        .build()
+
+    // Calculate time range for the next 24 hours
+    val now = Instant.now()
+    val future = now.plus(24, ChronoUnit.HOURS)
+
+    // Prepare query variables with ISO 8601 formatted timestamps
+    val variables = mapOf(
+        "gte" to now.toString(),
+        "lte" to future.toString()
+    )
+
+    try {
+        // Execute the query and retrieve results
+        val response = apolloClient.query(QUERY).execute()
+
+        // Display the results in the console
+        println(response.data.toString())
+        
+        // Display summary information
+        response.data?.allSeries?.let { allSeries ->
+            println("\nTotal series found: ${allSeries.totalCount}")
+            println("Series retrieved: ${allSeries.edges.size}")
+        }
+    } catch (error: Exception) {
+        println("Application error: ${error.message}")
+    } finally {
+        // Clean up resources
+        apolloClient.close()
+    }
+}
+```
+</CodeGroup>
+
+<Check>
+Run your application and verify that you receive a list of series scheduled for the next 24 hours, ordered by their start time.
+</Check>
+</Step>
+
+<Step title="Run the application">
+  Execute your application using the appropriate command for your language.
+
+<CodeGroup>
+```bash Node.js
+node index.js
+```
+
+```bash Python
+python main.py
+```
+
+```bash Kotlin
+./gradlew run
+# or with Maven
+mvn exec:java
+```
+</CodeGroup>
+
+<Info>
+The application will output the series data in JSON format, including tournament information, team names, scheduled start times, and match formats.
+</Info>
+</Step>
+</Steps>
+
+## Expected Output
+
+When you run the application successfully, you should see output similar to this:
+
+```json
+{
+  "allSeries": {
+    "totalCount": 45,
+    "pageInfo": {
+      "hasPreviousPage": false,
+      "hasNextPage": true,
+      "startCursor": "cursor_string_1",
+      "endCursor": "cursor_string_10"
+    },
+    "edges": [
+      {
+        "cursor": "cursor_string_1",
+        "node": {
+          "id": "series_12345",
+          "title": {
+            "nameShortened": "CS2"
+          },
+          "tournament": {
+            "nameShortened": "ESL Pro League"
+          },
+          "startTimeScheduled": "2025-11-24T14:00:00Z",
+          "format": {
+            "name": "Best of 3",
+            "nameShortened": "Bo3"
+          },
+          "teams": [
+            {
+              "baseInfo": {
+                "name": "Team Liquid"
+              }
+            },
+            {
+              "baseInfo": {
+                "name": "FaZe Clan"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+## Next Steps
+
+Now that you've successfully retrieved series data, you can:
+
+- Implement pagination using the `pageInfo` cursors to fetch more results
+- Filter by specific game titles or tournaments
+- Add additional fields to the query for more detailed information
+- Build a user interface to display the series data
+
+<CardGroup cols={2}>
+<Card title="Query All Series for a Tournament" icon="trophy" href="/data-apis/central-data/tutorials/all-series-for-tournament">
+  Learn how to retrieve all series for a specific tournament.
+</Card>
+
+<Card title="Central Data Entities" icon="database" href="/data-apis/central-data/entities">
+  Explore all available entities and fields in the Central Data API.
+</Card>
+</CardGroup>
