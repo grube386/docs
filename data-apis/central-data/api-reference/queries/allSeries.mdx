@@ -9,7 +9,7 @@ Use the `allSeries` query to retrieve multiple series based on specific criteria
 
 ## Response Type
 
-Returns a [`SeriesConnection!`](/data-apis/central-data/api-reference/connections/SeriesConnection)
+Returns a `SeriesConnection!`
 
 The connection includes paginated series data with cursor-based navigation.
 
@@ -24,7 +24,7 @@ Cursor before which to return results. Use this for backward pagination.
 </ParamField>
 
 <ParamField query="filter" type="SeriesFilter">
-Filter specifications to narrow down series results. See [SeriesFilter](/data-apis/central-data/api-reference/filters/SeriesFilter) for available filtering options including tournament, team, title, and time-based filters.
+Filter specifications to narrow down series results. See `SeriesFilter` for available filtering options including tournament, team, title, and time-based filters.
 </ParamField>
 
 <ParamField query="first" type="Int" default="10">
