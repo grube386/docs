@@ -1,0 +1,52 @@
+query AllSeriesFull(
+  $first: Int
+  $after: String
+  $filter: SeriesFilter
+  $orderBy: SeriesOrderBy!
+  $orderDirection: OrderDirection!
+) {
+  allSeries(
+    first: $first
+    after: $after
+    filter: $filter
+    orderBy: $orderBy
+    orderDirection: $orderDirection
+  ) {
+    totalCount
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        id
+        type
+        startTimeScheduled
+        format {
+          name
+          nameShortened
+        }
+        title {
+          id
+          name
+          nameShortened
+        }
+        tournament {
+          id
+          name
+          nameShortened
+        }
+        teams {
+          baseInfo {
+            id
+            name
+          }
+          scoreAdvantage
+        }
+      }
+    }
+  }
+}

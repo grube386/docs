@@ -1,0 +1,49 @@
+{
+  "data": {
+    "allSeries": {
+      "totalCount": 7,
+      "edges": [
+        {
+          "node": {
+            "id": "2729011",
+            "startTimeScheduled": "2024-10-17T12:00:00Z",
+            "teams": [
+              {
+                "baseInfo": {
+                  "id": "52726",
+                  "name": "Suzhou LNG Esports"
+                }
+              },
+              {
+                "baseInfo": {
+                  "id": "52822",
+                  "name": "WeiboGaming"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "node": {
+            "id": "2729012",
+            "startTimeScheduled": "2024-10-18T12:00:00Z",
+            "teams": [
+              {
+                "baseInfo": {
+                  "id": "406",
+                  "name": "Hanwha Life Esports"
+                }
+              },
+              {
+                "baseInfo": {
+                  "id": "356",
+                  "name": "BILIBILI GAMING"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

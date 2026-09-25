@@ -1,0 +1,26 @@
+{
+  "defaults": {
+    "platform": "commercial",
+    "requestsPerSecond": 1,
+    "timeoutMs": 30000,
+    "maxRetries": 5
+  },
+  "platforms": {
+    "commercial": {
+      "label": "Commercial",
+      "host": "https://api.grid.gg",
+      "keyEnv": "GRID_API_KEY"
+    },
+    "open-access": {
+      "label": "Open Access",
+      "host": "https://api-op.grid.gg",
+      "keyEnv": "GRID_OA_API_KEY"
+    }
+  },
+  "apis": {
+    "central-data": {
+      "name": "Central Data",
+      "path": "/central-data/graphql"
+    }
+  }
+}

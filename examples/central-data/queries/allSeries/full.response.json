@@ -1,0 +1,91 @@
+{
+  "data": {
+    "allSeries": {
+      "totalCount": 50,
+      "pageInfo": {
+        "hasPreviousPage": false,
+        "hasNextPage": true,
+        "startCursor": "JAMWBQMjHhoSJBQfEhMCGxITCwtaCwtFQEVOR0ZACwtaCwtFR0VDWlpGRlpaR0UjRkNNRkJNR0ct",
+        "endCursor": "JAMWBQMjHhoSJBQfEhMCGxITCwtaCwtFQEVOR0ZBCwtaCwtFR0VDWlpGR1paRUAjRkRNR0dNR0ct"
+      },
+      "edges": [
+        {
+          "cursor": "JAMWBQMjHhoSJBQfEhMCGxITCwtaCwtFQEVOR0ZACwtaCwtFR0VDWlpGRlpaR0UjRkNNRkJNR0ct",
+          "node": {
+            "id": "2729017",
+            "type": "ESPORTS",
+            "startTimeScheduled": "2024-11-02T14:15:00Z",
+            "format": {
+              "name": "best-of-5",
+              "nameShortened": "Bo5"
+            },
+            "title": {
+              "id": "3",
+              "name": "League of Legends",
+              "nameShortened": "lol"
+            },
+            "tournament": {
+              "id": "775201",
+              "name": "Worlds - Worlds 2024 (Knockouts: Knockouts)",
+              "nameShortened": "Knockouts"
+            },
+            "teams": [
+              {
+                "baseInfo": {
+                  "id": "356",
+                  "name": "BILIBILI GAMING"
+                },
+                "scoreAdvantage": 0
+              },
+              {
+                "baseInfo": {
+                  "id": "47494",
+                  "name": "T1"
+                },
+                "scoreAdvantage": 0
+              }
+            ]
+          }
+        },
+        {
+          "cursor": "JAMWBQMjHhoSJBQfEhMCGxITCwtaCwtFQEVOR0ZBCwtaCwtFR0VDWlpGR1paRUAjRkRNR0dNR0ct",
+          "node": {
+            "id": "2729016",
+            "type": "ESPORTS",
+            "startTimeScheduled": "2024-10-27T13:00:00Z",
+            "format": {
+              "name": "best-of-5",
+              "nameShortened": "Bo5"
+            },
+            "title": {
+              "id": "3",
+              "name": "League of Legends",
+              "nameShortened": "lol"
+            },
+            "tournament": {
+              "id": "775201",
+              "name": "Worlds - Worlds 2024 (Knockouts: Knockouts)",
+              "nameShortened": "Knockouts"
+            },
+            "teams": [
+              {
+                "baseInfo": {
+                  "id": "47558",
+                  "name": "Gen.G Esports"
+                },
+                "scoreAdvantage": 0
+              },
+              {
+                "baseInfo": {
+                  "id": "47494",
+                  "name": "T1"
+                },
+                "scoreAdvantage": 0
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

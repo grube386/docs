@@ -1,0 +1,4207 @@
+{
+  "api": "central-data",
+  "platforms": {
+    "commercial": "https://api.grid.gg/central-data/graphql",
+    "open-access": "https://api-op.grid.gg/central-data/graphql"
+  },
+  "legend": {
+    "both": "Available on Commercial (api.grid.gg) and Open Access (api-op.grid.gg).",
+    "commercial-only": "Available on Commercial only. Pages badge it \"Not available on OA\".",
+    "open-access-only": "Present on Open Access but not on Commercial. Unexpected: report it, do not document it."
+  },
+  "excluded": [
+    "_entities",
+    "_service",
+    "_Any",
+    "_Entity",
+    "_FieldSet",
+    "_Service",
+    "_Placeholder"
+  ],
+  "summary": {
+    "operations": {
+      "both": 22,
+      "commercial-only": 40,
+      "open-access-only": 0
+    },
+    "types": {
+      "both": 74,
+      "commercial-only": 148,
+      "open-access-only": 0
+    },
+    "fields": {
+      "both": 223,
+      "commercial-only": 442,
+      "open-access-only": 0
+    },
+    "arguments": {
+      "both": 50,
+      "commercial-only": 62,
+      "open-access-only": 0
+    },
+    "enumValues": {
+      "both": 48,
+      "commercial-only": 14,
+      "open-access-only": 0
+    }
+  },
+  "roots": {
+    "query": "Query",
+    "mutation": "Mutation"
+  },
+  "operations": {
+    "query": {
+      "allSeries": {
+        "access": "both",
+        "args": {
+          "after": {
+            "access": "both"
+          },
+          "before": {
+            "access": "both"
+          },
+          "filter": {
+            "access": "both"
+          },
+          "first": {
+            "access": "both"
+          },
+          "last": {
+            "access": "both"
+          },
+          "orderBy": {
+            "access": "both"
+          },
+          "orderDirection": {
+            "access": "both"
+          }
+        }
+      },
+      "contentCatalogEntities": {
+        "access": "commercial-only",
+        "args": {
+          "after": {
+            "access": "commercial-only"
+          },
+          "before": {
+            "access": "commercial-only"
+          },
+          "contentCatalogVersionId": {
+            "access": "commercial-only"
+          },
+          "filter": {
+            "access": "commercial-only"
+          },
+          "first": {
+            "access": "commercial-only"
+          },
+          "last": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "contentCatalogEntity": {
+        "access": "commercial-only",
+        "args": {
+          "acceptLanguage": {
+            "access": "commercial-only"
+          },
+          "contentCatalogVersionId": {
+            "access": "commercial-only"
+          },
+          "id": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "contentCatalogEntityIdByExternalId": {
+        "access": "commercial-only",
+        "args": {
+          "contentCatalogVersionId": {
+            "access": "commercial-only"
+          },
+          "dataProviderName": {
+            "access": "commercial-only"
+          },
+          "externalEntityId": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "contentCatalogVersion": {
+        "access": "commercial-only",
+        "args": {
+          "id": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "contentCatalogVersionIdByExternalId": {
+        "access": "commercial-only",
+        "args": {
+          "dataProviderName": {
+            "access": "commercial-only"
+          },
+          "externalEntityId": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "contentCatalogVersions": {
+        "access": "commercial-only",
+        "args": {
+          "after": {
+            "access": "commercial-only"
+          },
+          "before": {
+            "access": "commercial-only"
+          },
+          "filter": {
+            "access": "commercial-only"
+          },
+          "first": {
+            "access": "commercial-only"
+          },
+          "last": {
+            "access": "commercial-only"
+          },
+          "orderBy": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "dataProviders": {
+        "access": "both"
+      },
+      "gameIdByExternalId": {
+        "access": "both",
+        "args": {
+          "dataProviderName": {
+            "access": "both"
+          },
+          "externalGameId": {
+            "access": "both"
+          }
+        }
+      },
+      "ingestionRequest": {
+        "access": "commercial-only",
+        "args": {
+          "id": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "ingestionRequests": {
+        "access": "commercial-only",
+        "args": {
+          "after": {
+            "access": "commercial-only"
+          },
+          "before": {
+            "access": "commercial-only"
+          },
+          "filter": {
+            "access": "commercial-only"
+          },
+          "first": {
+            "access": "commercial-only"
+          },
+          "last": {
+            "access": "commercial-only"
+          },
+          "orderBy": {
+            "access": "commercial-only"
+          },
+          "orderDirection": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "organization": {
+        "access": "both",
+        "args": {
+          "id": {
+            "access": "both"
+          }
+        }
+      },
+      "organizations": {
+        "access": "both",
+        "args": {
+          "after": {
+            "access": "both"
+          },
+          "before": {
+            "access": "both"
+          },
+          "filter": {
+            "access": "both"
+          },
+          "first": {
+            "access": "both"
+          },
+          "last": {
+            "access": "both"
+          }
+        }
+      },
+      "player": {
+        "access": "both",
+        "args": {
+          "id": {
+            "access": "both"
+          }
+        }
+      },
+      "playerIdByExternalId": {
+        "access": "both",
+        "args": {
+          "dataProviderName": {
+            "access": "both"
+          },
+          "externalPlayerId": {
+            "access": "both"
+          },
+          "titleId": {
+            "access": "both"
+          }
+        }
+      },
+      "playerRole": {
+        "access": "both",
+        "args": {
+          "id": {
+            "access": "both"
+          }
+        }
+      },
+      "playerRoles": {
+        "access": "both",
+        "args": {
+          "filter": {
+            "access": "both"
+          }
+        }
+      },
+      "players": {
+        "access": "both",
+        "args": {
+          "after": {
+            "access": "both"
+          },
+          "before": {
+            "access": "both"
+          },
+          "filter": {
+            "access": "both"
+          },
+          "first": {
+            "access": "both"
+          },
+          "last": {
+            "access": "both"
+          }
+        }
+      },
+      "series": {
+        "access": "both",
+        "args": {
+          "id": {
+            "access": "both"
+          }
+        }
+      },
+      "seriesByExternalSeries": {
+        "access": "both",
+        "args": {
+          "dataProviderName": {
+            "access": "both"
+          },
+          "externalSeriesId": {
+            "access": "both"
+          }
+        }
+      },
+      "seriesFormats": {
+        "access": "both"
+      },
+      "seriesIdByExternalId": {
+        "access": "both",
+        "args": {
+          "dataProviderName": {
+            "access": "both"
+          },
+          "externalSeriesId": {
+            "access": "both"
+          }
+        }
+      },
+      "team": {
+        "access": "both",
+        "args": {
+          "id": {
+            "access": "both"
+          }
+        }
+      },
+      "teamIdByExternalId": {
+        "access": "both",
+        "args": {
+          "dataProviderName": {
+            "access": "both"
+          },
+          "externalTeamId": {
+            "access": "both"
+          },
+          "titleId": {
+            "access": "both"
+          }
+        }
+      },
+      "teams": {
+        "access": "both",
+        "args": {
+          "after": {
+            "access": "both"
+          },
+          "before": {
+            "access": "both"
+          },
+          "filter": {
+            "access": "both"
+          },
+          "first": {
+            "access": "both"
+          },
+          "last": {
+            "access": "both"
+          }
+        }
+      },
+      "title": {
+        "access": "both",
+        "args": {
+          "id": {
+            "access": "both"
+          }
+        }
+      },
+      "titles": {
+        "access": "both",
+        "args": {
+          "filter": {
+            "access": "both"
+          }
+        }
+      },
+      "tournament": {
+        "access": "both",
+        "args": {
+          "id": {
+            "access": "both"
+          }
+        }
+      },
+      "tournamentIdByExternalId": {
+        "access": "both",
+        "args": {
+          "dataProviderName": {
+            "access": "both"
+          },
+          "externalTournamentId": {
+            "access": "both"
+          }
+        }
+      },
+      "tournaments": {
+        "access": "both",
+        "args": {
+          "after": {
+            "access": "both"
+          },
+          "before": {
+            "access": "both"
+          },
+          "filter": {
+            "access": "both"
+          },
+          "first": {
+            "access": "both"
+          },
+          "last": {
+            "access": "both"
+          }
+        }
+      }
+    },
+    "mutation": {
+      "addPlayerExternalLink": {
+        "access": "commercial-only",
+        "args": {
+          "addPlayerExternalLinkInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "addSeriesExternalLink": {
+        "access": "commercial-only",
+        "args": {
+          "addSeriesExternalLinkInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "addTeamExternalLink": {
+        "access": "commercial-only",
+        "args": {
+          "addTeamExternalLinkInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "addTournamentExternalLink": {
+        "access": "commercial-only",
+        "args": {
+          "addTournamentExternalLinkInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "createContentCatalogCharacter": {
+        "access": "commercial-only",
+        "args": {
+          "createContentCatalogCharacterInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "createContentCatalogItem": {
+        "access": "commercial-only",
+        "args": {
+          "createContentCatalogItemInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "createContentCatalogMap": {
+        "access": "commercial-only",
+        "args": {
+          "createContentCatalogMapInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "createContentCatalogStructure": {
+        "access": "commercial-only",
+        "args": {
+          "createContentCatalogStructureInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "createContentCatalogVersion": {
+        "access": "commercial-only",
+        "args": {
+          "createContentCatalogVersionInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "createIngestionRequest": {
+        "access": "commercial-only",
+        "args": {
+          "input": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "createPlayer": {
+        "access": "commercial-only",
+        "args": {
+          "createPlayerInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "createPlayerRole": {
+        "access": "commercial-only",
+        "args": {
+          "createPlayerRoleInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "createSeries": {
+        "access": "commercial-only",
+        "args": {
+          "createSeriesInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "createTeam": {
+        "access": "commercial-only",
+        "args": {
+          "createTeamInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "createTournament": {
+        "access": "commercial-only",
+        "args": {
+          "createTournamentInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "deleteContentCatalogEntity": {
+        "access": "commercial-only",
+        "args": {
+          "contentCatalogVersionId": {
+            "access": "commercial-only"
+          },
+          "id": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "deleteContentCatalogVersion": {
+        "access": "commercial-only",
+        "args": {
+          "id": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "deletePlayer": {
+        "access": "commercial-only",
+        "args": {
+          "deletePlayerInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "deletePlayerRole": {
+        "access": "commercial-only",
+        "args": {
+          "deletePlayerRoleInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "deleteSeries": {
+        "access": "commercial-only",
+        "args": {
+          "deleteSeriesInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "deleteTeam": {
+        "access": "commercial-only",
+        "args": {
+          "deleteTeamInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "deleteTournament": {
+        "access": "commercial-only",
+        "args": {
+          "deleteTournamentInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "updateContentCatalogCharacter": {
+        "access": "commercial-only",
+        "args": {
+          "updateContentCatalogCharacterInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "updateContentCatalogItem": {
+        "access": "commercial-only",
+        "args": {
+          "updateContentCatalogItemInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "updateContentCatalogMap": {
+        "access": "commercial-only",
+        "args": {
+          "updateContentCatalogMapInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "updateContentCatalogStructure": {
+        "access": "commercial-only",
+        "args": {
+          "updateContentCatalogStructureInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "updateContentCatalogVersion": {
+        "access": "commercial-only",
+        "args": {
+          "updateContentCatalogVersionInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "updatePlayer": {
+        "access": "commercial-only",
+        "args": {
+          "updatePlayerInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "updatePlayerRole": {
+        "access": "commercial-only",
+        "args": {
+          "updatePlayerRoleInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "updateSeries": {
+        "access": "commercial-only",
+        "args": {
+          "updateSeriesInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "updateTeam": {
+        "access": "commercial-only",
+        "args": {
+          "updateTeamInput": {
+            "access": "commercial-only"
+          }
+        }
+      },
+      "updateTournament": {
+        "access": "commercial-only",
+        "args": {
+          "updateTournamentInput": {
+            "access": "commercial-only"
+          }
+        }
+      }
+    }
+  },
+  "types": {
+    "AddPlayerExternalLinkInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "externalLink": {
+          "access": "commercial-only"
+        },
+        "playerId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "AddPlayerExternalLinkPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "updatedPlayer": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "AddSeriesExternalLinkInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "externalLink": {
+          "access": "commercial-only"
+        },
+        "seriesId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "AddSeriesExternalLinkPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "updatedSeries": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "AddTeamExternalLinkInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "externalLink": {
+          "access": "commercial-only"
+        },
+        "teamId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "AddTeamExternalLinkPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "updatedTeam": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "AddTournamentExternalLinkInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "externalLink": {
+          "access": "commercial-only"
+        },
+        "tournamentId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "AddTournamentExternalLinkPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "updatedTournament": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "Asset": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "assetType": {
+          "access": "both"
+        },
+        "url": {
+          "access": "both"
+        }
+      }
+    },
+    "AssetInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "assetData": {
+          "access": "commercial-only"
+        },
+        "assetType": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "AssetType": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "ALTERNATIVE_LOGO": {
+          "access": "both"
+        },
+        "BACKGROUND_LOGO": {
+          "access": "both"
+        },
+        "DARK_LOGO": {
+          "access": "both"
+        },
+        "LIGHT_LOGO": {
+          "access": "both"
+        },
+        "MAIN_LOGO": {
+          "access": "both"
+        }
+      }
+    },
+    "BooleanFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "equals": {
+          "access": "both"
+        }
+      }
+    },
+    "Bounds": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "max": {
+          "access": "commercial-only"
+        },
+        "min": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "BoundsInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "max": {
+          "access": "commercial-only"
+        },
+        "min": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogCharacter": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "contentCatalogVersion": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageUrl": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "updatedAt": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogEntity": {
+      "kind": "INTERFACE",
+      "access": "commercial-only",
+      "fields": {
+        "contentCatalogVersion": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageUrl": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "updatedAt": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogEntityConnection": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "edges": {
+          "access": "commercial-only"
+        },
+        "pageInfo": {
+          "access": "commercial-only"
+        },
+        "totalCount": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogEntityEdge": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "cursor": {
+          "access": "commercial-only"
+        },
+        "node": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogEntityFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "entityType": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "title": {
+          "access": "commercial-only"
+        },
+        "updatedAt": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogEntityTitleFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogEntityType": {
+      "kind": "ENUM",
+      "access": "commercial-only",
+      "values": {
+        "CHARACTER": {
+          "access": "commercial-only"
+        },
+        "ITEM": {
+          "access": "commercial-only"
+        },
+        "MAP": {
+          "access": "commercial-only"
+        },
+        "STRUCTURE": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogEntityTypeFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "in": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogItem": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "contentCatalogVersion": {
+          "access": "commercial-only"
+        },
+        "cost": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageUrl": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "updatedAt": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogMap": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "bounds": {
+          "access": "commercial-only"
+        },
+        "contentCatalogVersion": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageUrl": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "updatedAt": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogStructure": {
+      "kind": "INTERFACE",
+      "access": "commercial-only",
+      "fields": {
+        "contentCatalogVersion": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageUrl": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "updatedAt": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogVersion": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "publishedOn": {
+          "access": "commercial-only"
+        },
+        "title": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogVersionConnection": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "edges": {
+          "access": "commercial-only"
+        },
+        "pageInfo": {
+          "access": "commercial-only"
+        },
+        "totalCount": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogVersionEdge": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "cursor": {
+          "access": "commercial-only"
+        },
+        "node": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogVersionFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "publishedOn": {
+          "access": "commercial-only"
+        },
+        "title": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogVersionOrder": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "direction": {
+          "access": "commercial-only"
+        },
+        "field": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogVersionOrderField": {
+      "kind": "ENUM",
+      "access": "commercial-only",
+      "values": {
+        "PUBLISHED_ON": {
+          "access": "commercial-only"
+        },
+        "TITLE": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ContentCatalogVersionTitleFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "Coordinates": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "x": {
+          "access": "commercial-only"
+        },
+        "y": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CoordinatesInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "x": {
+          "access": "commercial-only"
+        },
+        "y": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateContentCatalogCharacterInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "contentCatalogVersionId": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageData": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateContentCatalogCharacterPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "createdContentCatalogCharacter": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateContentCatalogItemInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "contentCatalogVersionId": {
+          "access": "commercial-only"
+        },
+        "cost": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageData": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateContentCatalogItemPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "createdContentCatalogItem": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateContentCatalogMapInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "bounds": {
+          "access": "commercial-only"
+        },
+        "contentCatalogVersionId": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageData": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateContentCatalogMapPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "createdContentCatalogMap": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateContentCatalogStructureInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "lolContentCatalogStructure": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateContentCatalogStructurePayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "createdContentCatalogStructure": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateContentCatalogVersionInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "publishedOn": {
+          "access": "commercial-only"
+        },
+        "titleId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateContentCatalogVersionPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "createdContentCatalogVersion": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateIngestionRequestInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "players": {
+          "access": "commercial-only"
+        },
+        "series": {
+          "access": "commercial-only"
+        },
+        "title": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateIngestionRequestPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "createdIngestionRequestId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateLolContentCatalogStructureInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "alias": {
+          "access": "commercial-only"
+        },
+        "contentCatalogVersionId": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "gridType": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageData": {
+          "access": "commercial-only"
+        },
+        "lane": {
+          "access": "commercial-only"
+        },
+        "maxHealth": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "nexusTurretName": {
+          "access": "commercial-only"
+        },
+        "position": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "respawnTime": {
+          "access": "commercial-only"
+        },
+        "riotType": {
+          "access": "commercial-only"
+        },
+        "teamId": {
+          "access": "commercial-only"
+        },
+        "turretTier": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreatePlayerInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "dateOfBirth": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "fullName": {
+          "access": "commercial-only"
+        },
+        "imageData": {
+          "access": "commercial-only"
+        },
+        "nationality": {
+          "access": "commercial-only"
+        },
+        "nickname": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "role": {
+          "access": "commercial-only"
+        },
+        "team": {
+          "access": "commercial-only"
+        },
+        "title": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreatePlayerPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "createdPlayer": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreatePlayerPlayerRoleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreatePlayerRoleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "title": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreatePlayerRolePayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "createdPlayerRole": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreatePlayerRoleTitleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "titleId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreatePlayerTeamInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "teamId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreatePlayerTitleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "titleId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateSeriesFormatInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateSeriesInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "format": {
+          "access": "commercial-only"
+        },
+        "players": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "startTimeScheduled": {
+          "access": "commercial-only"
+        },
+        "teams": {
+          "access": "commercial-only"
+        },
+        "title": {
+          "access": "commercial-only"
+        },
+        "tournament": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateSeriesParticipatingPlayersInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateSeriesPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "createdSeries": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateSeriesTeamInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "scoreAdvantage": {
+          "access": "commercial-only"
+        },
+        "teamId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateSeriesTitleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "titleId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateSeriesTournamentInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "tournamentId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateTeamInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "assets": {
+          "access": "commercial-only"
+        },
+        "colorPrimary": {
+          "access": "commercial-only"
+        },
+        "colorSecondary": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "logoData": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "nameShortened": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "title": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateTeamPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "createdTeam": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateTeamTitleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "titleId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateTournamentInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "endDate": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "logoData": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "nameShortened": {
+          "access": "commercial-only"
+        },
+        "parent": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "prizePool": {
+          "access": "commercial-only"
+        },
+        "startDate": {
+          "access": "commercial-only"
+        },
+        "teams": {
+          "access": "commercial-only"
+        },
+        "titles": {
+          "access": "commercial-only"
+        },
+        "venueType": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateTournamentParentInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "tournamentId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateTournamentPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "createdTournament": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateTournamentTeamInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "teamId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "CreateTournamentTitleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "titleId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "DataProvider": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "description": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        }
+      }
+    },
+    "Date": {
+      "kind": "SCALAR",
+      "access": "both"
+    },
+    "DateInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "date": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "DateTime": {
+      "kind": "SCALAR",
+      "access": "both"
+    },
+    "DateTimeFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "gte": {
+          "access": "both"
+        },
+        "lte": {
+          "access": "both"
+        }
+      }
+    },
+    "Decimal": {
+      "kind": "SCALAR",
+      "access": "both"
+    },
+    "DeleteContentCatalogEntityPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "contentCatalogVersionId": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "DeleteContentCatalogVersionPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "DeletePlayerInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "DeletePlayerPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "DeletePlayerRoleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "DeletePlayerRolePayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "deletedPlayerRole": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "DeleteSeriesInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "DeleteSeriesPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "DeleteTeamInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "DeleteTeamPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "DeleteTournamentInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "DeleteTournamentPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ErrorDetail": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "DEADLINE_EXCEEDED": {
+          "access": "both"
+        },
+        "ENHANCE_YOUR_CALM": {
+          "access": "both"
+        },
+        "FIELD_NOT_FOUND": {
+          "access": "both"
+        },
+        "INVALID_ARGUMENT": {
+          "access": "both"
+        },
+        "INVALID_CURSOR": {
+          "access": "both"
+        },
+        "MISSING_RESOURCE": {
+          "access": "both"
+        },
+        "SERVICE_ERROR": {
+          "access": "both"
+        },
+        "TCP_FAILURE": {
+          "access": "both"
+        },
+        "THROTTLED_CONCURRENCY": {
+          "access": "both"
+        },
+        "THROTTLED_CPU": {
+          "access": "both"
+        },
+        "TOO_MANY_REQUESTS": {
+          "access": "both"
+        },
+        "UNIMPLEMENTED": {
+          "access": "both"
+        },
+        "UNKNOWN": {
+          "access": "both"
+        }
+      }
+    },
+    "ErrorType": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "BAD_REQUEST": {
+          "access": "both"
+        },
+        "FAILED_PRECONDITION": {
+          "access": "both"
+        },
+        "INTERNAL": {
+          "access": "both"
+        },
+        "NOT_FOUND": {
+          "access": "both"
+        },
+        "PERMISSION_DENIED": {
+          "access": "both"
+        },
+        "UNAUTHENTICATED": {
+          "access": "both"
+        },
+        "UNAVAILABLE": {
+          "access": "both"
+        },
+        "UNKNOWN": {
+          "access": "both"
+        }
+      }
+    },
+    "ExternalEntity": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        }
+      }
+    },
+    "ExternalEntityDescriptor": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ExternalEntityInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ExternalLink": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "dataProvider": {
+          "access": "both"
+        },
+        "externalEntity": {
+          "access": "both"
+        }
+      }
+    },
+    "ExternalLinkDescriptor": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "dataProviderName": {
+          "access": "commercial-only"
+        },
+        "externalEntity": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "ExternalLinkInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "dataProviderName": {
+          "access": "commercial-only"
+        },
+        "externalEntityInput": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "GameFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "map": {
+          "access": "both"
+        }
+      }
+    },
+    "HexColor": {
+      "kind": "SCALAR",
+      "access": "both"
+    },
+    "IdFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "in": {
+          "access": "both"
+        }
+      }
+    },
+    "IngestionRequest": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "createdAt": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "playerRoles": {
+          "access": "commercial-only"
+        },
+        "players": {
+          "access": "commercial-only"
+        },
+        "series": {
+          "access": "commercial-only"
+        },
+        "statusInformation": {
+          "access": "commercial-only"
+        },
+        "teams": {
+          "access": "commercial-only"
+        },
+        "tournaments": {
+          "access": "commercial-only"
+        },
+        "updatedAt": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "IngestionRequestConnection": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "edges": {
+          "access": "commercial-only"
+        },
+        "pageInfo": {
+          "access": "commercial-only"
+        },
+        "totalCount": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "IngestionRequestEdge": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "cursor": {
+          "access": "commercial-only"
+        },
+        "node": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "IngestionRequestFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "status": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "IngestionRequestOrderBy": {
+      "kind": "ENUM",
+      "access": "commercial-only",
+      "values": {
+        "CreatedOn": {
+          "access": "commercial-only"
+        },
+        "ID": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "IngestionRequestStatus": {
+      "kind": "ENUM",
+      "access": "commercial-only",
+      "values": {
+        "COMPLETED": {
+          "access": "commercial-only"
+        },
+        "FAILED": {
+          "access": "commercial-only"
+        },
+        "IN_PROGRESS": {
+          "access": "commercial-only"
+        },
+        "PENDING": {
+          "access": "commercial-only"
+        },
+        "REJECTED": {
+          "access": "commercial-only"
+        },
+        "REQUIRES_REVIEW": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "IngestionRequestStatusFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "in": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "IngestionRequestStatusInformation": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "reason": {
+          "access": "commercial-only"
+        },
+        "status": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "IntFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "equals": {
+          "access": "both"
+        },
+        "gte": {
+          "access": "both"
+        },
+        "lte": {
+          "access": "both"
+        }
+      }
+    },
+    "Locale": {
+      "kind": "SCALAR",
+      "access": "commercial-only"
+    },
+    "LolContentCatalogStructure": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "alias": {
+          "access": "commercial-only"
+        },
+        "contentCatalogVersion": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "gridType": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageUrl": {
+          "access": "commercial-only"
+        },
+        "lane": {
+          "access": "commercial-only"
+        },
+        "maxHealth": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "nexusTurretName": {
+          "access": "commercial-only"
+        },
+        "position": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "respawnTime": {
+          "access": "commercial-only"
+        },
+        "riotType": {
+          "access": "commercial-only"
+        },
+        "teamId": {
+          "access": "commercial-only"
+        },
+        "turretTier": {
+          "access": "commercial-only"
+        },
+        "updatedAt": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "LolContentCatalogStructurePosition": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "x": {
+          "access": "commercial-only"
+        },
+        "z": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "LolContentCatalogStructurePositionInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "x": {
+          "access": "commercial-only"
+        },
+        "z": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "MachineDataSource": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        }
+      }
+    },
+    "MapFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "name": {
+          "access": "both"
+        }
+      }
+    },
+    "Money": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "amount": {
+          "access": "both"
+        }
+      }
+    },
+    "MoneyInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "amount": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "Nationality": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "code": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        }
+      }
+    },
+    "NationalityDescriptor": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "code": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "NationalityDescriptorInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "code": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "NationalityFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "code": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        }
+      }
+    },
+    "NationalityInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "nationalityCode": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "NullableDateFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "gte": {
+          "access": "both"
+        },
+        "lte": {
+          "access": "both"
+        }
+      }
+    },
+    "NullableIdFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        }
+      }
+    },
+    "OrderDirection": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "ASC": {
+          "access": "both"
+        },
+        "DESC": {
+          "access": "both"
+        }
+      }
+    },
+    "Organization": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "private": {
+          "access": "both"
+        },
+        "teams": {
+          "access": "both"
+        },
+        "updatedAt": {
+          "access": "both"
+        }
+      }
+    },
+    "OrganizationConnection": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "edges": {
+          "access": "both"
+        },
+        "pageInfo": {
+          "access": "both"
+        },
+        "totalCount": {
+          "access": "both"
+        }
+      }
+    },
+    "OrganizationEdge": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "cursor": {
+          "access": "both"
+        },
+        "node": {
+          "access": "both"
+        }
+      }
+    },
+    "OrganizationFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "name": {
+          "access": "both"
+        },
+        "private": {
+          "access": "both"
+        },
+        "updatedAt": {
+          "access": "both"
+        }
+      }
+    },
+    "OrganizationInterface": {
+      "kind": "INTERFACE",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        }
+      }
+    },
+    "OrganizationRelation": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        }
+      }
+    },
+    "PageInfo": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "endCursor": {
+          "access": "both"
+        },
+        "hasNextPage": {
+          "access": "both"
+        },
+        "hasPreviousPage": {
+          "access": "both"
+        },
+        "startCursor": {
+          "access": "both"
+        }
+      }
+    },
+    "Player": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "age": {
+          "access": "both"
+        },
+        "externalLinks": {
+          "access": "both"
+        },
+        "fullName": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "imageUrl": {
+          "access": "both"
+        },
+        "nationality": {
+          "access": "both"
+        },
+        "nickname": {
+          "access": "both"
+        },
+        "private": {
+          "access": "both"
+        },
+        "roles": {
+          "access": "both"
+        },
+        "team": {
+          "access": "both"
+        },
+        "title": {
+          "access": "both"
+        },
+        "type": {
+          "access": "commercial-only"
+        },
+        "updatedAt": {
+          "access": "both"
+        }
+      }
+    },
+    "PlayerConnection": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "edges": {
+          "access": "both"
+        },
+        "pageInfo": {
+          "access": "both"
+        },
+        "totalCount": {
+          "access": "both"
+        }
+      }
+    },
+    "PlayerDescriptor": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "dateOfBirth": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "fullName": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "nationality": {
+          "access": "commercial-only"
+        },
+        "nickname": {
+          "access": "commercial-only"
+        },
+        "roles": {
+          "access": "commercial-only"
+        },
+        "sourceId": {
+          "access": "commercial-only"
+        },
+        "team": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "PlayerDescriptorInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "dateOfBirth": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "fullName": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "nationality": {
+          "access": "commercial-only"
+        },
+        "nickname": {
+          "access": "commercial-only"
+        },
+        "roles": {
+          "access": "commercial-only"
+        },
+        "sourceId": {
+          "access": "commercial-only"
+        },
+        "team": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "PlayerEdge": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "cursor": {
+          "access": "both"
+        },
+        "node": {
+          "access": "both"
+        }
+      }
+    },
+    "PlayerFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "age": {
+          "access": "both"
+        },
+        "fullName": {
+          "access": "both"
+        },
+        "nationality": {
+          "access": "both"
+        },
+        "nickname": {
+          "access": "both"
+        },
+        "private": {
+          "access": "both"
+        },
+        "roles": {
+          "access": "both"
+        },
+        "teamIdFilter": {
+          "access": "both"
+        },
+        "titleId": {
+          "access": "both"
+        },
+        "types": {
+          "access": "commercial-only"
+        },
+        "updatedAt": {
+          "access": "both"
+        }
+      }
+    },
+    "PlayerPlayerRoleFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "name": {
+          "access": "both"
+        },
+        "title": {
+          "access": "both"
+        }
+      }
+    },
+    "PlayerRole": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "private": {
+          "access": "both"
+        },
+        "title": {
+          "access": "both"
+        }
+      }
+    },
+    "PlayerRoleDescriptor": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "name": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "PlayerRoleDescriptorInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "name": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "PlayerRoleFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "name": {
+          "access": "both"
+        },
+        "title": {
+          "access": "both"
+        }
+      }
+    },
+    "PlayerRoleTitleFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        }
+      }
+    },
+    "PlayerType": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "ESPORTS": {
+          "access": "both"
+        },
+        "REGULAR": {
+          "access": "both"
+        }
+      }
+    },
+    "ProductServiceLevel": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "productName": {
+          "access": "both"
+        },
+        "serviceLevel": {
+          "access": "both"
+        }
+      }
+    },
+    "ProductServiceLevelFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "productName": {
+          "access": "both"
+        },
+        "serviceLevel": {
+          "access": "both"
+        }
+      }
+    },
+    "Reason": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "message": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "Series": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "externalLinks": {
+          "access": "both"
+        },
+        "format": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "machineDataSource": {
+          "access": "commercial-only"
+        },
+        "players": {
+          "access": "both"
+        },
+        "private": {
+          "access": "both"
+        },
+        "productServiceLevels": {
+          "access": "both"
+        },
+        "startTimeScheduled": {
+          "access": "both"
+        },
+        "streams": {
+          "access": "both"
+        },
+        "teams": {
+          "access": "both"
+        },
+        "title": {
+          "access": "both"
+        },
+        "tournament": {
+          "access": "both"
+        },
+        "type": {
+          "access": "both"
+        },
+        "updatedAt": {
+          "access": "both"
+        },
+        "workflowStatus": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesConnection": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "edges": {
+          "access": "both"
+        },
+        "pageInfo": {
+          "access": "both"
+        },
+        "totalCount": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesDescriptor": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "format": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "players": {
+          "access": "commercial-only"
+        },
+        "sourceId": {
+          "access": "commercial-only"
+        },
+        "startTimeScheduled": {
+          "access": "commercial-only"
+        },
+        "teams": {
+          "access": "commercial-only"
+        },
+        "tournament": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "SeriesDescriptorInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "format": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "players": {
+          "access": "commercial-only"
+        },
+        "sourceId": {
+          "access": "commercial-only"
+        },
+        "startTimeScheduled": {
+          "access": "commercial-only"
+        },
+        "teams": {
+          "access": "commercial-only"
+        },
+        "tournament": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "SeriesEdge": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "cursor": {
+          "access": "both"
+        },
+        "node": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "live": {
+          "access": "both"
+        },
+        "livePlayerIds": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "private": {
+          "access": "both"
+        },
+        "productServiceLevels": {
+          "access": "both"
+        },
+        "startTimeScheduled": {
+          "access": "both"
+        },
+        "teamId": {
+          "access": "both"
+        },
+        "teamIds": {
+          "access": "both"
+        },
+        "titleId": {
+          "access": "both"
+        },
+        "titleIds": {
+          "access": "both"
+        },
+        "tournament": {
+          "access": "both"
+        },
+        "tournamentId": {
+          "access": "both"
+        },
+        "tournamentIds": {
+          "access": "both"
+        },
+        "type": {
+          "access": "both"
+        },
+        "types": {
+          "access": "both"
+        },
+        "updatedAt": {
+          "access": "both"
+        },
+        "workflowStatuses": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesFormat": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "nameShortened": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesFormatDescriptor": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "nameShortened": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "SeriesFormatDescriptorInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "nameShortened": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "SeriesLiveFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "games": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesOrderBy": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "ID": {
+          "access": "both"
+        },
+        "StartTimeScheduled": {
+          "access": "both"
+        },
+        "UpdatedAt": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesPlayerFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "age": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesTournamentFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "endDate": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "includeChildren": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "nameShortened": {
+          "access": "both"
+        },
+        "startDate": {
+          "access": "both"
+        },
+        "title": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesTournamentTitleFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesType": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "COMPETITIVE": {
+          "access": "both"
+        },
+        "ESPORTS": {
+          "access": "both"
+        },
+        "LOOPFEED": {
+          "access": "both"
+        },
+        "SCRIM": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesWorkflowStatus": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "DELETED": {
+          "access": "both"
+        },
+        "PUBLISHED": {
+          "access": "both"
+        }
+      }
+    },
+    "ServiceLevel": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "FULL": {
+          "access": "both"
+        },
+        "LIMITED": {
+          "access": "both"
+        },
+        "NONE": {
+          "access": "both"
+        }
+      }
+    },
+    "StringFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "contains": {
+          "access": "both"
+        },
+        "equals": {
+          "access": "both"
+        }
+      }
+    },
+    "Team": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "assets": {
+          "access": "both"
+        },
+        "colorPrimary": {
+          "access": "both"
+        },
+        "colorSecondary": {
+          "access": "both"
+        },
+        "externalLinks": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "logoUrl": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "nameShortened": {
+          "access": "both"
+        },
+        "organization": {
+          "access": "both"
+        },
+        "private": {
+          "access": "both"
+        },
+        "rating": {
+          "access": "both"
+        },
+        "title": {
+          "access": "both"
+        },
+        "titles": {
+          "access": "both"
+        },
+        "updatedAt": {
+          "access": "both"
+        },
+        "workflowStatus": {
+          "access": "both"
+        }
+      }
+    },
+    "TeamConnection": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "edges": {
+          "access": "both"
+        },
+        "pageInfo": {
+          "access": "both"
+        },
+        "totalCount": {
+          "access": "both"
+        }
+      }
+    },
+    "TeamDescriptor": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "nameShortened": {
+          "access": "commercial-only"
+        },
+        "sourceId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "TeamDescriptorInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "nameShortened": {
+          "access": "commercial-only"
+        },
+        "sourceId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "TeamEdge": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "cursor": {
+          "access": "both"
+        },
+        "node": {
+          "access": "both"
+        }
+      }
+    },
+    "TeamFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "name": {
+          "access": "both"
+        },
+        "nameShortened": {
+          "access": "both"
+        },
+        "organizationId": {
+          "access": "both"
+        },
+        "private": {
+          "access": "both"
+        },
+        "titleId": {
+          "access": "both"
+        },
+        "updatedAt": {
+          "access": "both"
+        },
+        "workflowStatuses": {
+          "access": "both"
+        }
+      }
+    },
+    "TeamInterface": {
+      "kind": "INTERFACE",
+      "access": "both",
+      "fields": {
+        "colorPrimary": {
+          "access": "both"
+        },
+        "colorSecondary": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "logoUrl": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "nameShortened": {
+          "access": "both"
+        },
+        "rating": {
+          "access": "both"
+        },
+        "titles": {
+          "access": "both"
+        }
+      }
+    },
+    "TeamParticipant": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "baseInfo": {
+          "access": "both"
+        },
+        "scoreAdvantage": {
+          "access": "both"
+        }
+      }
+    },
+    "TeamRelation": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "assets": {
+          "access": "both"
+        },
+        "colorPrimary": {
+          "access": "both"
+        },
+        "colorSecondary": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "logoUrl": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "nameShortened": {
+          "access": "both"
+        },
+        "rating": {
+          "access": "both"
+        },
+        "titles": {
+          "access": "both"
+        }
+      }
+    },
+    "TeamWorkflowStatus": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "DELETED": {
+          "access": "both"
+        },
+        "PUBLISHED": {
+          "access": "both"
+        }
+      }
+    },
+    "Title": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "logoUrl": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "nameShortened": {
+          "access": "both"
+        },
+        "private": {
+          "access": "both",
+          "typeDiffers": {
+            "commercial": "Boolean",
+            "open-access": "Boolean!"
+          }
+        }
+      }
+    },
+    "TitleDescriptorInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "name": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "TitleFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "private": {
+          "access": "both"
+        }
+      }
+    },
+    "Tournament": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "children": {
+          "access": "both"
+        },
+        "endDate": {
+          "access": "both"
+        },
+        "externalLinks": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "logoUrl": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "nameShortened": {
+          "access": "both"
+        },
+        "parent": {
+          "access": "both"
+        },
+        "private": {
+          "access": "both"
+        },
+        "prizePool": {
+          "access": "both"
+        },
+        "startDate": {
+          "access": "both"
+        },
+        "teams": {
+          "access": "both"
+        },
+        "titles": {
+          "access": "both"
+        },
+        "updatedAt": {
+          "access": "both"
+        },
+        "venueType": {
+          "access": "both"
+        }
+      }
+    },
+    "TournamentConnection": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "edges": {
+          "access": "both"
+        },
+        "pageInfo": {
+          "access": "both"
+        },
+        "totalCount": {
+          "access": "both"
+        }
+      }
+    },
+    "TournamentDescriptor": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "endDate": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "nameShortened": {
+          "access": "commercial-only"
+        },
+        "parent": {
+          "access": "commercial-only"
+        },
+        "prizePool": {
+          "access": "commercial-only"
+        },
+        "sourceId": {
+          "access": "commercial-only"
+        },
+        "startDate": {
+          "access": "commercial-only"
+        },
+        "venueType": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "TournamentDescriptorInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "endDate": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "nameShortened": {
+          "access": "commercial-only"
+        },
+        "parent": {
+          "access": "commercial-only"
+        },
+        "prizePool": {
+          "access": "commercial-only"
+        },
+        "sourceId": {
+          "access": "commercial-only"
+        },
+        "startDate": {
+          "access": "commercial-only"
+        },
+        "venueType": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "TournamentEdge": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "cursor": {
+          "access": "both"
+        },
+        "node": {
+          "access": "both"
+        }
+      }
+    },
+    "TournamentFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "endDate": {
+          "access": "both"
+        },
+        "hasChildren": {
+          "access": "both"
+        },
+        "hasParent": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "nameShortened": {
+          "access": "both"
+        },
+        "private": {
+          "access": "both"
+        },
+        "productServiceLevels": {
+          "access": "both"
+        },
+        "startDate": {
+          "access": "both"
+        },
+        "title": {
+          "access": "both"
+        },
+        "titleId": {
+          "access": "both"
+        },
+        "updatedAt": {
+          "access": "both"
+        },
+        "venueType": {
+          "access": "both"
+        }
+      }
+    },
+    "TournamentTitleFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        }
+      }
+    },
+    "TournamentVenueType": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "HYBRID": {
+          "access": "both"
+        },
+        "LAN": {
+          "access": "both"
+        },
+        "ONLINE": {
+          "access": "both"
+        },
+        "UNKNOWN": {
+          "access": "both"
+        }
+      }
+    },
+    "UpdateContentCatalogCharacterInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "contentCatalogVersionId": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageData": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateContentCatalogCharacterPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "updatedContentCatalogCharacter": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateContentCatalogItemInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "contentCatalogVersionId": {
+          "access": "commercial-only"
+        },
+        "cost": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageData": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateContentCatalogItemPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "updatedContentCatalogItem": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateContentCatalogMapInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "bounds": {
+          "access": "commercial-only"
+        },
+        "contentCatalogVersionId": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageData": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateContentCatalogMapPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "updatedContentCatalogMap": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateContentCatalogStructureInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "lolContentCatalogStructure": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateContentCatalogStructurePayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "updatedContentCatalogStructure": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateContentCatalogVersionInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "contentCatalogVersionId": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateContentCatalogVersionPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "updatedContentCatalogVersion": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateLolContentCatalogStructureInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "alias": {
+          "access": "commercial-only"
+        },
+        "contentCatalogVersionId": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "gridType": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageData": {
+          "access": "commercial-only"
+        },
+        "lane": {
+          "access": "commercial-only"
+        },
+        "maxHealth": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "nexusTurretName": {
+          "access": "commercial-only"
+        },
+        "position": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "respawnTime": {
+          "access": "commercial-only"
+        },
+        "riotType": {
+          "access": "commercial-only"
+        },
+        "teamId": {
+          "access": "commercial-only"
+        },
+        "turretTier": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdatePlayerInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "dateOfBirth": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "fullName": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "imageData": {
+          "access": "commercial-only"
+        },
+        "nationality": {
+          "access": "commercial-only"
+        },
+        "nickname": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "role": {
+          "access": "commercial-only"
+        },
+        "team": {
+          "access": "commercial-only"
+        },
+        "title": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdatePlayerPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "updatedPlayer": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdatePlayerPlayerRoleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdatePlayerRoleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdatePlayerRolePayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "updatedPlayerRole": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdatePlayerRoleTitleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "titleId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdatePlayerTeamInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "teamId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdatePlayerTitleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "titleId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateSeriesFormatInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateSeriesInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "format": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "players": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "startTimeScheduled": {
+          "access": "commercial-only"
+        },
+        "teams": {
+          "access": "commercial-only"
+        },
+        "title": {
+          "access": "commercial-only"
+        },
+        "tournament": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateSeriesParticipatingPlayersInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "id": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateSeriesPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "updatedSeries": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateSeriesTeamInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "scoreAdvantage": {
+          "access": "commercial-only"
+        },
+        "teamId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateSeriesTitleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "titleId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateSeriesTournamentInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "tournamentId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateTeamInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "assets": {
+          "access": "commercial-only"
+        },
+        "colorPrimary": {
+          "access": "commercial-only"
+        },
+        "colorSecondary": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "logoData": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "nameShortened": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "title": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateTeamPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "updatedTeam": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateTeamTitleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "titleId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateTournamentInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "endDate": {
+          "access": "commercial-only"
+        },
+        "externalLinks": {
+          "access": "commercial-only"
+        },
+        "id": {
+          "access": "commercial-only"
+        },
+        "logoData": {
+          "access": "commercial-only"
+        },
+        "name": {
+          "access": "commercial-only"
+        },
+        "nameShortened": {
+          "access": "commercial-only"
+        },
+        "parent": {
+          "access": "commercial-only"
+        },
+        "private": {
+          "access": "commercial-only"
+        },
+        "prizePool": {
+          "access": "commercial-only"
+        },
+        "startDate": {
+          "access": "commercial-only"
+        },
+        "teams": {
+          "access": "commercial-only"
+        },
+        "titles": {
+          "access": "commercial-only"
+        },
+        "venueType": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateTournamentParentInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "tournamentId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateTournamentPayload": {
+      "kind": "OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "updatedTournament": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateTournamentTeamInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "teamId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "UpdateTournamentTitleInput": {
+      "kind": "INPUT_OBJECT",
+      "access": "commercial-only",
+      "fields": {
+        "titleId": {
+          "access": "commercial-only"
+        }
+      }
+    },
+    "Url": {
+      "kind": "SCALAR",
+      "access": "both"
+    },
+    "VideoStream": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "url": {
+          "access": "both"
+        }
+      }
+    }
+  }
+}

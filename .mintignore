@@ -1,0 +1,4 @@
+# Tooling and data, not pages
+tools/
+schemas/
+examples/

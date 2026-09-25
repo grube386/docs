@@ -1,0 +1,13 @@
+{
+  "first": 2,
+  "after": null,
+  "filter": {
+    "tournament": {
+      "id": { "in": ["775195"] },
+      "includeChildren": { "equals": true }
+    },
+    "types": ["ESPORTS"]
+  },
+  "orderBy": "StartTimeScheduled",
+  "orderDirection": "DESC"
+}
