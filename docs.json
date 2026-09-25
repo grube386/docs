@@ -13,7 +13,13 @@
       "dark": "#131415"
     }
   },
-  "favicon": "/favicon.svg",
+  "fonts": {
+    "family": "Inter"
+  },
+  "favicon": {
+    "light": "/favicon.svg",
+    "dark": "/favicon-dark.svg"
+  },
   "navigation": {
     "products": [
       {
