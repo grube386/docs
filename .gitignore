@@ -6,3 +6,4 @@
 inventory/
 questions/
 node_modules/
+.worktrees/
