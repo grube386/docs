@@ -120,7 +120,7 @@ Status: signed off by Matej on 2026-09-25 (decision D12). Use the spelling and c
 | File Download | File Download | The REST API for downloading end-of-series files. |
 | Commercial platform | Commercial platform | GRID's closed platform at `api.grid.gg`. Capital C, lowercase "platform". All tests and reference examples use it. |
 | Open Access platform | Open Access platform, OA | GRID's open platform at `api-op.grid.gg`. Write "Open Access (OA)" on first use in a page, then "OA". Never "open access", "Open-Access", or "OP". |
-| Not available on OA | **Not available on OA** | The badge label on pages whose operation or type exists only on the Commercial platform. Fixed text: use it exactly as written, from the snippet, directly under the page title. Never rephrase it ("Commercial only", "Not on OA"). |
+| Not available on OA | **Not available on OA** | The badge label on pages whose operation or type exists only on the Commercial platform, inside a product that OA offers (see the access rule in section 5). Fixed text: use it exactly as written, from the snippet, directly under the page title. Never rephrase it ("Commercial only", "Not on OA"). |
 | API key | API key | The secret key sent in the `x-api-key` header. Lowercase "key". Never "API Key", "api key", or "token". |
 | GraphQL Playground | GraphQL Playground | The in-browser query tool on the GRID Portal. |
 | Data Feed Viewer | Data Feed Viewer | The GRID Portal tool that displays a live Series Events feed. |
@@ -170,6 +170,8 @@ Status: signed off by Matej on 2026-09-25 (decision D12). Use the spelling and c
 
 ### Title names
 
+The docs cover eight titles in every product: Counter-Strike 2, Dota 2, League of Legends, VALORANT, Mobile Legends: Bang Bang, Rainbow Six Siege, Standoff 2, and CrossFire. Don't write title-specific pages for any other title.
+
 In running text, write a title the way its publisher styles it, not the way the API returns it. Use the API value only inside code, such as a query variable or a response.
 
 | API `name` | Write |
@@ -178,6 +180,10 @@ In running text, write a title the way its publisher styles it, not the way the 
 | Valorant | VALORANT |
 | Defense of the Ancients 2 | Dota 2 |
 | League of Legends | League of Legends |
+| Mobile Legends: Bang Bang | Mobile Legends: Bang Bang |
+| Tom Clancy's Rainbow Six Siege | Rainbow Six Siege |
+| Standoff 2 | Standoff 2 |
+| Crossfire | CrossFire |
 
 For a title not in this table, check the publisher's own site and add a row.
 
@@ -187,9 +193,17 @@ The docs describe two access tiers: the Commercial platform and the Open Access 
 
 ## 4. Page types
 
-Every page is one of seven types. Start from the template and match the canonical page.
+Every page is one of seven types. Start from the template and use the canonical page as the example.
 
-Ticket P0-6 fills in the Template and Canonical page columns once the seven pages are approved. Until then, the paths in brackets name the planned canonical pages.
+A template sets the minimum structure and the order of its sections, not the limit of what a page can say. When a page needs more than the template gives, add it. For example, a section on how an operation behaves, a known limit, or a worked case the reader is likely to hit. Rules for extending a template:
+
+- Keep the template's sections and their order. Add new sections where they read best, and don't remove or rename required ones.
+- Use only the components and conventions in this file.
+- Say what you added and why in the PR description, so Matej can decide whether it stays on this page only or becomes part of the type.
+- If Matej agrees that it belongs to the type, update the template and the canonical page in the same PR, or in a follow-up PR that's linked from it.
+- If a template rule doesn't fit a page at all, don't work around it silently. Add a question to `questions/<product>.md`.
+
+Each P0-5 ticket fills in its own row once its page is approved. Until then, the paths in brackets name the planned canonical pages.
 
 | Type | Purpose | Template | Canonical page |
 |---|---|---|---|
@@ -266,6 +280,8 @@ description: "Query a paginated list of series with filters and ordering."
 - A snippet that pages may need to extend exports a component: `import { PlaygroundTip } from "/snippets/playground-tip.mdx";`. It takes props for the words that change per page (for example `items="series"`), and any text between its opening and closing tags is added to it. Fixed text, such as the badge and the endpoints, stays a plain snippet.
 - Before you create a new snippet, ask Matej. Say what it would hold, which pages would use it, and how many pages you estimate will reuse it.
 - Access: a page whose operation or type exists only on the Commercial platform gets the **Not available on OA** badge snippet directly under the title. Take access from `schemas/<api>.access.json`, never from guesswork. No sidebar tag.
+- This applies only to products that OA offers (Central Data, Series State). File Download, Series Events, and Stats Feed aren't offered on OA. Say so once, on the product overview, and nowhere else in that product: no badge, no note. The Open Access platform page lists which products OA offers.
+- Stats Feed runs on `api-op.grid.gg` for Commercial keys too. Show that URL with the Commercial key, and never present Stats Feed as an OA product.
 - MDX doesn't accept HTML comments. Use `{/* comment */}`.
 
 ## 6. Sources of truth
