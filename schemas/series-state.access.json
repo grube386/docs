@@ -1,0 +1,5460 @@
+{
+  "api": "series-state",
+  "platforms": {
+    "commercial": "https://api.grid.gg/live-data-feed/series-state/graphql",
+    "open-access": "https://api-op.grid.gg/live-data-feed/series-state/graphql"
+  },
+  "legend": {
+    "both": "Available on Commercial (api.grid.gg) and Open Access (api-op.grid.gg).",
+    "commercial-only": "Available on Commercial only. Pages badge it \"Not available on OA\".",
+    "open-access-only": "Present on Open Access but not on Commercial. Unexpected: report it, do not document it."
+  },
+  "excluded": [
+    "_entities",
+    "_service",
+    "_Any",
+    "_Entity",
+    "_FieldSet",
+    "_Service",
+    "_Placeholder"
+  ],
+  "summary": {
+    "operations": {
+      "both": 2,
+      "commercial-only": 0,
+      "open-access-only": 0
+    },
+    "types": {
+      "both": 93,
+      "commercial-only": 0,
+      "open-access-only": 0
+    },
+    "fields": {
+      "both": 1568,
+      "commercial-only": 0,
+      "open-access-only": 0
+    },
+    "arguments": {
+      "both": 3,
+      "commercial-only": 0,
+      "open-access-only": 0
+    },
+    "enumValues": {
+      "both": 42,
+      "commercial-only": 0,
+      "open-access-only": 0
+    }
+  },
+  "roots": {
+    "query": "Query"
+  },
+  "operations": {
+    "query": {
+      "latestSeriesStateByPlayerId": {
+        "access": "both",
+        "args": {
+          "id": {
+            "access": "both"
+          }
+        }
+      },
+      "seriesState": {
+        "access": "both",
+        "args": {
+          "id": {
+            "access": "both"
+          }
+        }
+      }
+    }
+  },
+  "types": {
+    "Ability": {
+      "kind": "INTERFACE",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "ready": {
+          "access": "both"
+        }
+      }
+    },
+    "AbilityValorant": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "charges": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "ready": {
+          "access": "both"
+        }
+      }
+    },
+    "Bounds": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "max": {
+          "access": "both"
+        },
+        "min": {
+          "access": "both"
+        }
+      }
+    },
+    "Character": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        }
+      }
+    },
+    "ClockState": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "currentSeconds": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "ticking": {
+          "access": "both"
+        },
+        "ticksBackwards": {
+          "access": "both"
+        },
+        "type": {
+          "access": "both"
+        }
+      }
+    },
+    "Coordinates": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "x": {
+          "access": "both"
+        },
+        "y": {
+          "access": "both"
+        }
+      }
+    },
+    "DamageDealtSource": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "damageAmount": {
+          "access": "both"
+        },
+        "damageTypes": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "occurrenceCount": {
+          "access": "both"
+        },
+        "source": {
+          "access": "both"
+        }
+      }
+    },
+    "DamageDealtTarget": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "damageAmount": {
+          "access": "both"
+        },
+        "damageTypes": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "occurrenceCount": {
+          "access": "both"
+        },
+        "target": {
+          "access": "both"
+        }
+      }
+    },
+    "DamageDealtType": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "damageAmount": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "occurrenceCount": {
+          "access": "both"
+        },
+        "type": {
+          "access": "both"
+        }
+      }
+    },
+    "DamageSource": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "name": {
+          "access": "both"
+        }
+      }
+    },
+    "DamageTarget": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "name": {
+          "access": "both"
+        }
+      }
+    },
+    "DataProvider": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "name": {
+          "access": "both"
+        }
+      }
+    },
+    "DateTime": {
+      "kind": "SCALAR",
+      "access": "both"
+    },
+    "DefaultAbility": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "ready": {
+          "access": "both"
+        }
+      }
+    },
+    "DraftAction": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "draftable": {
+          "access": "both"
+        },
+        "drafter": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "sequenceNumber": {
+          "access": "both"
+        },
+        "type": {
+          "access": "both"
+        }
+      }
+    },
+    "Draftable": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "linkedDraftable": {
+          "access": "both"
+        },
+        "linkedDraftables": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "type": {
+          "access": "both"
+        }
+      }
+    },
+    "Drafter": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "type": {
+          "access": "both"
+        }
+      }
+    },
+    "Duration": {
+      "kind": "SCALAR",
+      "access": "both"
+    },
+    "ErrorDetail": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "DEADLINE_EXCEEDED": {
+          "access": "both"
+        },
+        "ENHANCE_YOUR_CALM": {
+          "access": "both"
+        },
+        "FIELD_NOT_FOUND": {
+          "access": "both"
+        },
+        "INVALID_ARGUMENT": {
+          "access": "both"
+        },
+        "INVALID_CURSOR": {
+          "access": "both"
+        },
+        "MISSING_RESOURCE": {
+          "access": "both"
+        },
+        "SERVICE_ERROR": {
+          "access": "both"
+        },
+        "TCP_FAILURE": {
+          "access": "both"
+        },
+        "THROTTLED_CONCURRENCY": {
+          "access": "both"
+        },
+        "THROTTLED_CPU": {
+          "access": "both"
+        },
+        "TOO_MANY_REQUESTS": {
+          "access": "both"
+        },
+        "UNIMPLEMENTED": {
+          "access": "both"
+        },
+        "UNKNOWN": {
+          "access": "both"
+        }
+      }
+    },
+    "ErrorType": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "BAD_REQUEST": {
+          "access": "both"
+        },
+        "FAILED_PRECONDITION": {
+          "access": "both"
+        },
+        "INTERNAL": {
+          "access": "both"
+        },
+        "NOT_FOUND": {
+          "access": "both"
+        },
+        "PERMISSION_DENIED": {
+          "access": "both"
+        },
+        "UNAUTHENTICATED": {
+          "access": "both"
+        },
+        "UNAVAILABLE": {
+          "access": "both"
+        },
+        "UNKNOWN": {
+          "access": "both"
+        }
+      }
+    },
+    "ExternalEntity": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        }
+      }
+    },
+    "ExternalLink": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "dataProvider": {
+          "access": "both"
+        },
+        "externalEntity": {
+          "access": "both"
+        }
+      }
+    },
+    "GamePlayerState": {
+      "kind": "INTERFACE",
+      "access": "both",
+      "fields": {
+        "abilities": {
+          "access": "both"
+        },
+        "character": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "inventory": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "position": {
+          "access": "both"
+        },
+        "roles": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "statusEffects": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "GamePlayerStateCs2": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "abilities": {
+          "access": "both"
+        },
+        "alive": {
+          "access": "both"
+        },
+        "character": {
+          "access": "both"
+        },
+        "currentArmor": {
+          "access": "both"
+        },
+        "currentHealth": {
+          "access": "both"
+        },
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "externalLinks": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "inventory": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "maxHealth": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "position": {
+          "access": "both"
+        },
+        "roles": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "statusEffects": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "GamePlayerStateCsgo": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "abilities": {
+          "access": "both"
+        },
+        "alive": {
+          "access": "both"
+        },
+        "character": {
+          "access": "both"
+        },
+        "currentArmor": {
+          "access": "both"
+        },
+        "currentHealth": {
+          "access": "both"
+        },
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "externalLinks": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "inventory": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "maxHealth": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "position": {
+          "access": "both"
+        },
+        "roles": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "statusEffects": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "GamePlayerStateDefault": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "abilities": {
+          "access": "both"
+        },
+        "character": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "inventory": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "position": {
+          "access": "both"
+        },
+        "roles": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "statusEffects": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "GamePlayerStateDota": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "abilities": {
+          "access": "both"
+        },
+        "alive": {
+          "access": "both"
+        },
+        "character": {
+          "access": "both"
+        },
+        "currentHealth": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "experiencePoints": {
+          "access": "both"
+        },
+        "externalLinks": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "inventory": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "killStreak": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "maxHealth": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "position": {
+          "access": "both"
+        },
+        "roles": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "statusEffects": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "GamePlayerStateLol": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "abilities": {
+          "access": "both"
+        },
+        "alive": {
+          "access": "both"
+        },
+        "character": {
+          "access": "both"
+        },
+        "currentArmor": {
+          "access": "both"
+        },
+        "currentHealth": {
+          "access": "both"
+        },
+        "damageDealt": {
+          "access": "both"
+        },
+        "damagePerMinute": {
+          "access": "both"
+        },
+        "damagePerMoney": {
+          "access": "both"
+        },
+        "damagePercentage": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "experiencePoints": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "forwardPercentage": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "inventory": {
+          "access": "both"
+        },
+        "kdaRatio": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "killParticipation": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "killsAndAssists": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "maxHealth": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "moneyPerMinute": {
+          "access": "both"
+        },
+        "moneyPercentage": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "position": {
+          "access": "both"
+        },
+        "respawnClock": {
+          "access": "both"
+        },
+        "roles": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "statusEffects": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "totalMoneyEarned": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "visionScore": {
+          "access": "both"
+        },
+        "visionScorePerMinute": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "GamePlayerStateMlbb": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "abilities": {
+          "access": "both"
+        },
+        "alive": {
+          "access": "both"
+        },
+        "character": {
+          "access": "both"
+        },
+        "currentHealth": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "experiencePoints": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "inventory": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "maxHealth": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "position": {
+          "access": "both"
+        },
+        "respawnClock": {
+          "access": "both"
+        },
+        "roles": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "statusEffects": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "GamePlayerStatePubg": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "abilities": {
+          "access": "both"
+        },
+        "alive": {
+          "access": "both"
+        },
+        "character": {
+          "access": "both"
+        },
+        "currentHealth": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "inventory": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "maxHealth": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "position": {
+          "access": "both"
+        },
+        "roles": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "statusEffects": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "GamePlayerStateR6": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "abilities": {
+          "access": "both"
+        },
+        "alive": {
+          "access": "both"
+        },
+        "character": {
+          "access": "both"
+        },
+        "currentHealth": {
+          "access": "both"
+        },
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "healingDealt": {
+          "access": "both"
+        },
+        "healingReceived": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "inventory": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "knockdownsGiven": {
+          "access": "both"
+        },
+        "knockdownsReceived": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "maxHealth": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "position": {
+          "access": "both"
+        },
+        "roles": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "statusEffects": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "GamePlayerStateValorant": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "abilities": {
+          "access": "both"
+        },
+        "alive": {
+          "access": "both"
+        },
+        "character": {
+          "access": "both"
+        },
+        "currentArmor": {
+          "access": "both"
+        },
+        "currentHealth": {
+          "access": "both"
+        },
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "inventory": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "maxHealth": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "position": {
+          "access": "both"
+        },
+        "roles": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "statusEffects": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "ultimatePoints": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "GameState": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "clock": {
+          "access": "both"
+        },
+        "draftActions": {
+          "access": "both"
+        },
+        "duration": {
+          "access": "both"
+        },
+        "externalLinks": {
+          "access": "both"
+        },
+        "finished": {
+          "access": "both"
+        },
+        "forfeited": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "map": {
+          "access": "both"
+        },
+        "nonPlayerCharacters": {
+          "access": "both"
+        },
+        "paused": {
+          "access": "both"
+        },
+        "segments": {
+          "access": "both"
+        },
+        "sequenceNumber": {
+          "access": "both"
+        },
+        "started": {
+          "access": "both"
+        },
+        "startedAt": {
+          "access": "both"
+        },
+        "structures": {
+          "access": "both"
+        },
+        "teams": {
+          "access": "both"
+        },
+        "titleVersion": {
+          "access": "both"
+        },
+        "type": {
+          "access": "both"
+        }
+      }
+    },
+    "GameStateFilter": {
+      "kind": "INPUT_OBJECT",
+      "access": "both",
+      "fields": {
+        "finished": {
+          "access": "both"
+        },
+        "started": {
+          "access": "both"
+        }
+      }
+    },
+    "GameTeamState": {
+      "kind": "INTERFACE",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "GameTeamStateCs2": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "GameTeamStateCsgo": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "GameTeamStateDefault": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "GameTeamStateDota": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "experiencePoints": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "GameTeamStateLol": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "baronPowerPlays": {
+          "access": "both"
+        },
+        "damageDealt": {
+          "access": "both"
+        },
+        "damagePerMinute": {
+          "access": "both"
+        },
+        "damagePerMoney": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "experiencePoints": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "forwardPercentage": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "kdaRatio": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "killsAndAssists": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "majorMoneyDeficit": {
+          "access": "both"
+        },
+        "majorMoneyLead": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "moneyDifference": {
+          "access": "both"
+        },
+        "moneyPerMinute": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "totalMoneyEarned": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "visionScore": {
+          "access": "both"
+        },
+        "visionScorePerMinute": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "GameTeamStatePubg": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "GameTeamStateR6": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "healingDealt": {
+          "access": "both"
+        },
+        "healingReceived": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "knockdownsGiven": {
+          "access": "both"
+        },
+        "knockdownsReceived": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "GameTeamStateValorant": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "loadoutValue": {
+          "access": "both"
+        },
+        "money": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "netWorth": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "unitKills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "GameType": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "COMPETITIVE": {
+          "access": "both"
+        },
+        "ESPORTS": {
+          "access": "both"
+        },
+        "REGULAR": {
+          "access": "both"
+        },
+        "SCRIM": {
+          "access": "both"
+        }
+      }
+    },
+    "ItemStack": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "equipped": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "quantity": {
+          "access": "both"
+        },
+        "stashed": {
+          "access": "both"
+        }
+      }
+    },
+    "KillAssistFromPlayer": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "playerId": {
+          "access": "both"
+        }
+      }
+    },
+    "LolBaronPowerPlay": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "value": {
+          "access": "both"
+        }
+      }
+    },
+    "MapState": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "bounds": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        }
+      }
+    },
+    "Multikill": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "count": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "numberOfKills": {
+          "access": "both"
+        }
+      }
+    },
+    "NonPlayerCharacterState": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "alive": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "position": {
+          "access": "both"
+        },
+        "respawnClock": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "type": {
+          "access": "both"
+        }
+      }
+    },
+    "Objective": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "completedFirst": {
+          "access": "both"
+        },
+        "completionCount": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "type": {
+          "access": "both"
+        }
+      }
+    },
+    "ParticipationStatus": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "active": {
+          "access": "both"
+        },
+        "inactive": {
+          "access": "both"
+        }
+      }
+    },
+    "PlayerInventory": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "items": {
+          "access": "both"
+        }
+      }
+    },
+    "PlayerRole": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        }
+      }
+    },
+    "SegmentPlayerState": {
+      "kind": "INTERFACE",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "SegmentPlayerStateCs2": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "alive": {
+          "access": "both"
+        },
+        "currentArmor": {
+          "access": "both"
+        },
+        "currentHealth": {
+          "access": "both"
+        },
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "externalLinks": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "maxHealth": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "SegmentPlayerStateCsgo": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "alive": {
+          "access": "both"
+        },
+        "currentArmor": {
+          "access": "both"
+        },
+        "currentHealth": {
+          "access": "both"
+        },
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "externalLinks": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "maxHealth": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "SegmentPlayerStateDefault": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "SegmentPlayerStateR6": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "alive": {
+          "access": "both"
+        },
+        "currentHealth": {
+          "access": "both"
+        },
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "healingDealt": {
+          "access": "both"
+        },
+        "healingReceived": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "knockdownsGiven": {
+          "access": "both"
+        },
+        "knockdownsReceived": {
+          "access": "both"
+        },
+        "maxHealth": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "SegmentPlayerStateValorant": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "alive": {
+          "access": "both"
+        },
+        "currentArmor": {
+          "access": "both"
+        },
+        "currentHealth": {
+          "access": "both"
+        },
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "maxHealth": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "SegmentState": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "draftActions": {
+          "access": "both"
+        },
+        "duration": {
+          "access": "both"
+        },
+        "finished": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "segments": {
+          "access": "both"
+        },
+        "sequenceNumber": {
+          "access": "both"
+        },
+        "started": {
+          "access": "both"
+        },
+        "startedAt": {
+          "access": "both"
+        },
+        "teams": {
+          "access": "both"
+        },
+        "type": {
+          "access": "both"
+        }
+      }
+    },
+    "SegmentTeamState": {
+      "kind": "INTERFACE",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "SegmentTeamStateCs2": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "winType": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "SegmentTeamStateCsgo": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "winType": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "SegmentTeamStateDefault": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "SegmentTeamStateR6": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "healingDealt": {
+          "access": "both"
+        },
+        "healingReceived": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "knockdownsGiven": {
+          "access": "both"
+        },
+        "knockdownsReceived": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "winType": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "SegmentTeamStateValorant": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "damageDealt": {
+          "access": "both"
+        },
+        "damageDealtSources": {
+          "access": "both"
+        },
+        "damageDealtTargets": {
+          "access": "both"
+        },
+        "damageTaken": {
+          "access": "both"
+        },
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "selfdamageDealt": {
+          "access": "both"
+        },
+        "selfdamageTaken": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamdamageDealt": {
+          "access": "both"
+        },
+        "teamdamageTaken": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "winType": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesInvalidationReason": {
+      "kind": "ENUM",
+      "access": "both",
+      "values": {
+        "AGENT_SWITCH": {
+          "access": "both"
+        },
+        "FAILED_TEAM_MAPPING": {
+          "access": "both"
+        },
+        "GAME_WINNER_MISSING": {
+          "access": "both"
+        },
+        "INCORRECT_TEAM_SIZE": {
+          "access": "both"
+        },
+        "INVALID_DRAFT": {
+          "access": "both"
+        },
+        "LOST_EVENT": {
+          "access": "both"
+        },
+        "MANUAL_ACTION": {
+          "access": "both"
+        },
+        "NO_ROSHAN_PLAYER_KILLER": {
+          "access": "both"
+        },
+        "NO_ROSHAN_TEAM_KILLER": {
+          "access": "both"
+        },
+        "REVERT": {
+          "access": "both"
+        },
+        "SDK_COMMAND": {
+          "access": "both"
+        },
+        "TBD_TEAM": {
+          "access": "both"
+        },
+        "TRANSACTION_LIMIT_REACHED": {
+          "access": "both"
+        },
+        "TTL_REACHED": {
+          "access": "both"
+        },
+        "UNSPECIFIED": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesPlayerState": {
+      "kind": "INTERFACE",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesPlayerStateCs2": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "externalLinks": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesPlayerStateCsgo": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "externalLinks": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesPlayerStateDefault": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesPlayerStateDota": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "externalLinks": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesPlayerStatePubg": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesPlayerStateR6": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "knockdownsGiven": {
+          "access": "both"
+        },
+        "knockdownsReceived": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesPlayerStateValorant": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "participationStatus": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesState": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "draftActions": {
+          "access": "both"
+        },
+        "duration": {
+          "access": "both"
+        },
+        "finished": {
+          "access": "both"
+        },
+        "forfeited": {
+          "access": "both"
+        },
+        "format": {
+          "access": "both"
+        },
+        "games": {
+          "access": "both",
+          "args": {
+            "filter": {
+              "access": "both"
+            }
+          }
+        },
+        "id": {
+          "access": "both"
+        },
+        "invalidationReason": {
+          "access": "both"
+        },
+        "started": {
+          "access": "both"
+        },
+        "startedAt": {
+          "access": "both"
+        },
+        "teams": {
+          "access": "both"
+        },
+        "title": {
+          "access": "both"
+        },
+        "updatedAt": {
+          "access": "both"
+        },
+        "valid": {
+          "access": "both"
+        },
+        "version": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesTeamState": {
+      "kind": "INTERFACE",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesTeamStateCs2": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesTeamStateCsgo": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesTeamStateDefault": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesTeamStateDota": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesTeamStatePubg": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesTeamStateR6": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "knockdownsGiven": {
+          "access": "both"
+        },
+        "knockdownsReceived": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "SeriesTeamStateValorant": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "deaths": {
+          "access": "both"
+        },
+        "firstKill": {
+          "access": "both"
+        },
+        "headshots": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "killAssistsGiven": {
+          "access": "both"
+        },
+        "killAssistsReceived": {
+          "access": "both"
+        },
+        "killAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "kills": {
+          "access": "both"
+        },
+        "multikills": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "objectives": {
+          "access": "both"
+        },
+        "players": {
+          "access": "both"
+        },
+        "score": {
+          "access": "both"
+        },
+        "selfkills": {
+          "access": "both"
+        },
+        "structuresCaptured": {
+          "access": "both"
+        },
+        "structuresDestroyed": {
+          "access": "both"
+        },
+        "teamHeadshots": {
+          "access": "both"
+        },
+        "teamkillAssistsGiven": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        },
+        "teamkillAssistsReceivedFromPlayer": {
+          "access": "both"
+        },
+        "teamkills": {
+          "access": "both"
+        },
+        "weaponKills": {
+          "access": "both"
+        },
+        "weaponTeamkills": {
+          "access": "both"
+        },
+        "won": {
+          "access": "both"
+        }
+      }
+    },
+    "StatusEffect": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "clock": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "name": {
+          "access": "both"
+        },
+        "quantity": {
+          "access": "both"
+        }
+      }
+    },
+    "StructureState": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "currentHealth": {
+          "access": "both"
+        },
+        "destroyed": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "maxHealth": {
+          "access": "both"
+        },
+        "position": {
+          "access": "both"
+        },
+        "respawnClock": {
+          "access": "both"
+        },
+        "side": {
+          "access": "both"
+        },
+        "teamId": {
+          "access": "both"
+        },
+        "type": {
+          "access": "both"
+        }
+      }
+    },
+    "TeamkillAssistFromPlayer": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "id": {
+          "access": "both"
+        },
+        "playerId": {
+          "access": "both"
+        },
+        "teamkillAssistsReceived": {
+          "access": "both"
+        }
+      }
+    },
+    "Title": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "nameShortened": {
+          "access": "both"
+        }
+      }
+    },
+    "TitleVersion": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "name": {
+          "access": "both"
+        }
+      }
+    },
+    "UnitKill": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "count": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "unitName": {
+          "access": "both"
+        }
+      }
+    },
+    "Version": {
+      "kind": "SCALAR",
+      "access": "both"
+    },
+    "WeaponKill": {
+      "kind": "OBJECT",
+      "access": "both",
+      "fields": {
+        "count": {
+          "access": "both"
+        },
+        "id": {
+          "access": "both"
+        },
+        "weaponName": {
+          "access": "both"
+        }
+      }
+    }
+  }
+}

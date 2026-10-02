@@ -270,6 +270,11 @@ description: "Query a paginated list of series with filters and ordering."
 
 1. For GraphQL APIs, the schema in `schemas/<api>.graphql` and live responses are the truth. Old Portal articles and PDFs inform coverage and wording only.
 2. For non-GraphQL surfaces (WebSocket, REST, video, widgets), live observation is the truth. PDFs and Portal articles are hints.
+   - The old sources are local and gitignored, and you only read them. Never edit, move, or quote them wholesale. `inventory/Markdown docs/` holds the 158 old Portal articles, named `<id>-<slug>.md`. `inventory/Old documentation/` holds the 20 PDFs.
+   - Start from `inventory/sources-catalog.md`. It lists every article and PDF with its ID, category, likely product, and notes.
+   - Recipe articles store their steps as a JSON array in the body, not as prose.
+   - Several articles exist in more than one version, for example 39 and 174 (Series Events). The one with the latest `updatedAt` is usually current.
+   - The old `package_access` field isn't the access rule for a new page. Access comes from `schemas/<api>.access.json`.
 3. For every page, compare three things: what the old article claims, what the schema says, and what a live call returns. Every mismatch, and every claim you can't observe, becomes a numbered question in `questions/<product>.md` (gitignored).
 4. A page with an open question doesn't go into a PR. Matej answers; the answer is recorded as a dated fact, and the page proceeds.
 5. Never contact engineering directly. Matej decides whether to escalate.

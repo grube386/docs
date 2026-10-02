@@ -21,6 +21,14 @@
     "central-data": {
       "name": "Central Data",
       "path": "/central-data/graphql"
+    },
+    "series-state": {
+      "name": "Series State",
+      "path": "/live-data-feed/series-state/graphql"
+    },
+    "stats-feed": {
+      "name": "Stats Feed",
+      "path": "/statistics-feed/graphql"
     }
   }
 }
