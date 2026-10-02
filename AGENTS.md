@@ -262,7 +262,9 @@ description: "Query a paginated list of series with filters and ordering."
 - `<ParamField>` for arguments, `<ResponseField>` (with `<Expandable>` for nested fields) for fields, `<RequestExample>`/`<ResponseExample>` on reference pages.
 - `<Card>`/`<CardGroup>` for next steps and overviews. `<Update>` on changelogs only.
 - Every code block has a language. Blocks inside a group also have a title: ` ```graphql Basic `.
-- Shared text comes from `snippets/`, never copied: authentication header, endpoints per API and platform, the **Not available on OA** badge, rate limits, Playground tip, support contact.
+- Shared text comes from `snippets/`, never copied: authentication header, endpoints per API and platform, the **Not available on OA** badge, rate limits, Playground tip, support contact, and the pagination arguments `after`, `before`, `first`, and `last` (one snippet each).
+- A snippet that pages may need to extend exports a component: `import { PlaygroundTip } from "/snippets/playground-tip.mdx";`. It takes props for the words that change per page (for example `items="series"`), and any text between its opening and closing tags is added to it. Fixed text, such as the badge and the endpoints, stays a plain snippet.
+- Before you create a new snippet, ask Matej. Say what it would hold, which pages would use it, and how many pages you estimate will reuse it.
 - Access: a page whose operation or type exists only on the Commercial platform gets the **Not available on OA** badge snippet directly under the title. Take access from `schemas/<api>.access.json`, never from guesswork. No sidebar tag.
 - MDX doesn't accept HTML comments. Use `{/* comment */}`.
 

@@ -22,6 +22,12 @@ description: "[One sentence: what the operation returns or does, ending with a p
      linked to its type page (objects/<Type>, or connections#<type> for a connection).
      For a connection, name edges, pageInfo, and totalCount in one sentence.
   4. Arguments: one <ParamField> per argument, in schema order.
+     - Pagination arguments come from snippets, never retyped: <PaginationAfter />,
+       <PaginationBefore />, <PaginationFirst items="..." />, <PaginationLast items="..." />.
+       items is the plural noun the query returns (default "results"). PaginationFirst takes
+       defaultValue (default "10"): confirm the query's default live before you rely on it.
+       To add a page-specific sentence, put it between the snippet's opening and closing tags.
+       If the argument has a different type or meaning on this query, write its <ParamField> by hand.
      - type: exactly as the schema writes it (String, Int, SeriesFilter, SeriesOrderBy!). Never guess.
      - default: only when the schema gives a default, or the schema description states one
        and a live call confirms it.
@@ -29,8 +35,10 @@ description: "[One sentence: what the operation returns or does, ending with a p
      - Enums: list every value with a short meaning, taken from the schema descriptions.
      - Input and filter types: link to their type page; don't repeat their fields here.
      - No arguments: replace the section body with "This query takes no arguments."
-  5. Examples: one short paragraph per example that says what it returns and which fixture it uses.
-     Then one <RequestExample> and one <ResponseExample> (see EXAMPLES).
+  5. Examples: no heading. One collapsed <Accordion title="About the examples"> with at most
+     two sentences: the fixture Full uses, shortened lists, and changing state. Leave out what
+     the query already shows (arguments set, fields selected). Then one <RequestExample> and
+     one <ResponseExample> (see EXAMPLES).
 
   ACCESS BADGES (take access from schemas/<api>.access.json, never from guesswork)
   - Operation is Commercial only: put the NotAvailableOnOA snippet directly under the
@@ -49,11 +57,11 @@ description: "[One sentence: what the operation returns or does, ending with a p
     expanded one level (recursive links such as parent, children, team, or title limited to
     id and name), and pageInfo plus totalCount for a connection.
     Show the variables as a third block titled "Full variables" in the <RequestExample>.
-    Cursor arguments (after, before) and last can stay out of Full; say so in its paragraph.
+    Cursor arguments (after, before) and last can stay out of Full.
   - Fixtures: only examples/fixtures.md. Use the default fixture unless the operation needs another.
   - Keep responses small through arguments. Use `gql run --trim 2` only for nested lists no
     argument can limit, and then say on the page that nested lists are shortened.
-  - If the response reads state that changes over time, say so in the example's paragraph.
+  - If the response reads state that changes over time, say so in the accordion.
   - Redact signed or expiring URLs and tokens.
   - Block titles are exactly Basic, Full, and Full variables.
 
@@ -66,9 +74,13 @@ description: "[One sentence: what the operation returns or does, ending with a p
   Delete this comment block and every fact ID comment before merge.
 */}
 
-import PlaygroundTip from "/snippets/playground-tip.mdx";
+import { PlaygroundTip } from "/snippets/playground-tip.mdx";
+import { PaginationAfter } from "/snippets/pagination-after.mdx";
+import { PaginationBefore } from "/snippets/pagination-before.mdx";
+import { PaginationFirst } from "/snippets/pagination-first.mdx";
+import { PaginationLast } from "/snippets/pagination-last.mdx";
 
-{/* For a Commercial-only operation or argument, also import the badge next to the line above: import NotAvailableOnOA from "/snippets/not-available-on-oa.mdx"; */}
+{/* Keep only the pagination imports the query uses. For a Commercial-only operation or argument, also import the badge next to the lines above: import NotAvailableOnOA from "/snippets/not-available-on-oa.mdx"; */}
 
 ## Overview
 
@@ -82,6 +94,10 @@ Returns a [`RETURN_TYPE`](/data-apis/PRODUCT/api-reference/objects/RETURN_TYPE).
 
 ## Arguments
 
+<PaginationAfter />
+
+<PaginationBefore />
+
 <ParamField query="ARGUMENT_NAME" type="ARGUMENT_TYPE">
   [What the argument does, in one sentence.]
 </ParamField>
@@ -90,6 +106,10 @@ Returns a [`RETURN_TYPE`](/data-apis/PRODUCT/api-reference/objects/RETURN_TYPE).
   [What the argument does, in one sentence.]
 </ParamField>
 
+<PaginationFirst items="ITEMS" />
+
+<PaginationLast items="ITEMS" />
+
 <ParamField query="ENUM_ARGUMENT" type="ENUM_TYPE!" default="DEFAULT_VALUE">
   [What the argument does.] The possible values are the following:
 
@@ -97,11 +117,9 @@ Returns a [`RETURN_TYPE`](/data-apis/PRODUCT/api-reference/objects/RETURN_TYPE).
   - `VALUE_TWO`: [meaning]
 </ParamField>
 
-## Examples
-
-The Basic example returns [what].
-
-The Full example returns [what], using [fixture]. It sets [which arguments] and selects every field of `TYPE`.
+<Accordion title="About the examples">
+  The Full example uses [fixture], and shortens nested lists in its response to two items. Values such as [changing fields] are current state and can differ when you run the examples.
+</Accordion>
 
 <RequestExample>
 ```graphql Basic

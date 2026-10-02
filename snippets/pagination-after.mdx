@@ -1,0 +1,7 @@
+{/* Use: import { PaginationAfter } from "/snippets/pagination-after.mdx"; then <PaginationAfter />. Optional: children, added as a second paragraph. */}
+export const PaginationAfter = ({ children }) => (
+  <ParamField query="after" type="String">
+    Cursor after which to return results. Each edge has a <code>cursor</code>, and <code>pageInfo</code> has <code>startCursor</code> and <code>endCursor</code>.
+    {children}
+  </ParamField>
+);

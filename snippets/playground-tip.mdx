@@ -1,3 +1,7 @@
-<Tip>
-  You can run this query in the [GraphQL Playground](https://portal.grid.gg/documentation/graphql-playground) on the GRID Portal.
-</Tip>
+{/* Use: import { PlaygroundTip } from "/snippets/playground-tip.mdx"; then <PlaygroundTip />. Optional: children, added after the sentence. */}
+export const PlaygroundTip = ({ children }) => (
+  <Tip>
+    You can run this query in the <a href="https://portal.grid.gg/documentation/graphql-playground">GraphQL Playground</a> on the GRID Portal.
+    {children}
+  </Tip>
+);

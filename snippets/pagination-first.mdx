@@ -1,0 +1,7 @@
+{/* Use: import { PaginationFirst } from "/snippets/pagination-first.mdx"; then <PaginationFirst items="series" />. Props: items (plural noun, default "results"), defaultValue (default "10"), children (added as a second paragraph). */}
+export const PaginationFirst = ({ items = "results", defaultValue = "10", children }) => (
+  <ParamField query="first" type="Int" default={defaultValue}>
+    Number of {items} to return, counted from the start of the list.
+    {children}
+  </ParamField>
+);

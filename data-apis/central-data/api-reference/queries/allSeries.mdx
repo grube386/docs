@@ -3,7 +3,11 @@ title: "allSeries"
 description: "Query a filtered, sorted, and paginated list of series."
 ---
 
-import PlaygroundTip from "/snippets/playground-tip.mdx";
+import { PlaygroundTip } from "/snippets/playground-tip.mdx";
+import { PaginationAfter } from "/snippets/pagination-after.mdx";
+import { PaginationBefore } from "/snippets/pagination-before.mdx";
+import { PaginationFirst } from "/snippets/pagination-first.mdx";
+import { PaginationLast } from "/snippets/pagination-last.mdx";
 
 ## Overview
 
@@ -19,25 +23,17 @@ Returns a [`SeriesConnection!`](/data-apis/central-data/api-reference/connection
 
 All arguments are optional.
 
-<ParamField query="after" type="String">
-  Cursor after which to return results. Each edge has a `cursor`, and `pageInfo` has `startCursor` and `endCursor`.
-</ParamField>
+<PaginationAfter />
 
-<ParamField query="before" type="String">
-  Cursor before which to return results. Each edge has a `cursor`, and `pageInfo` has `startCursor` and `endCursor`.
-</ParamField>
+<PaginationBefore />
 
 <ParamField query="filter" type="SeriesFilter">
   Conditions the series must match, such as a tournament or a series type. For every condition, see [`SeriesFilter`](/data-apis/central-data/api-reference/filters/SeriesFilter).
 </ParamField>
 
-<ParamField query="first" type="Int" default="10">
-  Number of series to return, counted from the start of the list.
-</ParamField>
+<PaginationFirst items="series" />
 
-<ParamField query="last" type="Int">
-  Number of series to return, counted from the end of the list.
-</ParamField>
+<PaginationLast items="series" />
 
 <ParamField query="orderBy" type="SeriesOrderBy!" default="ID">
   Field to sort the series by. The possible values are the following:
@@ -54,13 +50,9 @@ All arguments are optional.
   - `DESC`: descending
 </ParamField>
 
-## Examples
-
-The Basic example returns the first two series, sorted by ID. The values in its response, such as `startTimeScheduled`, can differ when you run it.
-
-The Full example returns the esports series with the latest scheduled start time in the League of Legends tournament of the Esports World Cup 2026 (`830107`) and its child tournaments. It sets every argument except the cursors and `last`, and selects every field of `Series`. Nested types are expanded one level, and every nested list in the response is shortened to two items.
-
-Some values in the Full response are current state and can differ when you run it, such as each player's current `team` and the `updatedAt` times.
+<Accordion title="About the examples">
+  The Full example uses the League of Legends tournament of the Esports World Cup 2026 (`830107`), and shortens nested lists in its response to two items. Values such as `startTimeScheduled`, `updatedAt`, and each player's `team` are current state and can differ when you run the examples.
+</Accordion>
 
 <RequestExample>
 ```graphql Basic
