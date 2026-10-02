@@ -37,10 +37,10 @@ All fields are optional.
 
       <Expandable title="GameFilter fields">
         <ParamField query="id" type="IdFilter">
-          Filter by game IDs. Set the IDs in `in` (`[ID!]`).
+          Filter by game IDs.
         </ParamField>
         <ParamField query="map" type="MapFilter">
-          Filter by map. Set the map name in `name`, a `StringFilter` with the fields `contains` and `equals`.
+          Filter by map. Set the map name in `name`, a `StringFilter`.
         </ParamField>
       </Expandable>
     </ParamField>
@@ -49,12 +49,6 @@ All fields are optional.
 
 <ParamField query="livePlayerIds" type="IdFilter">
   Filter by participating player IDs.
-
-  <Expandable title="IdFilter fields">
-    <ParamField query="in" type="[ID!]">
-      The IDs to look for.
-    </ParamField>
-  </Expandable>
 </ParamField>
 
 <ParamField query="players" type="SeriesPlayerFilter">
@@ -62,19 +56,13 @@ All fields are optional.
 
   <Expandable title="SeriesPlayerFilter fields">
     <ParamField query="age" type="IntFilter">
-      Matches series in which the age of at least one player meets the condition. Set one or more of `equals`, `gte` (greater than or equal), and `lte` (less than or equal), each an `Int`.
+      Matches series in which the age of at least one player meets the condition.
     </ParamField>
   </Expandable>
 </ParamField>
 
 <ParamField query="private" type="BooleanFilter">
   Filter by visibility. Set `equals` to `true` for private series only, or to `false` for public series only. Without this field, the results include both.
-
-  <Expandable title="BooleanFilter fields">
-    <ParamField query="equals" type="Boolean">
-      The value to look for.
-    </ParamField>
-  </Expandable>
 </ParamField>
 
 <ParamField query="productServiceLevels" type="ProductServiceLevelFilter">
@@ -91,16 +79,7 @@ All fields are optional.
 </ParamField>
 
 <ParamField query="startTimeScheduled" type="DateTimeFilter">
-  Filter by the scheduled start time of the series.
-
-  <Expandable title="DateTimeFilter fields">
-    <ParamField query="gte" type="String">
-      The start of the time range, included. Use a full ISO 8601 timestamp, such as `2026-07-14T00:00:00Z`. A date without a time fails with the error "Parameter cannot be used as DateTime".
-    </ParamField>
-    <ParamField query="lte" type="String">
-      The end of the time range, included. Use a full ISO 8601 timestamp, such as `2026-07-19T23:59:59Z`.
-    </ParamField>
-  </Expandable>
+  Filter by the scheduled start time of the series. Use full ISO 8601 timestamps, such as `2026-07-14T00:00:00Z`. A date without a time fails with the error "Parameter cannot be used as DateTime".
 </ParamField>
 
 <ParamField query="teamId" type="ID" deprecated>
@@ -110,7 +89,7 @@ All fields are optional.
 </ParamField>
 
 <ParamField query="teamIds" type="IdFilter">
-  Filter by team IDs. Set the IDs in `in` (`[ID!]`).
+  Filter by team IDs.
 </ParamField>
 
 <ParamField query="titleId" type="ID" deprecated>
@@ -120,7 +99,7 @@ All fields are optional.
 </ParamField>
 
 <ParamField query="titleIds" type="IdFilter">
-  Filter by title IDs. Set the IDs in `in` (`[ID!]`).
+  Filter by title IDs.
 </ParamField>
 
 <ParamField query="tournament" type="SeriesTournamentFilter">
@@ -128,25 +107,25 @@ All fields are optional.
 
   <Expandable title="SeriesTournamentFilter fields">
     <ParamField query="id" type="IdFilter">
-      Filter by tournament IDs. Set the IDs in `in` (`[ID!]`). On its own, `id` matches only series that belong directly to the given tournaments.
+      Filter by tournament IDs. On its own, `id` matches only series that belong directly to the given tournaments.
     </ParamField>
     <ParamField query="includeChildren" type="BooleanFilter">
       Set `equals` to `true` to also match series in the child tournaments of the given tournaments. For example, the Esports World Cup 2026 League of Legends tournament (`830107`) returns no series without it and 197 series with it.
     </ParamField>
     <ParamField query="name" type="StringFilter">
-      Filter by tournament name. Set `contains` or `equals`. Both are case-insensitive.
+      Filter by tournament name.
     </ParamField>
     <ParamField query="nameShortened" type="StringFilter">
-      Filter by the short tournament name. Set `contains` or `equals`. Both are case-insensitive.
+      Filter by the short tournament name.
     </ParamField>
     <ParamField query="startDate" type="NullableDateFilter">
-      Filter by tournament start date. Set `gte`, `lte`, or both, each a date without a time, such as `2026-07-01`. Both values are included. If both `gte` and `lte` are null, the filter matches tournaments with no start date.
+      Filter by tournament start date. Unlike `startTimeScheduled`, this field takes dates without a time, such as `2026-07-01`.
     </ParamField>
     <ParamField query="endDate" type="NullableDateFilter">
-      Filter by tournament end date. Set `gte`, `lte`, or both, each a date without a time. Both values are included. If both `gte` and `lte` are null, the filter matches tournaments with no end date.
+      Filter by tournament end date.
     </ParamField>
     <ParamField query="title" type="SeriesTournamentTitleFilter">
-      Filter by the titles of the tournament. Set the title IDs in `id.in`.
+      Filter by the titles of the tournament. Set the title IDs in `id`, an `IdFilter`.
     </ParamField>
   </Expandable>
 </ParamField>
@@ -179,7 +158,7 @@ All fields are optional.
 </ParamField>
 
 <ParamField query="updatedAt" type="DateTimeFilter">
-  Filter by the time of the last update to the series. Set `gte`, `lte`, or both, as for `startTimeScheduled`.
+  Filter by the time of the last update to the series. Use full ISO 8601 timestamps, as for `startTimeScheduled`.
 </ParamField>
 
 <ParamField query="workflowStatuses" type="[SeriesWorkflowStatus!]!" default="[PUBLISHED]">

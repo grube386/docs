@@ -26,7 +26,7 @@ description: "[One sentence: what the types on this page have in common, ending 
      link these anchors, so never rename a heading.
      Each section has:
      - One sentence: what the type is, which queries return or take it, and, for a connection,
-       the node type of its edges. Link only operations and types that have a page.
+       the node type of its edges. Link the node type to its object page, /data-apis/<product>/api-reference/objects/<Type>, even before that page exists (Matej, 2026-10-02). Link operations only if their page exists. At most one link per sentence.
      - Connections: edges, pageInfo, and totalCount as <ResponseField>, with an
        <Expandable title="XEdge fields"> for cursor and node.
      - Enums: every value as a list item, "- `VALUE`: meaning", from the schema descriptions.
@@ -91,7 +91,7 @@ import NotAvailableOnOA from "/snippets/not-available-on-oa.mdx";
 
 ## TypeNameBothPlatforms
 
-A [what the type is]. The [`OPERATION_WITH_PAGE`](/data-apis/PRODUCT/api-reference/queries/OPERATION_WITH_PAGE) query returns it, and the node of each edge is a [`NODE_TYPE`](/data-apis/PRODUCT/api-reference/objects/NODE_TYPE).
+A [what the type is]. The [`OPERATION_WITH_PAGE`](/data-apis/PRODUCT/api-reference/queries/OPERATION_WITH_PAGE) query returns it. The node of each edge is a [`NODE_TYPE`](/data-apis/PRODUCT/api-reference/objects/NODE_TYPE).
 
 <ResponseField name="edges" type="[TypeNameEdge!]!">
   The [items] on this page, one edge per [item].

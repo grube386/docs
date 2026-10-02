@@ -33,10 +33,20 @@ description: "[One sentence: what the type holds or narrows, ending with a perio
        the schema gives one. Write "All fields are optional." before the first field when true.
      - Description: plain-language rewrite of the schema description, one or two sentences.
      - Enums: list every value with a short meaning, taken from the schema descriptions.
-     - Nested object or input type: add an <Expandable title="NestedType fields"> with its main
-       subfields as nested <ResponseField> or <ParamField>. Leave out subfields that error live.
-       A one-field nested type (such as IdFilter's `in`) can be described in the sentence instead.
-     - Name other types in code font. Link a type only if its page exists.
+     - Object type (a field whose type is another object, such as Series.players: [Player!]!):
+       no <Expandable>, and never repeat its fields. Link the type in the description to its
+       object page, /data-apis/<product>/api-reference/objects/<Type>, even before that page
+       exists (Matej, 2026-10-02). The link stays dead, and the page stays out of docs.json,
+       until the page is built. Write "..., as a [`Type`](link) object" or
+       "..., as a list of [`Type`](link) objects".
+     - Input type used only by this type (such as SeriesTournamentFilter in SeriesFilter): add an
+       <Expandable title="InputType fields"> with its fields as nested <ParamField>.
+     - Input type shared with other types (such as IdFilter, BooleanFilter, DateTimeFilter,
+       StringFilter, IntFilter, NullableDateFilter): name it in the type prop only. No
+       <Expandable>, no field list, and no link until its page exists. Keep only a behavior the
+       reader needs for this field, such as "Use full ISO 8601 timestamps".
+     - Name other types in code font. Link an operation only if its page exists.
+       At most one link per sentence.
      - Deprecated field (in the schema, or in its description): add the deprecated prop and
        put a <Warning> as the first line, naming the replacement. Examples use the replacement.
   4. Used by: the operations that return the type (object) or take it (input, filter), from the
@@ -84,15 +94,19 @@ description: "[One sentence: what the type holds or narrows, ending with a perio
   [What the field holds, in one sentence.]
 </ResponseField>
 
-<ResponseField name="OBJECT_FIELD" type="NESTED_TYPE!">
-  [What the field holds, in one sentence.]
-
-  <Expandable title="NESTED_TYPE fields">
-    <ResponseField name="SUBFIELD" type="SUBFIELD_TYPE!">
-      [What the subfield holds.]
-    </ResponseField>
-  </Expandable>
+<ResponseField name="OBJECT_FIELD" type="OBJECT_TYPE!">
+  [What the field holds], as a [`OBJECT_TYPE`](/data-apis/PRODUCT/api-reference/objects/OBJECT_TYPE) object.
 </ResponseField>
+
+<ParamField query="SINGLE_USE_INPUT_FIELD" type="INPUT_TYPE">
+  [What the field filters by.]
+
+  <Expandable title="INPUT_TYPE fields">
+    <ParamField query="SUBFIELD" type="SHARED_INPUT_TYPE">
+      [What the subfield filters by.]
+    </ParamField>
+  </Expandable>
+</ParamField>
 
 <ResponseField name="COMMERCIAL_ONLY_FIELD" type="FIELD_TYPE">
   <NotAvailableOnOA />
@@ -117,8 +131,10 @@ description: "[One sentence: what the type holds or narrows, ending with a perio
 
 The following queries return `TYPE_NAME`:
 
-- [`OPERATION_WITH_PAGE`](/data-apis/PRODUCT/api-reference/queries/OPERATION_WITH_PAGE), as the `node` of each edge in a [`TYPE_NAMEConnection`](/data-apis/PRODUCT/api-reference/connections#type_nameconnection)
+- [`OPERATION_WITH_PAGE`](/data-apis/PRODUCT/api-reference/queries/OPERATION_WITH_PAGE), which [returns what]
 - `OPERATION_WITHOUT_PAGE`, which [returns what]
+
+In the `OPERATION_WITH_PAGE` response, each [item] is the `node` of an edge in a [`TYPE_NAMEConnection`](/data-apis/PRODUCT/api-reference/connections#type_nameconnection).
 
 {/* Example: required on filter pages, optional elsewhere. Delete the rest of the file if the page has no example. */}
 
