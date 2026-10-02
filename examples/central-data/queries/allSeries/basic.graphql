@@ -1,15 +1,14 @@
-query AllSeriesBasic($first: Int, $tournamentId: ID) {
-  allSeries(first: $first, filter: { tournamentId: $tournamentId }) {
-    totalCount
+query AllSeriesBasic {
+  allSeries(first: 2) {
     edges {
       node {
         id
         startTimeScheduled
-        teams {
-          baseInfo {
-            id
-            name
-          }
+        title {
+          name
+        }
+        tournament {
+          name
         }
       }
     }

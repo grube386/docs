@@ -1,0 +1,7 @@
+{/* Use: import { PaginationLast } from "/snippets/pagination-last.mdx"; then <PaginationLast items="series" />. Props: items (plural noun, default "results"), children (added as a second paragraph). */}
+export const PaginationLast = ({ items = "results", children }) => (
+  <ParamField query="last" type="Int">
+    Number of {items} to return, counted from the end of the list.
+    {children}
+  </ParamField>
+);

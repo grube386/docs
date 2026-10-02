@@ -1,0 +1,7 @@
+{/* Use: import { PaginationBefore } from "/snippets/pagination-before.mdx"; then <PaginationBefore />. Optional: children, added as a second paragraph. */}
+export const PaginationBefore = ({ children }) => (
+  <ParamField query="before" type="String">
+    Cursor before which to return results. Each edge has a <code>cursor</code>, and <code>pageInfo</code> has <code>startCursor</code> and <code>endCursor</code>.
+    {children}
+  </ParamField>
+);

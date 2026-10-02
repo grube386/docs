@@ -1,86 +1,304 @@
 {
   "data": {
     "allSeries": {
-      "totalCount": 50,
+      "totalCount": 197,
       "pageInfo": {
         "hasPreviousPage": false,
         "hasNextPage": true,
-        "startCursor": "JAMWBQMjHhoSJBQfEhMCGxITCwtaCwtFQEVOR0ZACwtaCwtFR0VDWlpGRlpaR0UjRkNNRkJNR0ct",
-        "endCursor": "JAMWBQMjHhoSJBQfEhMCGxITCwtaCwtFQEVOR0ZBCwtaCwtFR0VDWlpGR1paRUAjRkRNR0dNR0ct"
+        "startCursor": "JAMWBQMjHhoSJBQfEhMCGxITCwtaCwtFTkBHRkRPCwtaCwtFR0VBWlpHQFpaRk4jRkRNRkdNR0ct",
+        "endCursor": "JAMWBQMjHhoSJBQfEhMCGxITCwtaCwtFTkBHRkRPCwtaCwtFR0VBWlpHQFpaRk4jRkRNRkdNR0ct"
       },
       "edges": [
         {
-          "cursor": "JAMWBQMjHhoSJBQfEhMCGxITCwtaCwtFQEVOR0ZACwtaCwtFR0VDWlpGRlpaR0UjRkNNRkJNR0ct",
+          "cursor": "JAMWBQMjHhoSJBQfEhMCGxITCwtaCwtFTkBHRkRPCwtaCwtFR0VBWlpHQFpaRk4jRkRNRkdNR0ct",
           "node": {
-            "id": "2729017",
+            "id": "2970138",
             "type": "ESPORTS",
-            "startTimeScheduled": "2024-11-02T14:15:00Z",
+            "private": false,
+            "workflowStatus": "PUBLISHED",
+            "startTimeScheduled": "2026-07-19T13:10:00Z",
+            "updatedAt": "2026-07-19T15:45:43Z",
             "format": {
+              "id": "4",
               "name": "best-of-5",
               "nameShortened": "Bo5"
             },
             "title": {
               "id": "3",
               "name": "League of Legends",
-              "nameShortened": "lol"
+              "nameShortened": "lol",
+              "logoUrl": "https://cdn.grid.gg/assets/title-logos/0f9283fd9af29ff794fd293fdd71393c",
+              "private": false
             },
             "tournament": {
-              "id": "775201",
-              "name": "Worlds - Worlds 2024 (Knockouts: Knockouts)",
-              "nameShortened": "Knockouts"
+              "id": "830128",
+              "name": "Esports World Cup - 2026 (Playoffs: Playoffs)",
+              "nameShortened": "Playoffs",
+              "logoUrl": "https://cdn.grid.gg/assets/tournament-logos/generic",
+              "startDate": null,
+              "endDate": null,
+              "venueType": "UNKNOWN",
+              "private": false,
+              "updatedAt": "2026-07-03T12:33:04Z",
+              "prizePool": null,
+              "parent": {
+                "id": "830127",
+                "name": "Esports World Cup - 2026 (Playoffs)"
+              },
+              "children": [],
+              "teams": [],
+              "titles": [
+                {
+                  "id": "3",
+                  "name": "League of Legends"
+                }
+              ],
+              "externalLinks": [
+                {
+                  "dataProvider": {
+                    "name": "LOL",
+                    "description": "Riot Esports API"
+                  },
+                  "externalEntity": {
+                    "id": "116855104460243547"
+                  }
+                }
+              ]
             },
             "teams": [
               {
+                "scoreAdvantage": 0,
                 "baseInfo": {
-                  "id": "356",
-                  "name": "BILIBILI GAMING"
-                },
-                "scoreAdvantage": 0
+                  "id": "48179",
+                  "name": "Dplus KIA",
+                  "nameShortened": "DK",
+                  "logoUrl": "https://cdn.grid.gg/assets/team-logos/1c4e991b3a2ec38bc188409b6dcf6427",
+                  "colorPrimary": "#71CDDD",
+                  "colorSecondary": "#ffffff",
+                  "rating": 1676.18,
+                  "private": false,
+                  "updatedAt": "2026-09-27T13:45:05Z",
+                  "workflowStatus": "PUBLISHED",
+                  "organization": {
+                    "id": "117",
+                    "name": "DAMWON Gaming"
+                  },
+                  "assets": [
+                    {
+                      "assetType": "MAIN_LOGO",
+                      "url": "https://cdn.grid.gg/assets/team-logos/1c4e991b3a2ec38bc188409b6dcf6427"
+                    }
+                  ],
+                  "title": {
+                    "id": "3",
+                    "name": "League of Legends"
+                  },
+                  "titles": [
+                    {
+                      "id": "3",
+                      "name": "League of Legends"
+                    }
+                  ],
+                  "externalLinks": [
+                    {
+                      "dataProvider": {
+                        "name": "GSK",
+                        "description": null
+                      },
+                      "externalEntity": {
+                        "id": "74448"
+                      }
+                    },
+                    {
+                      "dataProvider": {
+                        "name": "LOL",
+                        "description": "Riot Esports API"
+                      },
+                      "externalEntity": {
+                        "id": "100725845018863243"
+                      }
+                    }
+                  ]
+                }
               },
               {
+                "scoreAdvantage": 0,
                 "baseInfo": {
-                  "id": "47494",
-                  "name": "T1"
-                },
-                "scoreAdvantage": 0
+                  "id": "53165",
+                  "name": "Karmine Corp",
+                  "nameShortened": "KC",
+                  "logoUrl": "https://cdn.grid.gg/assets/team-logos/0c73991760c7d80df981a06e99c7cd51",
+                  "colorPrimary": "#5b6f7e",
+                  "colorSecondary": "#ffffff",
+                  "rating": 1698.73,
+                  "private": false,
+                  "updatedAt": "2026-09-23T21:43:38Z",
+                  "workflowStatus": "PUBLISHED",
+                  "organization": null,
+                  "assets": [
+                    {
+                      "assetType": "MAIN_LOGO",
+                      "url": "https://cdn.grid.gg/assets/team-logos/0c73991760c7d80df981a06e99c7cd51"
+                    }
+                  ],
+                  "title": {
+                    "id": "3",
+                    "name": "League of Legends"
+                  },
+                  "titles": [
+                    {
+                      "id": "3",
+                      "name": "League of Legends"
+                    }
+                  ],
+                  "externalLinks": [
+                    {
+                      "dataProvider": {
+                        "name": "LOL",
+                        "description": "Riot Esports API"
+                      },
+                      "externalEntity": {
+                        "id": "111692118851466302"
+                      }
+                    }
+                  ]
+                }
               }
-            ]
-          }
-        },
-        {
-          "cursor": "JAMWBQMjHhoSJBQfEhMCGxITCwtaCwtFQEVOR0ZBCwtaCwtFR0VDWlpGR1paRUAjRkRNR0dNR0ct",
-          "node": {
-            "id": "2729016",
-            "type": "ESPORTS",
-            "startTimeScheduled": "2024-10-27T13:00:00Z",
-            "format": {
-              "name": "best-of-5",
-              "nameShortened": "Bo5"
-            },
-            "title": {
-              "id": "3",
-              "name": "League of Legends",
-              "nameShortened": "lol"
-            },
-            "tournament": {
-              "id": "775201",
-              "name": "Worlds - Worlds 2024 (Knockouts: Knockouts)",
-              "nameShortened": "Knockouts"
-            },
-            "teams": [
+            ],
+            "players": [
               {
-                "baseInfo": {
-                  "id": "47558",
-                  "name": "Gen.G Esports"
+                "id": "24444",
+                "nickname": "Yike",
+                "fullName": null,
+                "age": 25,
+                "imageUrl": "https://cdn.grid.gg/assets/player-images/ef1a97cf081a8d58a553fff2ec192467",
+                "private": false,
+                "updatedAt": "2026-01-16T11:20:02Z",
+                "nationality": [
+                  {
+                    "code": "SWE",
+                    "name": "Sweden"
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "6",
+                    "name": "jungle",
+                    "private": false
+                  }
+                ],
+                "team": {
+                  "id": "53165",
+                  "name": "Karmine Corp"
                 },
-                "scoreAdvantage": 0
+                "title": {
+                  "id": "3",
+                  "name": "League of Legends"
+                },
+                "externalLinks": [
+                  {
+                    "dataProvider": {
+                      "name": "LOL_LIVE",
+                      "description": "Riot Live API"
+                    },
+                    "externalEntity": {
+                      "id": "3470521960531520"
+                    }
+                  },
+                  {
+                    "dataProvider": {
+                      "name": "LOL_LIVE",
+                      "description": "Riot Live API"
+                    },
+                    "externalEntity": {
+                      "id": "2634012989834624"
+                    }
+                  }
+                ]
               },
               {
-                "baseInfo": {
-                  "id": "47494",
-                  "name": "T1"
+                "id": "23187",
+                "nickname": "Canna",
+                "fullName": null,
+                "age": 26,
+                "imageUrl": "https://cdn.grid.gg/assets/player-images/08d7f87bf306af80b8ee7bc345d792ea",
+                "private": false,
+                "updatedAt": "2026-03-28T02:10:26Z",
+                "nationality": [
+                  {
+                    "code": "ZAF",
+                    "name": "South Africa"
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "7",
+                    "name": "top",
+                    "private": false
+                  }
+                ],
+                "team": {
+                  "id": "53165",
+                  "name": "Karmine Corp"
                 },
-                "scoreAdvantage": 0
+                "title": {
+                  "id": "3",
+                  "name": "League of Legends"
+                },
+                "externalLinks": [
+                  {
+                    "dataProvider": {
+                      "name": "LOL_LIVE",
+                      "description": "Riot Live API"
+                    },
+                    "externalEntity": {
+                      "id": "3372419997336928"
+                    }
+                  },
+                  {
+                    "dataProvider": {
+                      "name": "LOL_LIVE",
+                      "description": "Riot Live API"
+                    },
+                    "externalEntity": {
+                      "id": "3372419996034400"
+                    }
+                  }
+                ]
+              }
+            ],
+            "productServiceLevels": [
+              {
+                "productName": "directStreamsFeed",
+                "serviceLevel": "NONE"
+              },
+              {
+                "productName": "liveDataFeed",
+                "serviceLevel": "FULL"
+              }
+            ],
+            "streams": [],
+            "machineDataSource": {
+              "id": "EWC_STAGE_1"
+            },
+            "externalLinks": [
+              {
+                "dataProvider": {
+                  "name": "SPORT_LEVEL",
+                  "description": null
+                },
+                "externalEntity": {
+                  "id": "4460939"
+                }
+              },
+              {
+                "dataProvider": {
+                  "name": "LOL",
+                  "description": "Riot Esports API"
+                },
+                "externalEntity": {
+                  "id": "116855104460702380"
+                }
               }
             ]
           }

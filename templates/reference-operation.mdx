@@ -1,0 +1,156 @@
+---
+title: "OPERATION_NAME"
+description: "[One sentence: what the operation returns or does, ending with a period.]"
+---
+
+{/*
+  TEMPLATE: Reference: operation. One page per query, mutation, or subscription.
+  Canonical page: data-apis/central-data/api-reference/queries/allSeries.mdx. When in doubt, match it.
+
+  FILE AND NAVIGATION
+  - Path: data-apis/<product>/api-reference/{queries,mutations}/<operationName>.mdx, in schema casing.
+  - Add the page to docs.json under the product's Queries (or Mutations) group.
+  - Frontmatter title is the operation name exactly as in the schema. No sidebarTitle, no icon.
+  - The description is one sentence in plain language, not the schema description verbatim.
+
+  REQUIRED SECTIONS, IN THIS ORDER
+  1. Overview: one or two sentences on what the operation returns and when to use it.
+     Point to a sibling operation that fits a related need (for example a single item by ID).
+     Link it only if its page exists; otherwise write its name in code font with no link.
+  2. Playground tip: the PlaygroundTip snippet, directly after the overview. Never retype it.
+  3. Response type: the return type exactly as the schema has it, nullability included,
+     linked to its type page (objects/<Type>, or connections#<type> for a connection).
+     For a connection, name edges, pageInfo, and totalCount in one sentence.
+  4. Arguments: one <ParamField> per argument, in schema order.
+     - Pagination arguments come from snippets, never retyped: <PaginationAfter />,
+       <PaginationBefore />, <PaginationFirst items="..." />, <PaginationLast items="..." />.
+       items is the plural noun the query returns (default "results"). PaginationFirst takes
+       defaultValue (default "10"): confirm the query's default live before you rely on it.
+       To add a page-specific sentence, put it between the snippet's opening and closing tags.
+       If the argument has a different type or meaning on this query, write its <ParamField> by hand.
+     - type: exactly as the schema writes it (String, Int, SeriesFilter, SeriesOrderBy!). Never guess.
+     - default: only when the schema gives a default, or the schema description states one
+       and a live call confirms it.
+     - required: only for a non-null argument without a default.
+     - Enums: list every value with a short meaning, taken from the schema descriptions.
+     - Input and filter types: link to their type page; don't repeat their fields here.
+     - No arguments: replace the section body with "This query takes no arguments."
+  5. Examples: no heading. One collapsed <Accordion title="About the examples"> with at most
+     two sentences: the fixture Full uses, shortened lists, and changing state. Leave out what
+     the query already shows (arguments set, fields selected). Then one <RequestExample> and
+     one <ResponseExample> (see EXAMPLES).
+
+  ACCESS BADGES (take access from schemas/<api>.access.json, never from guesswork)
+  - Operation is Commercial only: put the NotAvailableOnOA snippet directly under the
+    frontmatter imports, before Overview. No sidebar tag.
+  - Operation on both platforms: no title badge.
+  - Argument that is Commercial only: put <NotAvailableOnOA /> as the first line inside its <ParamField>.
+  - Commercial-only fields of the response type get their badges on the type pages, not here
+    (Matej, 2026-10-01). Selecting such a field in Full is allowed.
+
+  EXAMPLES (AGENTS.md section 4)
+  - Files: examples/<api>/{queries,mutations}/<operationName>/{basic,full}.{graphql,vars.json,response.json}.
+    Run `gql check` and `gql run` on both, then paste the files into the page unchanged.
+  - Basic: no arguments, or only the required ones plus a small first (for example first: 2),
+    and a few main fields.
+  - Full: arguments set through variables, every field of the returned type, nested types
+    expanded one level (recursive links such as parent, children, team, or title limited to
+    id and name), and pageInfo plus totalCount for a connection.
+    Show the variables as a third block titled "Full variables" in the <RequestExample>.
+    Cursor arguments (after, before) and last can stay out of Full.
+  - Fixtures: only examples/fixtures.md. Use the default fixture unless the operation needs another.
+  - Keep responses small through arguments. Use `gql run --trim 2` only for nested lists no
+    argument can limit, and then say on the page that nested lists are shortened.
+  - If the response reads state that changes over time, say so in the accordion.
+  - Redact signed or expiring URLs and tokens.
+  - Block titles are exactly Basic, Full, and Full variables.
+
+  WHEN TO DEVIATE
+  - A field that errors live: leave it out of Full, and record why as a dated fact.
+  - A deprecated operation: add a <Warning> after the overview that names the replacement
+    and how to migrate.
+
+  While drafting, tag every claim with its fact ID comment (F-nnn, AGENTS.md section 6.7).
+  Delete this comment block and every fact ID comment before merge.
+*/}
+
+import { PlaygroundTip } from "/snippets/playground-tip.mdx";
+import { PaginationAfter } from "/snippets/pagination-after.mdx";
+import { PaginationBefore } from "/snippets/pagination-before.mdx";
+import { PaginationFirst } from "/snippets/pagination-first.mdx";
+import { PaginationLast } from "/snippets/pagination-last.mdx";
+
+{/* Keep only the pagination imports the query uses. For a Commercial-only operation or argument, also import the badge next to the lines above: import NotAvailableOnOA from "/snippets/not-available-on-oa.mdx"; */}
+
+## Overview
+
+Use the `OPERATION_NAME` query to [what it returns and when to use it]. To [related need], use the `SIBLING_OPERATION` query instead.
+
+<PlaygroundTip />
+
+## Response type
+
+Returns a [`RETURN_TYPE`](/data-apis/PRODUCT/api-reference/objects/RETURN_TYPE). {/* For a connection, link /data-apis/PRODUCT/api-reference/connections#returntype-in-lowercase instead, and keep the next sentence. Otherwise delete it. */} The connection holds the items as `edges`, the paging details as `pageInfo`, and the number of matching items as `totalCount`.
+
+## Arguments
+
+<PaginationAfter />
+
+<PaginationBefore />
+
+<ParamField query="ARGUMENT_NAME" type="ARGUMENT_TYPE">
+  [What the argument does, in one sentence.]
+</ParamField>
+
+<ParamField query="ARGUMENT_WITH_DEFAULT" type="ARGUMENT_TYPE" default="DEFAULT_VALUE">
+  [What the argument does, in one sentence.]
+</ParamField>
+
+<PaginationFirst items="ITEMS" />
+
+<PaginationLast items="ITEMS" />
+
+<ParamField query="ENUM_ARGUMENT" type="ENUM_TYPE!" default="DEFAULT_VALUE">
+  [What the argument does.] The possible values are the following:
+
+  - `VALUE_ONE`: [meaning]
+  - `VALUE_TWO`: [meaning]
+</ParamField>
+
+<Accordion title="About the examples">
+  The Full example uses [fixture], and shortens nested lists in its response to two items. Values such as [changing fields] are current state and can differ when you run the examples.
+</Accordion>
+
+<RequestExample>
+```graphql Basic
+query OperationNameBasic {
+  operationName(first: 2) {
+    # main fields
+  }
+}
+```
+
+```graphql Full
+query OperationNameFull($argument: ArgumentType) {
+  operationName(argument: $argument) {
+    # every field
+  }
+}
+```
+
+```json Full variables
+{
+  "argument": "value"
+}
+```
+</RequestExample>
+
+<ResponseExample>
+```json Basic
+{ "paste": "basic.response.json, unchanged" }
+```
+
+```json Full
+{ "paste": "full.response.json, unchanged" }
+```
+</ResponseExample>

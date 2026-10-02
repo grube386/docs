@@ -197,7 +197,7 @@ Ticket P0-6 fills in the Template and Canonical page columns once the seven page
 | Concept | Explain a model or mechanism | _P0-6_ | _P0-6_ (`data-apis/central-data/entities`) |
 | Quickstart | First successful call in under 10 minutes | _P0-6_ | _P0-6_ (`data-apis/central-data/quickstart`) |
 | Tutorial | Task-oriented walkthrough with code in Node.js, Python, and Kotlin | _P0-6_ | _P0-6_ (`data-apis/central-data/tutorials/get-team-player-photos`) |
-| Reference: operation | One query, mutation, or subscription | _P0-6_ | _P0-6_ (`data-apis/central-data/api-reference/queries/allSeries`) |
+| Reference: operation | One query, mutation, or subscription | `templates/reference-operation.mdx` | `data-apis/central-data/api-reference/queries/allSeries` |
 | Reference: types | Objects, inputs, and filters get one page each; connections and enums share one grouped page per kind, one anchor per type | _P0-6_ | _P0-6_ (`objects/Series`, `filters/SeriesFilter`, `connections`) |
 | Changelog | Versioned changes per product, newest first | _P0-6_ | _P0-6_ (`data-apis/central-data/changelog`) |
 
@@ -262,7 +262,9 @@ description: "Query a paginated list of series with filters and ordering."
 - `<ParamField>` for arguments, `<ResponseField>` (with `<Expandable>` for nested fields) for fields, `<RequestExample>`/`<ResponseExample>` on reference pages.
 - `<Card>`/`<CardGroup>` for next steps and overviews. `<Update>` on changelogs only.
 - Every code block has a language. Blocks inside a group also have a title: ` ```graphql Basic `.
-- Shared text comes from `snippets/`, never copied: authentication header, endpoints per API and platform, the **Not available on OA** badge, rate limits, Playground tip, support contact.
+- Shared text comes from `snippets/`, never copied: authentication header, endpoints per API and platform, the **Not available on OA** badge, rate limits, Playground tip, support contact, and the pagination arguments `after`, `before`, `first`, and `last` (one snippet each).
+- A snippet that pages may need to extend exports a component: `import { PlaygroundTip } from "/snippets/playground-tip.mdx";`. It takes props for the words that change per page (for example `items="series"`), and any text between its opening and closing tags is added to it. Fixed text, such as the badge and the endpoints, stays a plain snippet.
+- Before you create a new snippet, ask Matej. Say what it would hold, which pages would use it, and how many pages you estimate will reuse it.
 - Access: a page whose operation or type exists only on the Commercial platform gets the **Not available on OA** badge snippet directly under the title. Take access from `schemas/<api>.access.json`, never from guesswork. No sidebar tag.
 - MDX doesn't accept HTML comments. Use `{/* comment */}`.
 

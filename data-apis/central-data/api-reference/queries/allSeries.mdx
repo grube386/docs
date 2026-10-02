@@ -1,216 +1,626 @@
 ---
 title: "allSeries"
-description: "Query multiple series with filtering, ordering, and pagination support"
+description: "Query a filtered, sorted, and paginated list of series."
 ---
+
+import { PlaygroundTip } from "/snippets/playground-tip.mdx";
+import { PaginationAfter } from "/snippets/pagination-after.mdx";
+import { PaginationBefore } from "/snippets/pagination-before.mdx";
+import { PaginationFirst } from "/snippets/pagination-first.mdx";
+import { PaginationLast } from "/snippets/pagination-last.mdx";
 
 ## Overview
 
-Use the `allSeries` query to retrieve multiple series based on specific criteria. This query supports filtering by tournament, team, title, time range, and more, with built-in pagination for handling large result sets.
+Use the `allSeries` query to get a list of series that match a filter, sorted and paginated. To get a single series by its ID, use the `series` query instead.
 
-## Response Type
+<PlaygroundTip />
 
-Returns a `SeriesConnection!`
+## Response type
 
-The connection includes paginated series data with cursor-based navigation.
+Returns a [`SeriesConnection!`](/data-apis/central-data/api-reference/connections#seriesconnection). The connection holds the series as `edges`, the paging details as `pageInfo`, and the number of matching series as `totalCount`.
 
 ## Arguments
 
-<ParamField query="after" type="Cursor">
-Cursor after which to return results. Use this for pagination to retrieve subsequent pages of data.
-</ParamField>
+All arguments are optional.
 
-<ParamField query="before" type="Cursor">
-Cursor before which to return results. Use this for backward pagination.
-</ParamField>
+<PaginationAfter />
+
+<PaginationBefore />
 
 <ParamField query="filter" type="SeriesFilter">
-Filter specifications to narrow down series results. See `SeriesFilter` for available filtering options including tournament, team, title, and time-based filters.
+  Conditions the series must match, such as a tournament or a series type. For every condition, see [`SeriesFilter`](/data-apis/central-data/api-reference/filters/SeriesFilter).
 </ParamField>
 
-<ParamField query="first" type="Int" default="10">
-Number of results to return starting from the beginning. 
-</ParamField>
+<PaginationFirst items="series" />
 
-<ParamField query="last" type="Int">
-Number of results to return starting from the end. Use this for reverse pagination.
-</ParamField>
+<PaginationLast items="series" />
 
 <ParamField query="orderBy" type="SeriesOrderBy!" default="ID">
-Field to use for ordering the results. Available options:
-- `ID` - Order by series ID
-- `StartTimeScheduled` - Order by scheduled start time
-- `UpdatedAt` - Order by last update time
+  Field to sort the series by. The possible values are the following:
 
+  - `ID`: the series ID
+  - `StartTimeScheduled`: the scheduled start time
+  - `UpdatedAt`: the time the series was last updated
 </ParamField>
 
 <ParamField query="orderDirection" type="OrderDirection!" default="ASC">
-Direction for ordering results:
-- `ASC` - Ascending order
-- `DESC` - Descending order
+  Direction to sort the series in. The possible values are the following:
 
+  - `ASC`: ascending
+  - `DESC`: descending
 </ParamField>
 
+<Accordion title="About the examples">
+  The Full example uses the League of Legends tournament of the Esports World Cup 2026 (`830107`), and shortens nested lists in its response to two items. Values such as `startTimeScheduled`, `updatedAt`, and each player's `team` are current state and can differ when you run the examples.
+</Accordion>
+
 <RequestExample>
-```graphql Basic Query
-query AllSeries {
-  allSeries {
+```graphql Basic
+query AllSeriesBasic {
+  allSeries(first: 2) {
     edges {
-      cursor
       node {
         id
         startTimeScheduled
         title {
-          id
           name
         }
-        teams {
-          baseInfo {
-            id
-            name
-          }
+        tournament {
+          name
         }
       }
     }
-    pageInfo {
-      endCursor
-      hasNextPage
-      hasPreviousPage
-      startCursor
-    }
-    totalCount
   }
 }
 ```
-</RequestExample>
 
-<ResponseExample>
-```json Response
-{
-  "data": {
-    "allSeries": {
-      "edges": [
-        {
-          "cursor": "YXJyYXljb25uZWN0aW9uOjA=",
-          "node": {
-            "id": "123456",
-            "startTimeScheduled": "2024-03-15T18:00:00Z",
-            "title": {
-              "id": "1",
-              "name": "Valorant"
-            },
-            "teams": [
-              {
-                "baseInfo": {
-                  "id": "789",
-                  "name": "Team Liquid"
-                }
-              },
-              {
-                "baseInfo": {
-                  "id": "790",
-                  "name": "Fnatic"
-                }
-              }
-            ]
-          }
-        }
-      ],
-      "pageInfo": {
-        "endCursor": "YXJyYXljb25uZWN0aW9uOjk=",
-        "hasNextPage": true,
-        "hasPreviousPage": false,
-        "startCursor": "YXJyYXljb25uZWN0aW9uOjA="
-      },
-      "totalCount": 150
-    }
-  }
-}
-```
-</ResponseExample>
-
-<RequestExample>
-```graphql Filter by Tournament
-query SeriesByTournament($tournamentId: ID!) {
+```graphql Full
+query AllSeriesFull(
+  $filter: SeriesFilter
+  $first: Int
+  $orderBy: SeriesOrderBy!
+  $orderDirection: OrderDirection!
+) {
   allSeries(
-    filter: {
-      tournament: {
-        id: {
-          in: [$tournamentId]
-        }
-      }
-    }
-    first: 20
-    orderBy: StartTimeScheduled
-    orderDirection: ASC
+    filter: $filter
+    first: $first
+    orderBy: $orderBy
+    orderDirection: $orderDirection
   ) {
+    totalCount
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
     edges {
+      cursor
       node {
         id
+        type
+        private
+        workflowStatus
         startTimeScheduled
+        updatedAt
+        format {
+          id
+          name
+          nameShortened
+        }
+        title {
+          id
+          name
+          nameShortened
+          logoUrl
+          private
+        }
         tournament {
           id
           name
+          nameShortened
+          logoUrl
+          startDate
+          endDate
+          venueType
+          private
+          updatedAt
+          prizePool {
+            amount
+          }
+          parent {
+            id
+            name
+          }
+          children {
+            id
+            name
+          }
+          teams {
+            id
+            name
+          }
+          titles {
+            id
+            name
+          }
+          externalLinks {
+            dataProvider {
+              name
+              description
+            }
+            externalEntity {
+              id
+            }
+          }
         }
         teams {
+          scoreAdvantage
           baseInfo {
             id
             name
+            nameShortened
+            logoUrl
+            colorPrimary
+            colorSecondary
+            rating
+            private
+            updatedAt
+            workflowStatus
+            organization {
+              id
+              name
+            }
+            assets {
+              assetType
+              url
+            }
+            title {
+              id
+              name
+            }
+            titles {
+              id
+              name
+            }
+            externalLinks {
+              dataProvider {
+                name
+                description
+              }
+              externalEntity {
+                id
+              }
+            }
+          }
+        }
+        players {
+          id
+          nickname
+          fullName
+          age
+          imageUrl
+          private
+          updatedAt
+          nationality {
+            code
+            name
+          }
+          roles {
+            id
+            name
+            private
+          }
+          team {
+            id
+            name
+          }
+          title {
+            id
+            name
+          }
+          externalLinks {
+            dataProvider {
+              name
+              description
+            }
+            externalEntity {
+              id
+            }
+          }
+        }
+        productServiceLevels {
+          productName
+          serviceLevel
+        }
+        streams {
+          url
+        }
+        machineDataSource {
+          id
+        }
+        externalLinks {
+          dataProvider {
+            name
+            description
+          }
+          externalEntity {
+            id
           }
         }
       }
     }
-    pageInfo {
-      hasNextPage
-      endCursor
-    }
-    totalCount
   }
+}
+```
+
+```json Full variables
+{
+  "filter": {
+    "tournament": {
+      "id": {
+        "in": [
+          "830107"
+        ]
+      },
+      "includeChildren": {
+        "equals": true
+      }
+    },
+    "types": [
+      "ESPORTS"
+    ]
+  },
+  "first": 1,
+  "orderBy": "StartTimeScheduled",
+  "orderDirection": "DESC"
 }
 ```
 </RequestExample>
 
 <ResponseExample>
-```json Variables
-{
-  "tournamentId": "45678"
-}
-```
-
-```json Response
+```json Basic
 {
   "data": {
     "allSeries": {
       "edges": [
         {
           "node": {
-            "id": "123456",
-            "startTimeScheduled": "2024-03-15T18:00:00Z",
+            "id": "1",
+            "startTimeScheduled": "2024-10-22T06:56:58Z",
+            "title": {
+              "name": "Counter Strike: Global Offensive"
+            },
             "tournament": {
-              "id": "45678",
-              "name": "VCT Champions"
+              "name": "GRID-TEST"
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "2",
+            "startTimeScheduled": "2026-10-02T09:43:23Z",
+            "title": {
+              "name": "Defense of the Ancients 2"
+            },
+            "tournament": {
+              "name": "GRID-TEST"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+```json Full
+{
+  "data": {
+    "allSeries": {
+      "totalCount": 197,
+      "pageInfo": {
+        "hasPreviousPage": false,
+        "hasNextPage": true,
+        "startCursor": "JAMWBQMjHhoSJBQfEhMCGxITCwtaCwtFTkBHRkRPCwtaCwtFR0VBWlpHQFpaRk4jRkRNRkdNR0ct",
+        "endCursor": "JAMWBQMjHhoSJBQfEhMCGxITCwtaCwtFTkBHRkRPCwtaCwtFR0VBWlpHQFpaRk4jRkRNRkdNR0ct"
+      },
+      "edges": [
+        {
+          "cursor": "JAMWBQMjHhoSJBQfEhMCGxITCwtaCwtFTkBHRkRPCwtaCwtFR0VBWlpHQFpaRk4jRkRNRkdNR0ct",
+          "node": {
+            "id": "2970138",
+            "type": "ESPORTS",
+            "private": false,
+            "workflowStatus": "PUBLISHED",
+            "startTimeScheduled": "2026-07-19T13:10:00Z",
+            "updatedAt": "2026-07-19T15:45:43Z",
+            "format": {
+              "id": "4",
+              "name": "best-of-5",
+              "nameShortened": "Bo5"
+            },
+            "title": {
+              "id": "3",
+              "name": "League of Legends",
+              "nameShortened": "lol",
+              "logoUrl": "https://cdn.grid.gg/assets/title-logos/0f9283fd9af29ff794fd293fdd71393c",
+              "private": false
+            },
+            "tournament": {
+              "id": "830128",
+              "name": "Esports World Cup - 2026 (Playoffs: Playoffs)",
+              "nameShortened": "Playoffs",
+              "logoUrl": "https://cdn.grid.gg/assets/tournament-logos/generic",
+              "startDate": null,
+              "endDate": null,
+              "venueType": "UNKNOWN",
+              "private": false,
+              "updatedAt": "2026-07-03T12:33:04Z",
+              "prizePool": null,
+              "parent": {
+                "id": "830127",
+                "name": "Esports World Cup - 2026 (Playoffs)"
+              },
+              "children": [],
+              "teams": [],
+              "titles": [
+                {
+                  "id": "3",
+                  "name": "League of Legends"
+                }
+              ],
+              "externalLinks": [
+                {
+                  "dataProvider": {
+                    "name": "LOL",
+                    "description": "Riot Esports API"
+                  },
+                  "externalEntity": {
+                    "id": "116855104460243547"
+                  }
+                }
+              ]
             },
             "teams": [
               {
+                "scoreAdvantage": 0,
                 "baseInfo": {
-                  "id": "789",
-                  "name": "Team Liquid"
+                  "id": "48179",
+                  "name": "Dplus KIA",
+                  "nameShortened": "DK",
+                  "logoUrl": "https://cdn.grid.gg/assets/team-logos/1c4e991b3a2ec38bc188409b6dcf6427",
+                  "colorPrimary": "#71CDDD",
+                  "colorSecondary": "#ffffff",
+                  "rating": 1676.18,
+                  "private": false,
+                  "updatedAt": "2026-09-27T13:45:05Z",
+                  "workflowStatus": "PUBLISHED",
+                  "organization": {
+                    "id": "117",
+                    "name": "DAMWON Gaming"
+                  },
+                  "assets": [
+                    {
+                      "assetType": "MAIN_LOGO",
+                      "url": "https://cdn.grid.gg/assets/team-logos/1c4e991b3a2ec38bc188409b6dcf6427"
+                    }
+                  ],
+                  "title": {
+                    "id": "3",
+                    "name": "League of Legends"
+                  },
+                  "titles": [
+                    {
+                      "id": "3",
+                      "name": "League of Legends"
+                    }
+                  ],
+                  "externalLinks": [
+                    {
+                      "dataProvider": {
+                        "name": "GSK",
+                        "description": null
+                      },
+                      "externalEntity": {
+                        "id": "74448"
+                      }
+                    },
+                    {
+                      "dataProvider": {
+                        "name": "LOL",
+                        "description": "Riot Esports API"
+                      },
+                      "externalEntity": {
+                        "id": "100725845018863243"
+                      }
+                    }
+                  ]
                 }
               },
               {
+                "scoreAdvantage": 0,
                 "baseInfo": {
-                  "id": "790",
-                  "name": "Fnatic"
+                  "id": "53165",
+                  "name": "Karmine Corp",
+                  "nameShortened": "KC",
+                  "logoUrl": "https://cdn.grid.gg/assets/team-logos/0c73991760c7d80df981a06e99c7cd51",
+                  "colorPrimary": "#5b6f7e",
+                  "colorSecondary": "#ffffff",
+                  "rating": 1698.73,
+                  "private": false,
+                  "updatedAt": "2026-09-23T21:43:38Z",
+                  "workflowStatus": "PUBLISHED",
+                  "organization": null,
+                  "assets": [
+                    {
+                      "assetType": "MAIN_LOGO",
+                      "url": "https://cdn.grid.gg/assets/team-logos/0c73991760c7d80df981a06e99c7cd51"
+                    }
+                  ],
+                  "title": {
+                    "id": "3",
+                    "name": "League of Legends"
+                  },
+                  "titles": [
+                    {
+                      "id": "3",
+                      "name": "League of Legends"
+                    }
+                  ],
+                  "externalLinks": [
+                    {
+                      "dataProvider": {
+                        "name": "LOL",
+                        "description": "Riot Esports API"
+                      },
+                      "externalEntity": {
+                        "id": "111692118851466302"
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "players": [
+              {
+                "id": "24444",
+                "nickname": "Yike",
+                "fullName": null,
+                "age": 25,
+                "imageUrl": "https://cdn.grid.gg/assets/player-images/ef1a97cf081a8d58a553fff2ec192467",
+                "private": false,
+                "updatedAt": "2026-01-16T11:20:02Z",
+                "nationality": [
+                  {
+                    "code": "SWE",
+                    "name": "Sweden"
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "6",
+                    "name": "jungle",
+                    "private": false
+                  }
+                ],
+                "team": {
+                  "id": "53165",
+                  "name": "Karmine Corp"
+                },
+                "title": {
+                  "id": "3",
+                  "name": "League of Legends"
+                },
+                "externalLinks": [
+                  {
+                    "dataProvider": {
+                      "name": "LOL_LIVE",
+                      "description": "Riot Live API"
+                    },
+                    "externalEntity": {
+                      "id": "3470521960531520"
+                    }
+                  },
+                  {
+                    "dataProvider": {
+                      "name": "LOL_LIVE",
+                      "description": "Riot Live API"
+                    },
+                    "externalEntity": {
+                      "id": "2634012989834624"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "23187",
+                "nickname": "Canna",
+                "fullName": null,
+                "age": 26,
+                "imageUrl": "https://cdn.grid.gg/assets/player-images/08d7f87bf306af80b8ee7bc345d792ea",
+                "private": false,
+                "updatedAt": "2026-03-28T02:10:26Z",
+                "nationality": [
+                  {
+                    "code": "ZAF",
+                    "name": "South Africa"
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "7",
+                    "name": "top",
+                    "private": false
+                  }
+                ],
+                "team": {
+                  "id": "53165",
+                  "name": "Karmine Corp"
+                },
+                "title": {
+                  "id": "3",
+                  "name": "League of Legends"
+                },
+                "externalLinks": [
+                  {
+                    "dataProvider": {
+                      "name": "LOL_LIVE",
+                      "description": "Riot Live API"
+                    },
+                    "externalEntity": {
+                      "id": "3372419997336928"
+                    }
+                  },
+                  {
+                    "dataProvider": {
+                      "name": "LOL_LIVE",
+                      "description": "Riot Live API"
+                    },
+                    "externalEntity": {
+                      "id": "3372419996034400"
+                    }
+                  }
+                ]
+              }
+            ],
+            "productServiceLevels": [
+              {
+                "productName": "directStreamsFeed",
+                "serviceLevel": "NONE"
+              },
+              {
+                "productName": "liveDataFeed",
+                "serviceLevel": "FULL"
+              }
+            ],
+            "streams": [],
+            "machineDataSource": {
+              "id": "EWC_STAGE_1"
+            },
+            "externalLinks": [
+              {
+                "dataProvider": {
+                  "name": "SPORT_LEVEL",
+                  "description": null
+                },
+                "externalEntity": {
+                  "id": "4460939"
+                }
+              },
+              {
+                "dataProvider": {
+                  "name": "LOL",
+                  "description": "Riot Esports API"
+                },
+                "externalEntity": {
+                  "id": "116855104460702380"
                 }
               }
             ]
           }
         }
-      ],
-      "pageInfo": {
-        "hasNextPage": false,
-        "endCursor": "YXJyYXljb25uZWN0aW9uOjE5"
-      },
-      "totalCount": 18
+      ]
     }
   }
 }
