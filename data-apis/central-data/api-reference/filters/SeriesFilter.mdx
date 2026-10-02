@@ -1,0 +1,278 @@
+---
+title: "SeriesFilter"
+description: "Narrow a list of series by tournament, team, title, player, time, type, service level, live data, and workflow status."
+---
+
+## Overview
+
+Use `SeriesFilter` in the `filter` argument of the [`allSeries`](/data-apis/central-data/api-reference/queries/allSeries) query to get only the series you need. When you set several fields, a series must match all of them.
+
+Without a filter, `allSeries` returns public and private series, and only series with the workflow status `PUBLISHED`.
+
+## Exclude test series
+
+A filter on title and time alone also returns test series, and the `types` field doesn't remove them. For example, League of Legends series from July 14 to July 19, 2026, with `types` set to `ESPORTS`, include many series from test tournaments such as "LoL unidentified-TEST". These test series have the type `ESPORTS` and are public and published, like real ones.
+
+To get only the series of a real event, filter by the event's tournament: set `tournament.id` to the event's ID and `tournament.includeChildren` to `true`. The example on this page uses this approach.
+
+## Choose between overlapping fields
+
+Some fields are deprecated and have a replacement. Use the replacement, and never set both in the same filter:
+
+- `teamIds` instead of `teamId`. Both return the same series for one team, and setting both makes the query fail with the error "cannot combine two team ID filters, use either teamId OR teamIds".
+- `titleIds` instead of `titleId`. Setting both makes the query fail.
+- `types` instead of `type`. If you set both, the query uses `type` and ignores `types`.
+- `tournament` instead of `tournamentId` and `tournamentIds`. The deprecated fields match only series that belong directly to the given tournaments, so an event whose series are all in child tournaments returns no series.
+
+## Fields
+
+All fields are optional.
+
+<ParamField query="live" type="SeriesLiveFilter">
+  Filter by live data points.
+
+  <Expandable title="SeriesLiveFilter fields">
+    <ParamField query="games" type="GameFilter">
+      Filter by game.
+
+      <Expandable title="GameFilter fields">
+        <ParamField query="id" type="IdFilter">
+          Filter by game IDs. Set the IDs in `in` (`[ID!]`).
+        </ParamField>
+        <ParamField query="map" type="MapFilter">
+          Filter by map. Set the map name in `name`, a `StringFilter` with the fields `contains` and `equals`.
+        </ParamField>
+      </Expandable>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField query="livePlayerIds" type="IdFilter">
+  Filter by participating player IDs.
+
+  <Expandable title="IdFilter fields">
+    <ParamField query="in" type="[ID!]">
+      The IDs to look for.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField query="players" type="SeriesPlayerFilter">
+  Filter by the players taking part in the series.
+
+  <Expandable title="SeriesPlayerFilter fields">
+    <ParamField query="age" type="IntFilter">
+      Matches series in which the age of at least one player meets the condition. Set one or more of `equals`, `gte` (greater than or equal), and `lte` (less than or equal), each an `Int`.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField query="private" type="BooleanFilter">
+  Filter by visibility. Set `equals` to `true` for private series only, or to `false` for public series only. Without this field, the results include both.
+
+  <Expandable title="BooleanFilter fields">
+    <ParamField query="equals" type="Boolean">
+      The value to look for.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField query="productServiceLevels" type="ProductServiceLevelFilter">
+  Filter by the service level of a GRID product.
+
+  <Expandable title="ProductServiceLevelFilter fields">
+    <ParamField query="productName" type="String!" required>
+      The name of the product, as `productServiceLevels.productName` on [`Series`](/data-apis/central-data/api-reference/objects/Series) returns it.
+    </ParamField>
+    <ParamField query="serviceLevel" type="ServiceLevel!" required>
+      The service level to look for: `FULL`, `LIMITED`, or `NONE`.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField query="startTimeScheduled" type="DateTimeFilter">
+  Filter by the scheduled start time of the series.
+
+  <Expandable title="DateTimeFilter fields">
+    <ParamField query="gte" type="String">
+      The start of the time range, included. Use a full ISO 8601 timestamp, such as `2026-07-14T00:00:00Z`. A date without a time fails with the error "Parameter cannot be used as DateTime".
+    </ParamField>
+    <ParamField query="lte" type="String">
+      The end of the time range, included. Use a full ISO 8601 timestamp, such as `2026-07-19T23:59:59Z`.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField query="teamId" type="ID" deprecated>
+  <Warning>Deprecated. Use `teamIds` instead, and don't set both.</Warning>
+
+  Filter by one team ID.
+</ParamField>
+
+<ParamField query="teamIds" type="IdFilter">
+  Filter by team IDs. Set the IDs in `in` (`[ID!]`).
+</ParamField>
+
+<ParamField query="titleId" type="ID" deprecated>
+  <Warning>Deprecated. Use `titleIds` instead, and don't set both.</Warning>
+
+  Filter by one title ID.
+</ParamField>
+
+<ParamField query="titleIds" type="IdFilter">
+  Filter by title IDs. Set the IDs in `in` (`[ID!]`).
+</ParamField>
+
+<ParamField query="tournament" type="SeriesTournamentFilter">
+  Filter by the tournament the series is played in.
+
+  <Expandable title="SeriesTournamentFilter fields">
+    <ParamField query="id" type="IdFilter">
+      Filter by tournament IDs. Set the IDs in `in` (`[ID!]`). On its own, `id` matches only series that belong directly to the given tournaments.
+    </ParamField>
+    <ParamField query="includeChildren" type="BooleanFilter">
+      Set `equals` to `true` to also match series in the child tournaments of the given tournaments. For example, the Esports World Cup 2026 League of Legends tournament (`830107`) returns no series without it and 197 series with it.
+    </ParamField>
+    <ParamField query="name" type="StringFilter">
+      Filter by tournament name. Set `contains` or `equals`. Both are case-insensitive.
+    </ParamField>
+    <ParamField query="nameShortened" type="StringFilter">
+      Filter by the short tournament name. Set `contains` or `equals`. Both are case-insensitive.
+    </ParamField>
+    <ParamField query="startDate" type="NullableDateFilter">
+      Filter by tournament start date. Set `gte`, `lte`, or both, each a date without a time, such as `2026-07-01`. Both values are included. If both `gte` and `lte` are null, the filter matches tournaments with no start date.
+    </ParamField>
+    <ParamField query="endDate" type="NullableDateFilter">
+      Filter by tournament end date. Set `gte`, `lte`, or both, each a date without a time. Both values are included. If both `gte` and `lte` are null, the filter matches tournaments with no end date.
+    </ParamField>
+    <ParamField query="title" type="SeriesTournamentTitleFilter">
+      Filter by the titles of the tournament. Set the title IDs in `id.in`.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField query="tournamentId" type="ID" deprecated>
+  <Warning>Deprecated. Use `tournament` instead.</Warning>
+
+  Filter by one tournament ID.
+</ParamField>
+
+<ParamField query="tournamentIds" type="IdFilter" deprecated>
+  <Warning>Deprecated. Use `tournament` instead.</Warning>
+
+  Filter by tournament IDs.
+</ParamField>
+
+<ParamField query="type" type="SeriesType" deprecated>
+  <Warning>Deprecated. Use `types` instead, and don't set both.</Warning>
+
+  Filter by one series type.
+</ParamField>
+
+<ParamField query="types" type="[SeriesType!]">
+  Filter by series types. The possible values are the following:
+
+  - `COMPETITIVE`: a competitive series that isn't esports
+  - `ESPORTS`: a competitive esports series
+  - `LOOPFEED`: a GRID test series played repeatedly in a loop
+  - `SCRIM`: a practice series
+</ParamField>
+
+<ParamField query="updatedAt" type="DateTimeFilter">
+  Filter by the time of the last update to the series. Set `gte`, `lte`, or both, as for `startTimeScheduled`.
+</ParamField>
+
+<ParamField query="workflowStatuses" type="[SeriesWorkflowStatus!]!" default="[PUBLISHED]">
+  Filter by workflow status. To include deleted series, set `[PUBLISHED, DELETED]`. The possible values are the following:
+
+  - `DELETED`: the series is deleted
+  - `PUBLISHED`: the series is created
+</ParamField>
+
+## Used by
+
+The `filter` argument of the [`allSeries`](/data-apis/central-data/api-reference/queries/allSeries) query takes `SeriesFilter`. No other query uses it.
+
+<Accordion title="About the example">
+  The example gets the series of the Esports World Cup 2026 League of Legends tournament (`830107`) and its child tournaments, scheduled from July 14 to July 19, 2026. It returns the first 2 of 29 series, sorted by start time.
+</Accordion>
+
+<RequestExample>
+```graphql Query
+query SeriesFilterExample($filter: SeriesFilter, $first: Int, $orderBy: SeriesOrderBy!) {
+  allSeries(filter: $filter, first: $first, orderBy: $orderBy) {
+    totalCount
+    edges {
+      node {
+        id
+        type
+        startTimeScheduled
+        tournament {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+```
+
+```json Variables
+{
+  "filter": {
+    "tournament": {
+      "id": {
+        "in": [
+          "830107"
+        ]
+      },
+      "includeChildren": {
+        "equals": true
+      }
+    },
+    "startTimeScheduled": {
+      "gte": "2026-07-14T00:00:00Z",
+      "lte": "2026-07-19T23:59:59Z"
+    }
+  },
+  "first": 2,
+  "orderBy": "StartTimeScheduled"
+}
+```
+</RequestExample>
+
+<ResponseExample>
+```json Response
+{
+  "data": {
+    "allSeries": {
+      "totalCount": 29,
+      "edges": [
+        {
+          "node": {
+            "id": "2970110",
+            "type": "ESPORTS",
+            "startTimeScheduled": "2026-07-15T09:30:00Z",
+            "tournament": {
+              "id": "830123",
+              "name": "Esports World Cup - 2026 (Group Stage: Group B)"
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "2970111",
+            "type": "ESPORTS",
+            "startTimeScheduled": "2026-07-15T09:45:00Z",
+            "tournament": {
+              "id": "830123",
+              "name": "Esports World Cup - 2026 (Group Stage: Group B)"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+</ResponseExample>

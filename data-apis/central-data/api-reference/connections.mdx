@@ -1,0 +1,411 @@
+---
+title: "Connections"
+description: "How paginated lists work in Central Data, and the fields of every connection type."
+---
+
+import NotAvailableOnOA from "/snippets/not-available-on-oa.mdx";
+
+## How pagination works
+
+The `allSeries` query and the other queries named on this page return a connection: one page of a list at a time. Every connection has the same three fields:
+
+- `edges`: the items on the page. Each edge holds one item as `node` and its position in the list as `cursor`.
+- `pageInfo`: whether there are more pages, and the cursors of the first and last edges on the page.
+- `totalCount`: the number of items that match the query's filter, on all pages together.
+
+Cursors are opaque strings. Pass them back to the API as they are, in the `after` and `before` arguments, which take a `String`.
+
+### PageInfo
+
+The `pageInfo` field of every connection is a `PageInfo!` object with the following fields:
+
+<ResponseField name="endCursor" type="String">
+  The cursor of the last edge on the page.
+</ResponseField>
+
+<ResponseField name="hasNextPage" type="Boolean!">
+  Whether there is a page after this one.
+</ResponseField>
+
+<ResponseField name="hasPreviousPage" type="Boolean!">
+  Whether there is a page before this one.
+</ResponseField>
+
+<ResponseField name="startCursor" type="String">
+  The cursor of the first edge on the page.
+</ResponseField>
+
+### Page size
+
+Set the page size with `first`, or with `last` to count from the end of the list. Without either, a query returns 10 items. The largest page size is 50.
+
+The API returns an error in the following cases:
+
+- A page size over 50, for example `first: 51`: "the given page size (51) exceeds the maximum (50)"
+- A page size of 0: "Out of bounds cursor request"
+- A cursor the API doesn't recognize in `after`: "Invalid after cursor value provided"
+
+### Page through a list
+
+The following example pages through the 197 series of the Esports World Cup 2026 League of Legends tournament (`830107`) and its child tournaments, two series at a time.
+
+<Steps>
+  <Step title="Request the first page">
+    Set `first` to the page size, and select `pageInfo` with the edges:
+
+    ```graphql Query
+    query SeriesPageOne($filter: SeriesFilter, $first: Int) {
+      allSeries(filter: $filter, first: $first) {
+        totalCount
+        pageInfo {
+          hasPreviousPage
+          hasNextPage
+          startCursor
+          endCursor
+        }
+        edges {
+          cursor
+          node {
+            id
+          }
+        }
+      }
+    }
+    ```
+
+    ```json Variables
+    {
+      "filter": {
+        "tournament": {
+          "id": {
+            "in": [
+              "830107"
+            ]
+          },
+          "includeChildren": {
+            "equals": true
+          }
+        }
+      },
+      "first": 2
+    }
+    ```
+
+    The response holds the first two series. `hasNextPage` is `true`, so there are more pages:
+
+    ```json Response
+    {
+      "data": {
+        "allSeries": {
+          "totalCount": 197,
+          "pageInfo": {
+            "hasPreviousPage": false,
+            "hasNextPage": true,
+            "startCursor": "PjMLC1oLC0VOREJBRk4=",
+            "endCursor": "PjMLC1oLC0VOREJBQkY="
+          },
+          "edges": [
+            {
+              "cursor": "PjMLC1oLC0VOREJBRk4=",
+              "node": {
+                "id": "2935619"
+              }
+            },
+            {
+              "cursor": "PjMLC1oLC0VOREJBQkY=",
+              "node": {
+                "id": "2935651"
+              }
+            }
+          ]
+        }
+      }
+    }
+    ```
+  </Step>
+  <Step title="Request the next page">
+    Add the `after` argument and set it to the `endCursor` of the previous page. Keep the filter and the page size the same:
+
+    ```graphql Query
+    query SeriesPageTwo($filter: SeriesFilter, $first: Int, $after: String) {
+      allSeries(filter: $filter, first: $first, after: $after) {
+        totalCount
+        pageInfo {
+          hasPreviousPage
+          hasNextPage
+          startCursor
+          endCursor
+        }
+        edges {
+          cursor
+          node {
+            id
+          }
+        }
+      }
+    }
+    ```
+
+    ```json Variables
+    {
+      "filter": {
+        "tournament": {
+          "id": {
+            "in": [
+              "830107"
+            ]
+          },
+          "includeChildren": {
+            "equals": true
+          }
+        }
+      },
+      "first": 2,
+      "after": "PjMLC1oLC0VOREJBQkY="
+    }
+    ```
+
+    The response holds the next two series. `hasPreviousPage` is now `true`:
+
+    ```json Response
+    {
+      "data": {
+        "allSeries": {
+          "totalCount": 197,
+          "pageInfo": {
+            "hasPreviousPage": true,
+            "hasNextPage": true,
+            "startCursor": "PjMLC1oLC0VOREJBQEc=",
+            "endCursor": "PjMLC1oLC0VOREJBT0I="
+          },
+          "edges": [
+            {
+              "cursor": "PjMLC1oLC0VOREJBQEc=",
+              "node": {
+                "id": "2935670"
+              }
+            },
+            {
+              "cursor": "PjMLC1oLC0VOREJBT0I=",
+              "node": {
+                "id": "2935685"
+              }
+            }
+          ]
+        }
+      }
+    }
+    ```
+  </Step>
+  <Step title="Repeat until the last page">
+    Repeat the previous step with the `endCursor` of the latest response until `hasNextPage` is `false`.
+  </Step>
+</Steps>
+
+To page backward, use `last` with `before`, and set `before` to the `startCursor` of the current page.
+
+## ContentCatalogEntityConnection
+
+<NotAvailableOnOA />
+
+A page of content catalog entities. The `contentCatalogEntities` query returns it, and the node of each edge is a `ContentCatalogEntity`.
+
+<ResponseField name="edges" type="[ContentCatalogEntityEdge!]!">
+  The content catalog entities on this page, one edge per content catalog entity.
+
+  <Expandable title="ContentCatalogEntityEdge fields">
+    <ResponseField name="cursor" type="String!">
+      The cursor of the edge.
+    </ResponseField>
+    <ResponseField name="node" type="ContentCatalogEntity!">
+      The content catalog entity.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="pageInfo" type="PageInfo!">
+  The paging details of the page. For its fields, see [PageInfo](#pageinfo).
+</ResponseField>
+
+<ResponseField name="totalCount" type="Int!">
+  The number of content catalog entities that match the query's filter.
+</ResponseField>
+
+## ContentCatalogVersionConnection
+
+<NotAvailableOnOA />
+
+A page of content catalog versions. The `contentCatalogVersions` query returns it, and the node of each edge is a `ContentCatalogVersion`.
+
+<ResponseField name="edges" type="[ContentCatalogVersionEdge!]!">
+  The content catalog versions on this page, one edge per content catalog version.
+
+  <Expandable title="ContentCatalogVersionEdge fields">
+    <ResponseField name="cursor" type="String!">
+      The cursor of the edge.
+    </ResponseField>
+    <ResponseField name="node" type="ContentCatalogVersion!">
+      The content catalog version.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="pageInfo" type="PageInfo!">
+  The paging details of the page. For its fields, see [PageInfo](#pageinfo).
+</ResponseField>
+
+<ResponseField name="totalCount" type="Int!">
+  The number of content catalog versions that match the query's filter.
+</ResponseField>
+
+## IngestionRequestConnection
+
+<NotAvailableOnOA />
+
+A page of ingestion requests. The `ingestionRequests` query returns it, and the node of each edge is an `IngestionRequest`.
+
+<ResponseField name="edges" type="[IngestionRequestEdge!]!">
+  The ingestion requests on this page, one edge per ingestion request.
+
+  <Expandable title="IngestionRequestEdge fields">
+    <ResponseField name="cursor" type="String!">
+      The cursor of the edge.
+    </ResponseField>
+    <ResponseField name="node" type="IngestionRequest!">
+      The ingestion request.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="pageInfo" type="PageInfo!">
+  The paging details of the page. For its fields, see [PageInfo](#pageinfo).
+</ResponseField>
+
+<ResponseField name="totalCount" type="Int!">
+  The number of ingestion requests that match the query's filter.
+</ResponseField>
+
+## OrganizationConnection
+
+A page of organizations. The `organizations` query returns it, and the node of each edge is an `Organization`.
+
+<ResponseField name="edges" type="[OrganizationEdge!]!">
+  The organizations on this page, one edge per organization.
+
+  <Expandable title="OrganizationEdge fields">
+    <ResponseField name="cursor" type="String!">
+      The cursor of the edge.
+    </ResponseField>
+    <ResponseField name="node" type="Organization!">
+      The organization.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="pageInfo" type="PageInfo!">
+  The paging details of the page. For its fields, see [PageInfo](#pageinfo).
+</ResponseField>
+
+<ResponseField name="totalCount" type="Int!">
+  The number of organizations that match the query's filter.
+</ResponseField>
+
+## PlayerConnection
+
+A page of players. The `players` query returns it, and the node of each edge is a `Player`.
+
+<ResponseField name="edges" type="[PlayerEdge!]!">
+  The players on this page, one edge per player.
+
+  <Expandable title="PlayerEdge fields">
+    <ResponseField name="cursor" type="String!">
+      The cursor of the edge.
+    </ResponseField>
+    <ResponseField name="node" type="Player!">
+      The player.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="pageInfo" type="PageInfo!">
+  The paging details of the page. For its fields, see [PageInfo](#pageinfo).
+</ResponseField>
+
+<ResponseField name="totalCount" type="Int!">
+  The number of players that match the query's filter.
+</ResponseField>
+
+## SeriesConnection
+
+A page of series. The [`allSeries`](/data-apis/central-data/api-reference/queries/allSeries) query returns it, and the node of each edge is a [`Series`](/data-apis/central-data/api-reference/objects/Series).
+
+<ResponseField name="edges" type="[SeriesEdge!]!">
+  The series on this page, one edge per series.
+
+  <Expandable title="SeriesEdge fields">
+    <ResponseField name="cursor" type="String!">
+      The cursor of the edge.
+    </ResponseField>
+    <ResponseField name="node" type="Series!">
+      The series.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="pageInfo" type="PageInfo!">
+  The paging details of the page. For its fields, see [PageInfo](#pageinfo).
+</ResponseField>
+
+<ResponseField name="totalCount" type="Int!">
+  The number of series that match the query's filter.
+</ResponseField>
+
+## TeamConnection
+
+A page of teams. The `teams` query returns it, and the node of each edge is a `Team`.
+
+<ResponseField name="edges" type="[TeamEdge!]!">
+  The teams on this page, one edge per team.
+
+  <Expandable title="TeamEdge fields">
+    <ResponseField name="cursor" type="String!">
+      The cursor of the edge.
+    </ResponseField>
+    <ResponseField name="node" type="Team!">
+      The team.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="pageInfo" type="PageInfo!">
+  The paging details of the page. For its fields, see [PageInfo](#pageinfo).
+</ResponseField>
+
+<ResponseField name="totalCount" type="Int!">
+  The number of teams that match the query's filter.
+</ResponseField>
+
+## TournamentConnection
+
+A page of tournaments. The `tournaments` query returns it, and the node of each edge is a `Tournament`.
+
+<ResponseField name="edges" type="[TournamentEdge!]!">
+  The tournaments on this page, one edge per tournament.
+
+  <Expandable title="TournamentEdge fields">
+    <ResponseField name="cursor" type="String!">
+      The cursor of the edge.
+    </ResponseField>
+    <ResponseField name="node" type="Tournament!">
+      The tournament.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="pageInfo" type="PageInfo!">
+  The paging details of the page. For its fields, see [PageInfo](#pageinfo).
+</ResponseField>
+
+<ResponseField name="totalCount" type="Int!">
+  The number of tournaments that match the query's filter.
+</ResponseField>

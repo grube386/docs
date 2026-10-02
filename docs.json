@@ -73,6 +73,27 @@
                         ]
                       }
                     ]
+                  },
+                  {
+                    "group": "Types",
+                    "expanded": false,
+                    "pages": [
+                      {
+                        "group": "Objects",
+                        "expanded": false,
+                        "pages": [
+                          "data-apis/central-data/api-reference/objects/Series"
+                        ]
+                      },
+                      {
+                        "group": "Filters",
+                        "expanded": false,
+                        "pages": [
+                          "data-apis/central-data/api-reference/filters/SeriesFilter"
+                        ]
+                      },
+                      "data-apis/central-data/api-reference/connections"
+                    ]
                   }
                 ]
               }

@@ -1,0 +1,17 @@
+query SeriesPageOne($filter: SeriesFilter, $first: Int) {
+  allSeries(filter: $filter, first: $first) {
+    totalCount
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        id
+      }
+    }
+  }
+}

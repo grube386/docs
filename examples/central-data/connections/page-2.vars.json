@@ -1,0 +1,16 @@
+{
+  "filter": {
+    "tournament": {
+      "id": {
+        "in": [
+          "830107"
+        ]
+      },
+      "includeChildren": {
+        "equals": true
+      }
+    }
+  },
+  "first": 2,
+  "after": "PjMLC1oLC0VOREJBQkY="
+}
