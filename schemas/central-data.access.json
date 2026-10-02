@@ -31,7 +31,7 @@
     },
     "fields": {
       "both": 223,
-      "commercial-only": 442,
+      "commercial-only": 443,
       "open-access-only": 0
     },
     "arguments": {
@@ -1375,6 +1375,9 @@
           "access": "commercial-only"
         },
         "title": {
+          "access": "commercial-only"
+        },
+        "tournaments": {
           "access": "commercial-only"
         }
       }

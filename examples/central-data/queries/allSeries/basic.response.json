@@ -1,46 +1,29 @@
 {
   "data": {
     "allSeries": {
-      "totalCount": 7,
       "edges": [
         {
           "node": {
-            "id": "2729011",
-            "startTimeScheduled": "2024-10-17T12:00:00Z",
-            "teams": [
-              {
-                "baseInfo": {
-                  "id": "52726",
-                  "name": "Suzhou LNG Esports"
-                }
-              },
-              {
-                "baseInfo": {
-                  "id": "52822",
-                  "name": "WeiboGaming"
-                }
-              }
-            ]
+            "id": "1",
+            "startTimeScheduled": "2024-10-22T06:56:58Z",
+            "title": {
+              "name": "Counter Strike: Global Offensive"
+            },
+            "tournament": {
+              "name": "GRID-TEST"
+            }
           }
         },
         {
           "node": {
-            "id": "2729012",
-            "startTimeScheduled": "2024-10-18T12:00:00Z",
-            "teams": [
-              {
-                "baseInfo": {
-                  "id": "406",
-                  "name": "Hanwha Life Esports"
-                }
-              },
-              {
-                "baseInfo": {
-                  "id": "356",
-                  "name": "BILIBILI GAMING"
-                }
-              }
-            ]
+            "id": "2",
+            "startTimeScheduled": "2026-10-02T09:43:23Z",
+            "title": {
+              "name": "Defense of the Ancients 2"
+            },
+            "tournament": {
+              "name": "GRID-TEST"
+            }
           }
         }
       ]

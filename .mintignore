@@ -5,3 +5,4 @@ examples/
 
 # Agent worktrees: nested checkouts, not pages
 .worktrees/
+templates/

@@ -567,6 +567,9 @@ input CreateIngestionRequestInput {
 
   """The description of the title the ingestion request applies to."""
   title: TitleDescriptorInput!
+
+  """The described tournaments."""
+  tournaments: [TournamentDescriptorInput!]!
 }
 
 """

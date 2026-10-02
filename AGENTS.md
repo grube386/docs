@@ -197,7 +197,7 @@ Ticket P0-6 fills in the Template and Canonical page columns once the seven page
 | Concept | Explain a model or mechanism | _P0-6_ | _P0-6_ (`data-apis/central-data/entities`) |
 | Quickstart | First successful call in under 10 minutes | _P0-6_ | _P0-6_ (`data-apis/central-data/quickstart`) |
 | Tutorial | Task-oriented walkthrough with code in Node.js, Python, and Kotlin | _P0-6_ | _P0-6_ (`data-apis/central-data/tutorials/get-team-player-photos`) |
-| Reference: operation | One query, mutation, or subscription | _P0-6_ | _P0-6_ (`data-apis/central-data/api-reference/queries/allSeries`) |
+| Reference: operation | One query, mutation, or subscription | `templates/reference-operation.mdx` | `data-apis/central-data/api-reference/queries/allSeries` |
 | Reference: types | Objects, inputs, and filters get one page each; connections and enums share one grouped page per kind, one anchor per type | _P0-6_ | _P0-6_ (`objects/Series`, `filters/SeriesFilter`, `connections`) |
 | Changelog | Versioned changes per product, newest first | _P0-6_ | _P0-6_ (`data-apis/central-data/changelog`) |
 

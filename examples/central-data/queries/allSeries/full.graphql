@@ -1,14 +1,12 @@
 query AllSeriesFull(
-  $first: Int
-  $after: String
   $filter: SeriesFilter
+  $first: Int
   $orderBy: SeriesOrderBy!
   $orderDirection: OrderDirection!
 ) {
   allSeries(
-    first: $first
-    after: $after
     filter: $filter
+    first: $first
     orderBy: $orderBy
     orderDirection: $orderDirection
   ) {
@@ -24,8 +22,12 @@ query AllSeriesFull(
       node {
         id
         type
+        private
+        workflowStatus
         startTimeScheduled
+        updatedAt
         format {
+          id
           name
           nameShortened
         }
@@ -33,18 +35,141 @@ query AllSeriesFull(
           id
           name
           nameShortened
+          logoUrl
+          private
         }
         tournament {
           id
           name
           nameShortened
-        }
-        teams {
-          baseInfo {
+          logoUrl
+          startDate
+          endDate
+          venueType
+          private
+          updatedAt
+          prizePool {
+            amount
+          }
+          parent {
             id
             name
           }
+          children {
+            id
+            name
+          }
+          teams {
+            id
+            name
+          }
+          titles {
+            id
+            name
+          }
+          externalLinks {
+            dataProvider {
+              name
+              description
+            }
+            externalEntity {
+              id
+            }
+          }
+        }
+        teams {
           scoreAdvantage
+          baseInfo {
+            id
+            name
+            nameShortened
+            logoUrl
+            colorPrimary
+            colorSecondary
+            rating
+            private
+            updatedAt
+            workflowStatus
+            organization {
+              id
+              name
+            }
+            assets {
+              assetType
+              url
+            }
+            title {
+              id
+              name
+            }
+            titles {
+              id
+              name
+            }
+            externalLinks {
+              dataProvider {
+                name
+                description
+              }
+              externalEntity {
+                id
+              }
+            }
+          }
+        }
+        players {
+          id
+          nickname
+          fullName
+          age
+          imageUrl
+          private
+          updatedAt
+          nationality {
+            code
+            name
+          }
+          roles {
+            id
+            name
+            private
+          }
+          team {
+            id
+            name
+          }
+          title {
+            id
+            name
+          }
+          externalLinks {
+            dataProvider {
+              name
+              description
+            }
+            externalEntity {
+              id
+            }
+          }
+        }
+        productServiceLevels {
+          productName
+          serviceLevel
+        }
+        streams {
+          url
+        }
+        machineDataSource {
+          id
+        }
+        externalLinks {
+          dataProvider {
+            name
+            description
+          }
+          externalEntity {
+            id
+          }
         }
       }
     }
