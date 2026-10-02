@@ -1,0 +1,94 @@
+---
+title: "Series"
+description: "The fields you get back for one series: its teams, tournament, title, format, schedule, and service levels."
+---
+
+import NotAvailableOnOA from "/snippets/not-available-on-oa.mdx";
+
+## Overview
+
+A `Series` is one series: a matchup between teams, made of one or more games and played in a tournament. It holds the scheduled start time, the tournament and title, the series format, the teams and players, and the service level of each GRID product for the series. To learn how series relate to tournaments, teams, and players, see [Entities](/data-apis/central-data/entities).
+
+## Fields
+
+<ResponseField name="externalLinks" type="[ExternalLink!]!">
+  The IDs that external data providers use for the series, as a list of [`ExternalLink`](/data-apis/central-data/api-reference/objects/ExternalLink) objects.
+</ResponseField>
+
+<ResponseField name="format" type="SeriesFormat!">
+  The format of the series, as a [`SeriesFormat`](/data-apis/central-data/api-reference/objects/SeriesFormat) object.
+</ResponseField>
+
+<ResponseField name="id" type="ID!">
+  The ID of the series.
+</ResponseField>
+
+<ResponseField name="machineDataSource" type="MachineDataSource">
+  <NotAvailableOnOA />
+
+  The machine data source of the series, as a [`MachineDataSource`](/data-apis/central-data/api-reference/objects/MachineDataSource) object.
+</ResponseField>
+
+<ResponseField name="players" type="[Player!]!">
+  The players taking part in the series, as a list of [`Player`](/data-apis/central-data/api-reference/objects/Player) objects. The list can be empty: for example, the Counter-Strike 2 final `2976197` returns no players.
+</ResponseField>
+
+<ResponseField name="private" type="Boolean!">
+  The visibility status of the series: `true` for a private series, `false` for a public one.
+</ResponseField>
+
+<ResponseField name="productServiceLevels" type="[ProductServiceLevel!]!">
+  The service level of each GRID product for the series, as a list of [`ProductServiceLevel`](/data-apis/central-data/api-reference/objects/ProductServiceLevel) objects.
+</ResponseField>
+
+<ResponseField name="startTimeScheduled" type="DateTime!">
+  The scheduled start time of the series.
+</ResponseField>
+
+<ResponseField name="streams" type="[VideoStream!]!">
+  The video streams available for the series, as a list of [`VideoStream`](/data-apis/central-data/api-reference/objects/VideoStream) objects.
+</ResponseField>
+
+<ResponseField name="teams" type="[TeamParticipant!]!">
+  The teams taking part in the series, as a list of [`TeamParticipant`](/data-apis/central-data/api-reference/objects/TeamParticipant) objects.
+</ResponseField>
+
+<ResponseField name="title" type="Title!">
+  The title played in the series, as a [`Title`](/data-apis/central-data/api-reference/objects/Title) object.
+</ResponseField>
+
+<ResponseField name="tournament" type="Tournament!">
+  The tournament the series is played in, as a [`Tournament`](/data-apis/central-data/api-reference/objects/Tournament) object.
+</ResponseField>
+
+<ResponseField name="type" type="SeriesType!">
+  The type of the series. The possible values are the following:
+
+  - `COMPETITIVE`: a competitive series that isn't esports
+  - `ESPORTS`: a competitive esports series
+  - `LOOPFEED`: a GRID test series played repeatedly in a loop
+  - `SCRIM`: a practice series
+</ResponseField>
+
+<ResponseField name="updatedAt" type="DateTime!">
+  The date and time of the last update to the series.
+</ResponseField>
+
+<ResponseField name="workflowStatus" type="SeriesWorkflowStatus!">
+  The workflow status of the series. The possible values are the following:
+
+  - `DELETED`: the series is deleted
+  - `PUBLISHED`: the series is created
+
+  The `allSeries` query returns only `PUBLISHED` series unless you set `workflowStatuses` in [`SeriesFilter`](/data-apis/central-data/api-reference/filters/SeriesFilter).
+</ResponseField>
+
+## Used by
+
+The following queries return `Series`:
+
+- [`allSeries`](/data-apis/central-data/api-reference/queries/allSeries), which returns a list of series
+- `series`, which returns one series by its ID
+- `seriesByExternalSeries`, which is deprecated: use `seriesIdByExternalId` instead
+
+In the `allSeries` response, each series is the `node` of an edge in a [`SeriesConnection`](/data-apis/central-data/api-reference/connections#seriesconnection).

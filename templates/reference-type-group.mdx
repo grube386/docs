@@ -1,0 +1,131 @@
+---
+title: "GROUP_TITLE"
+description: "[One sentence: what the types on this page have in common, ending with a period.]"
+---
+
+{/*
+  TEMPLATE: Reference: types, grouped page. One page per kind of type that shares a shape:
+  connections.mdx (every connection type) and enums.mdx (every enum).
+  Canonical page: data-apis/central-data/api-reference/connections.mdx. When in doubt, match it.
+  Objects, inputs, and filters get a page each: use templates/reference-type.mdx.
+
+  FILE AND NAVIGATION
+  - Path: data-apis/<product>/api-reference/{connections,enums}.mdx. Lowercase, one file per kind.
+  - Add the page to docs.json in the product's Types group, after the Objects, Inputs, and Filters groups.
+  - Frontmatter title is the kind in sentence case: "Connections", "Enums". No sidebarTitle, no icon.
+
+  REQUIRED SECTIONS, IN THIS ORDER
+  1. Shared section: one H2 at the top that explains what every type of the kind has in common.
+     - Connections: what edges, node, cursor, pageInfo (every field) and totalCount mean, the
+       page size limits, and how to page forward with first and after, as <Steps> with one
+       verified two-page example. Say how to page backward.
+     - Enums: how enum values appear in queries and responses, if anything needs saying.
+     H3 sections are allowed inside it. Other pages link its anchors (#pageinfo).
+  2. One H2 per type, in schema order (alphabetical). The heading is the type name exactly as
+     in the schema, so its anchor is the name in lowercase (#seriesconnection). Other pages
+     link these anchors, so never rename a heading.
+     Each section has:
+     - One sentence: what the type is, which queries return or take it, and, for a connection,
+       the node type of its edges. Link the node type to its object page, /data-apis/<product>/api-reference/objects/<Type>, even before that page exists (Matej, 2026-10-02). Link operations only if their page exists. At most one link per sentence.
+     - Connections: edges, pageInfo, and totalCount as <ResponseField>, with an
+       <Expandable title="XEdge fields"> for cursor and node.
+     - Enums: every value as a list item, "- `VALUE`: meaning", from the schema descriptions.
+       A deprecated value says so and names its replacement.
+  - Leave out types that only mutations reach while mutations are deferred.
+
+  ACCESS BADGES (take access from schemas/<api>.access.json, never from guesswork)
+  - The page itself gets no title badge, even if most of its types are Commercial only.
+  - Type that is Commercial only: put <NotAvailableOnOA /> directly under its own H2, before the
+    first sentence (Matej, 2026-10-01).
+  - Field or enum value that is Commercial only: put <NotAvailableOnOA /> as the first line
+    inside its <ResponseField>, or right after the value in its list item (default until the
+    enums page is reviewed).
+
+  EXAMPLES (AGENTS.md section 4)
+  - Only the shared section has an example. Type sections have none.
+  - Files: examples/<api>/<kind>/<step>.{graphql,vars.json,response.json}, for example
+    examples/central-data/connections/page-1.graphql. Capture each step from the real previous
+    response (page 2 uses page 1's endCursor). Run `gql check` and `gql run`, then paste unchanged.
+  - Show code inside <Steps> with blocks titled Query, Variables, and Response. Don't use
+    <RequestExample> or <ResponseExample> on a grouped page.
+  - Fixtures: only examples/fixtures.md. Keep pages small with first: 2.
+
+  While drafting, tag every claim with its fact ID comment (F-nnn, AGENTS.md section 6.7).
+  Delete this comment block and every fact ID comment before merge.
+*/}
+
+import NotAvailableOnOA from "/snippets/not-available-on-oa.mdx";
+
+{/* Keep the import only if at least one type, field, or value on the page is Commercial only. */}
+
+## SHARED_SECTION_HEADING
+
+[What every type of this kind has in common, in two or three sentences.]
+
+### SHARED_SUBSECTION
+
+[Detail that every type shares, for example the PageInfo fields.]
+
+<Steps>
+  <Step title="[First action]">
+    [What to set.]
+
+    ```graphql Query
+    query ExampleStepOne {
+      operationName(first: 2) {
+        totalCount
+      }
+    }
+    ```
+
+    [What the response shows.]
+
+    ```json Response
+    { "paste": "step-1.response.json, unchanged" }
+    ```
+  </Step>
+  <Step title="[Next action]">
+    [What to change, using a value from the previous response.]
+  </Step>
+</Steps>
+
+## TypeNameBothPlatforms
+
+A [what the type is]. The [`OPERATION_WITH_PAGE`](/data-apis/PRODUCT/api-reference/queries/OPERATION_WITH_PAGE) query returns it. The node of each edge is a [`NODE_TYPE`](/data-apis/PRODUCT/api-reference/objects/NODE_TYPE).
+
+<ResponseField name="edges" type="[TypeNameEdge!]!">
+  The [items] on this page, one edge per [item].
+
+  <Expandable title="TypeNameEdge fields">
+    <ResponseField name="cursor" type="String!">
+      The cursor of the edge.
+    </ResponseField>
+    <ResponseField name="node" type="NODE_TYPE!">
+      The [item].
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="pageInfo" type="PageInfo!">
+  The paging details of the page. For its fields, see [PageInfo](#pageinfo).
+</ResponseField>
+
+<ResponseField name="totalCount" type="Int!">
+  The number of [items] that match the query's filter.
+</ResponseField>
+
+## TypeNameCommercialOnly
+
+<NotAvailableOnOA />
+
+A [what the type is]. The `OPERATION_WITHOUT_PAGE` query returns it.
+
+{/* Enum section shape, for enums.mdx:
+
+## EnumName
+
+[What the enum describes.] The `OPERATION` query returns it in `Type.field`. The possible values are the following:
+
+- `VALUE_ONE`: [meaning]
+- `VALUE_TWO`: <NotAvailableOnOA /> [meaning]
+*/}

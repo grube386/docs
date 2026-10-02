@@ -1,0 +1,31 @@
+{
+  "data": {
+    "allSeries": {
+      "totalCount": 29,
+      "edges": [
+        {
+          "node": {
+            "id": "2970110",
+            "type": "ESPORTS",
+            "startTimeScheduled": "2026-07-15T09:30:00Z",
+            "tournament": {
+              "id": "830123",
+              "name": "Esports World Cup - 2026 (Group Stage: Group B)"
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "2970111",
+            "type": "ESPORTS",
+            "startTimeScheduled": "2026-07-15T09:45:00Z",
+            "tournament": {
+              "id": "830123",
+              "name": "Esports World Cup - 2026 (Group Stage: Group B)"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

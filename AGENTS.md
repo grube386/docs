@@ -212,7 +212,7 @@ Each P0-5 ticket fills in its own row once its page is approved. Until then, the
 | Quickstart | First successful call in under 10 minutes | _P0-6_ | _P0-6_ (`data-apis/central-data/quickstart`) |
 | Tutorial | Task-oriented walkthrough with code in Node.js, Python, and Kotlin | _P0-6_ | _P0-6_ (`data-apis/central-data/tutorials/get-team-player-photos`) |
 | Reference: operation | One query, mutation, or subscription | `templates/reference-operation.mdx` | `data-apis/central-data/api-reference/queries/allSeries` |
-| Reference: types | Objects, inputs, and filters get one page each; connections and enums share one grouped page per kind, one anchor per type | _P0-6_ | _P0-6_ (`objects/Series`, `filters/SeriesFilter`, `connections`) |
+| Reference: types | Objects, inputs, and filters get one page each; connections and enums share one grouped page per kind, one anchor per type | `templates/reference-type.mdx` (one type per page), `templates/reference-type-group.mdx` (grouped) | `data-apis/central-data/api-reference/objects/Series`, `data-apis/central-data/api-reference/filters/SeriesFilter`, `data-apis/central-data/api-reference/connections` |
 | Changelog | Versioned changes per product, newest first | _P0-6_ | _P0-6_ (`data-apis/central-data/changelog`) |
 
 Shapes, until the templates exist:

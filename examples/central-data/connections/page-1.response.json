@@ -1,0 +1,27 @@
+{
+  "data": {
+    "allSeries": {
+      "totalCount": 197,
+      "pageInfo": {
+        "hasPreviousPage": false,
+        "hasNextPage": true,
+        "startCursor": "PjMLC1oLC0VOREJBRk4=",
+        "endCursor": "PjMLC1oLC0VOREJBQkY="
+      },
+      "edges": [
+        {
+          "cursor": "PjMLC1oLC0VOREJBRk4=",
+          "node": {
+            "id": "2935619"
+          }
+        },
+        {
+          "cursor": "PjMLC1oLC0VOREJBQkY=",
+          "node": {
+            "id": "2935651"
+          }
+        }
+      ]
+    }
+  }
+}

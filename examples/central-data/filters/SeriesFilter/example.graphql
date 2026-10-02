@@ -1,0 +1,16 @@
+query SeriesFilterExample($filter: SeriesFilter, $first: Int, $orderBy: SeriesOrderBy!) {
+  allSeries(filter: $filter, first: $first, orderBy: $orderBy) {
+    totalCount
+    edges {
+      node {
+        id
+        type
+        startTimeScheduled
+        tournament {
+          id
+          name
+        }
+      }
+    }
+  }
+}
